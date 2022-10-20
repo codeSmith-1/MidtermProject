@@ -1,5 +1,6 @@
 package com.skilldistillery.booked.entities;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import javax.persistence.EntityManager;
@@ -14,12 +15,12 @@ import org.junit.jupiter.api.Test;
 
 class UserTest {
 	private static EntityManagerFactory emf;
-	private static EntityManager em;
-	private static User user;
+	private EntityManager em;
+	private User user;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
-		emf = Persistence.createEntityManagerFactory("VideoStore");
+		emf = Persistence.createEntityManagerFactory("JPAbooked");
 		
 	}
 
@@ -31,19 +32,19 @@ class UserTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-//		user = em.find(Address.class, 1);
+		user = em.find(User.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		user = null;
 		em.close();
+		user = null;
 	}
 
 	@Test
-	void test_Address_basic_mappings() {
+	void test_user_entity() {
 		assertNotNull(user);
-//		assertEquals()
+		assertEquals("admin", user.getUsername());
 	}	
 
 }
