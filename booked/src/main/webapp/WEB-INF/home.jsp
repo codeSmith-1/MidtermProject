@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>booked</title>
 </head>
 <body>
 
 <h2>Hello DBA</h2>
 
-
+${SMOKETEST}
 </body>
 </html>
