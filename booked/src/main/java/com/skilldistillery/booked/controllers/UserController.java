@@ -13,7 +13,7 @@ public class UserController {
 	@Autowired
 	private UserDAO dao;
 	
-	@RequestMapping()
+	@RequestMapping(path={"/", "home.do"})
 	public String home(Model model) {
 		model.addAttribute("SMOKETEST", dao.findById(1));
 		return "home";
