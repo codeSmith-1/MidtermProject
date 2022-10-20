@@ -1,5 +1,9 @@
 package com.skilldistillery.booked.data;
 
-public interface UserDAO {
+import com.skilldistillery.booked.entities.User;
 
+public interface UserDAO {
+	
+	User findById(int userId);
+	
 }

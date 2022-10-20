@@ -4,8 +4,7 @@
 	
 	
 	
-		<provider>org.hibernate.jpa.HibernatePersistenceProvider
-    </provider>
+		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<!-- entities -->
 		<class>com.skilldistillery.booked.entities.User</class>
