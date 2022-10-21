@@ -435,6 +435,27 @@ COMMIT;
 
 
 -- -----------------------------------------------------
+-- Data for table `book_condition`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bookdb`;
+INSERT INTO `book_condition` (`id`, `name`, `condition_desc`) VALUES (1, 'New', 'Near perfect condition');
+INSERT INTO `book_condition` (`id`, `name`, `condition_desc`) VALUES (2, 'Used - Light', 'Lightly used');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `shelf_book`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bookdb`;
+INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (1, 0, 1, 1, 1, 0, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
 -- Data for table `book_has_genre`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -443,6 +464,76 @@ INSERT INTO `book_has_genre` (`book_id`, `genre_id`) VALUES (1, 1);
 INSERT INTO `book_has_genre` (`book_id`, `genre_id`) VALUES (2, 2);
 INSERT INTO `book_has_genre` (`book_id`, `genre_id`) VALUES (3, 3);
 INSERT INTO `book_has_genre` (`book_id`, `genre_id`) VALUES (4, 3);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `comment`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bookdb`;
+INSERT INTO `comment` (`id`, `comment`, `user_id`, `book_id`, `comment_date`, `in_reply_to_id`) VALUES (1, 'Looking for some books', 1, 1, '2022-10-21', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `rating`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bookdb`;
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (5, 1, 1, 'it was really good');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `checkout`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bookdb`;
+INSERT INTO `checkout` (`id`, `user_id`, `shelf_book_id`, `request_date`, `return_date`, `request_message`, `checkout_date`) VALUES (1, 1, 1, '2022-10-05', '2022-10-14', 'can I borrow this title', '2022-10-11');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `favorite_book`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bookdb`;
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (1, 4);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `genre_has_user`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bookdb`;
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `user_has_author`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bookdb`;
+INSERT INTO `user_has_author` (`user_id`, `author_id`) VALUES (1, 1);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `currently_reading`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bookdb`;
+INSERT INTO `currently_reading` (`user_id`, `book_id`) VALUES (1, 2);
 
 COMMIT;
 
