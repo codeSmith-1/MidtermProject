@@ -380,6 +380,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `bookdb`;
 INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip_code`) VALUES (1, '1503 Oak Knoll Lane', NULL, 'Virginia Beach', 'VA', '23464');
+INSERT INTO `address` (`id`, `street`, `street2`, `city`, `state`, `zip_code`) VALUES (2, '999 Waterside Drive', NULL, 'Norfolk', 'VA', '23508');
 
 COMMIT;
 
@@ -390,6 +391,7 @@ COMMIT;
 START TRANSACTION;
 USE `bookdb`;
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (1, 'admin', 'admin', 1, NULL, 1, 'cullen1882@gmail.com', NULL, NULL, NULL, NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (2, 'Cullen1882', 'password', 1, NULL, 2, 'example@hotmail.com', 'Cullen', 'Rafferty', 'things about me', NULL);
 
 COMMIT;
 
@@ -474,6 +476,7 @@ COMMIT;
 START TRANSACTION;
 USE `bookdb`;
 INSERT INTO `comment` (`id`, `comment`, `user_id`, `book_id`, `comment_date`, `in_reply_to_id`) VALUES (1, 'Looking for some books', 1, 1, '2022-10-21', NULL);
+INSERT INTO `comment` (`id`, `comment`, `user_id`, `book_id`, `comment_date`, `in_reply_to_id`) VALUES (2, 'I have some books if youre looking', 2, 1, NULL, 1);
 
 COMMIT;
 
