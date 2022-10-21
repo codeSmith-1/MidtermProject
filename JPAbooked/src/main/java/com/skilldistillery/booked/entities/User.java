@@ -25,7 +25,14 @@ public class User {
 	public User() {
 		super();
 	}
-
+	
+	public User(String username, String password, boolean enabled, String role) {
+		this.username = username;
+		this.password = password;
+		this.enabled = enabled;
+		this.role = role;
+	}
+	
 	public int getId() {
 		return id;
 	}

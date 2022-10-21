@@ -15,7 +15,7 @@ public class UserController {
 	
 	@RequestMapping(path={"/", "home.do"})
 	public String home(Model model) {
-		model.addAttribute("SMOKETEST", dao.findById(1));
+		model.addAttribute("SMOKETEST", dao.findUserById(1));
 		return "home";
 	}
 
