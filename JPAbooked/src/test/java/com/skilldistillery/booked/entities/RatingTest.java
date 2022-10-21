@@ -47,16 +47,16 @@ class RatingTest {
 		assertNotNull(rating.getRatingComment());
 	}
 	
-//	@Test
-//	void test_Rating_user() {
-//		assertNotNull(rating);
-//		assertNotNull(rating.getUser());
-//	}
-//	
-//	@Test
-//	void test_Rating_book() {
-//		assertNotNull(rating);
-//		assertNotNull(rating.getBook());
-//	}
+	@Test
+	void test_Rating_user() {
+		assertNotNull(rating);
+		assertNotNull(rating.getUser());
+	}
+	
+	@Test
+	void test_Rating_book() {
+		assertNotNull(rating);
+		assertNotNull(rating.getBook());
+	}
 
 }

@@ -45,6 +45,55 @@ class UserTest {
 	void test_User_basic_mappings() {
 		assertNotNull(user);
 		assertEquals("admin", user.getUsername());
-	}	
+	}
+	
+	@Test
+	void test_User_ratings() {
+		assertNotNull(user);
+		assertNotNull(user.getRatings());
+		
+	}
+	
+	@Test
+	void test_User_currently_reading() {
+		assertNotNull(user);
+		assertNotNull(user.getReading());
+		
+	}
+	
+	@Test
+	void test_User_favorite_genres() {
+		assertNotNull(user);
+		assertNotNull(user.getFavBooks());
+		
+	}
+	
+	@Test
+	void test_User_address() {
+		assertNotNull(user);
+		assertNotNull(user.getAddress());
+		
+	}
+	
+	@Test
+	void test_User_shelfbooks() {
+		assertNotNull(user);
+		assertNotNull(user.getShelfBooks());
+		
+	}
+	
+	@Test
+	void test_User_checkouts() {
+		assertNotNull(user);
+		assertNotNull(user.getCheckouts());
+		
+	}
+	
+	@Test
+	void test_User_comments() {
+		assertNotNull(user);
+		assertNotNull(user.getComments());
+		
+	}
 
 }
