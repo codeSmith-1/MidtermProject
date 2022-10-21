@@ -76,7 +76,6 @@ CREATE TABLE IF NOT EXISTS `book` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NULL,
-  `rating` DECIMAL(2,1) NULL,
   `author_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_book_author1_idx` (`author_id` ASC),
@@ -189,6 +188,32 @@ CREATE TABLE IF NOT EXISTS `user_has_shelf_book` (
   CONSTRAINT `fk_user_has_shelf_book_shelf_book1`
     FOREIGN KEY (`shelf_book_id`)
     REFERENCES `shelf_book` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `rating`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `rating` ;
+
+CREATE TABLE IF NOT EXISTS `rating` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `rating` DECIMAL(2,1) NULL,
+  `book_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_rating_book1_idx` (`book_id` ASC),
+  INDEX `fk_rating_user1_idx` (`user_id` ASC),
+  CONSTRAINT `fk_rating_book1`
+    FOREIGN KEY (`book_id`)
+    REFERENCES `book` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rating_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
