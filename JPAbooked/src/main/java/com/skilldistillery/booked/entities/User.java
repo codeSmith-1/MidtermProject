@@ -1,6 +1,5 @@
 package com.skilldistillery.booked.entities;
 
-
 import java.util.List;
 import java.util.Objects;
 
@@ -9,21 +8,48 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-
 
 @Entity
 public class User {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@OneToMany(mappedBy="user")
+
+	@ManyToMany
+	@JoinTable(name = "favorite_book", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
+	private List<Book> favBooks;
+
+	@ManyToMany
+	@JoinTable(name = "currently_reading", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
+	private List<Book> reading;
+
+	@ManyToMany
+	@JoinTable(name = "user_has_author", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
+	private List<Author> authors;
+
+	@ManyToMany
+	@JoinTable(name = "genre_has_user", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
+	private List<Genre> genres;
+
+	@OneToMany(mappedBy = "user")
 	private List<Rating> ratings;
 
+	@OneToMany(mappedBy = "user")
+	private List<Checkout> checkouts;
+
+	@OneToMany(mappedBy = "user")
+	private List<ShelfBook> shelfBooks;
+
+	@OneToMany(mappedBy = "user")
+	private List<Comment> comments;
+
 	private String username;
-	
+
 	private String password;
 
 	private String email;
@@ -31,30 +57,107 @@ public class User {
 	private Boolean enabled;
 
 	private String role;
-	
-	@Column(name="address_id")
+
+	@Column(name = "address_id")
 	private int addressId;
-	
-	@Column(name="first_name")
+
+	@Column(name = "first_name")
 	private String firstName;
-	
-	@Column(name="last_name")
+
+	@Column(name = "last_name")
 	private String lastName;
-	
-	private String description;
-	
-	@Column(name="profile_img")
+
+	@Column(name = "about_me")
+	private String aboutMe;
+
+	@Column(name = "profile_img")
 	private String profileImg;
 
-	public User() {}
-	
-	public User(String username, String password, boolean enabled, String role) {
+	public User() {
+	}
+
+	public User(int id, List<Book> favBooks, List<Book> reading, List<Author> authors, List<Genre> genres,
+			List<Rating> ratings, List<Checkout> checkouts, List<ShelfBook> shelfBooks, List<Comment> comments,
+			String username, String password, String email, Boolean enabled, String role, int addressId,
+			String firstName, String lastName, String aboutMe, String profileImg) {
+		super();
+		this.id = id;
+		this.favBooks = favBooks;
+		this.reading = reading;
+		this.authors = authors;
+		this.genres = genres;
+		this.ratings = ratings;
+		this.checkouts = checkouts;
+		this.shelfBooks = shelfBooks;
+		this.comments = comments;
 		this.username = username;
 		this.password = password;
+		this.email = email;
 		this.enabled = enabled;
 		this.role = role;
+		this.addressId = addressId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.aboutMe = aboutMe;
+		this.profileImg = profileImg;
 	}
-	
+
+	public List<Book> getFavBooks() {
+		return favBooks;
+	}
+
+	public void setFavBooks(List<Book> favBooks) {
+		this.favBooks = favBooks;
+	}
+
+	public List<Book> getReading() {
+		return reading;
+	}
+
+	public void setReading(List<Book> reading) {
+		this.reading = reading;
+	}
+
+	public List<Author> getAuthors() {
+		return authors;
+	}
+
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
+	}
+
+	public List<Genre> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(List<Genre> genres) {
+		this.genres = genres;
+	}
+
+	public List<Checkout> getCheckouts() {
+		return checkouts;
+	}
+
+	public void setCheckouts(List<Checkout> checkouts) {
+		this.checkouts = checkouts;
+	}
+
+	public List<ShelfBook> getShelfBooks() {
+		return shelfBooks;
+	}
+
+	public void setShelfBooks(List<ShelfBook> shelfBooks) {
+		this.shelfBooks = shelfBooks;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
 	public List<Rating> getRatings() {
 		return ratings;
 	}
@@ -135,12 +238,12 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getAboutMe() {
+		return aboutMe;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setAboutMe(String aboutMe) {
+		this.aboutMe = aboutMe;
 	}
 
 	public String getProfileImg() {
@@ -150,8 +253,6 @@ public class User {
 	public void setProfileImg(String profileImg) {
 		this.profileImg = profileImg;
 	}
-
-	
 
 	@Override
 	public int hashCode() {
@@ -172,19 +273,9 @@ public class User {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("User [id=");
-		builder.append(id);
-		builder.append(", username=");
-		builder.append(username);
-		builder.append(", password=");
-		builder.append(password);
-		builder.append(", enabled=");
-		builder.append(enabled);
-		builder.append(", role=");
-		builder.append(role);
-		builder.append("]");
-		return builder.toString();
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email
+				+ ", enabled=" + enabled + ", role=" + role + ", addressId=" + addressId + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", aboutMe=" + aboutMe + ", profileImg=" + profileImg + "]";
 	}
 
 }

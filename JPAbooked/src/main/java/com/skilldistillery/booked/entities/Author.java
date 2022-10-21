@@ -1,5 +1,6 @@
 package com.skilldistillery.booked.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Author {
@@ -18,6 +21,12 @@ public class Author {
 	private String firstName;
 	@Column(name = "last_name")
 	private String lastName;
+	
+	@ManyToMany(mappedBy="authors")
+	private List<User> users;
+	
+	@OneToMany(mappedBy="author")
+	private List<Book> books;
 
 	public int getId() {
 		return id;
