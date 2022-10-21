@@ -7,7 +7,6 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
 		<!-- entities -->
-		<class>com.skilldistillery.booked.entities.User</class>
 		<class>com.skilldistillery.booked.entities.Address</class>
 		<class>com.skilldistillery.booked.entities.Author</class>
 		<class>com.skilldistillery.booked.entities.Book</class>
@@ -16,8 +15,9 @@
 		<class>com.skilldistillery.booked.entities.Comment</class>
 		<class>com.skilldistillery.booked.entities.Genre</class>
 		<class>com.skilldistillery.booked.entities.Rating</class>
-		<class>com.skilldistillery.booked.entities.ShelfBook</class>
 		<class>com.skilldistillery.booked.entities.RatingId</class>
+		<class>com.skilldistillery.booked.entities.ShelfBook</class>
+		<class>com.skilldistillery.booked.entities.User</class>
 		
 		<!-- end entities -->
 

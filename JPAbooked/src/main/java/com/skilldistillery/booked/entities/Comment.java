@@ -43,8 +43,7 @@ public class Comment {
 	@OneToMany(mappedBy = "reply")
 	private List<Comment> replies;
 
-	public Comment() {
-	}
+	public Comment() {}
 
 	public User getUser() {
 		return user;

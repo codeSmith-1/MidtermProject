@@ -21,19 +21,27 @@ public class User {
 	private int id;
 
 	@ManyToMany
-	@JoinTable(name = "favorite_book", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
+	@JoinTable(name = "favorite_book", 
+	joinColumns = @JoinColumn(name = "user_id"), 
+	inverseJoinColumns = @JoinColumn(name = "book_id"))
 	private List<Book> favBooks;
 
 	@ManyToMany
-	@JoinTable(name = "currently_reading", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
+	@JoinTable(name = "currently_reading", 
+	joinColumns = @JoinColumn(name = "user_id"), 
+	inverseJoinColumns = @JoinColumn(name = "book_id"))
 	private List<Book> reading;
 
 	@ManyToMany
-	@JoinTable(name = "user_has_author", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
+	@JoinTable(name = "user_has_author", 
+	joinColumns = @JoinColumn(name = "user_id"), 
+	inverseJoinColumns = @JoinColumn(name = "author_id"))
 	private List<Author> authors;
 
 	@ManyToMany
-	@JoinTable(name = "genre_has_user", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
+	@JoinTable(name = "genre_has_user", 
+	joinColumns = @JoinColumn(name = "user_id"), 
+	inverseJoinColumns = @JoinColumn(name = "genre_id"))
 	private List<Genre> genres;
 
 	@OneToMany(mappedBy = "user")
@@ -73,8 +81,7 @@ public class User {
 	@Column(name = "profile_img")
 	private String profileImg;
 
-	public User() {
-	}
+	public User() {}
 
 	public User(int id, List<Book> favBooks, List<Book> reading, List<Author> authors, List<Genre> genres,
 			List<Rating> ratings, List<Checkout> checkouts, List<ShelfBook> shelfBooks, List<Comment> comments,

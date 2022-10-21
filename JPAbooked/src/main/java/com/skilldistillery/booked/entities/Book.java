@@ -18,8 +18,11 @@ public class Book {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+
 	private String title;
+
 	private String description;
+
 	private String cover;
 	
 	@ManyToOne
@@ -155,6 +158,5 @@ public class Book {
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", description=" + description + ", cover=" + cover + "]";
 	}
-
 	
 }

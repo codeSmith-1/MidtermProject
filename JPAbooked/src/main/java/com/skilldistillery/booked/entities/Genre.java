@@ -12,11 +12,15 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Genre {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
 	private String name;
+	
 	private String description;
+	
 	private String image;
 
 	@ManyToMany(mappedBy = "genres")
@@ -26,8 +30,7 @@ public class Genre {
 	@JoinColumn(name = "book_has_genre")
 	private List<Book> books;
 
-	public Genre() {
-	}
+	public Genre() {}
 
 	public List<User> getUsers() {
 		return users;

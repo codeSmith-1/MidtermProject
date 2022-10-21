@@ -34,15 +34,17 @@ public class ShelfBook {
 	
 	@Column(name="book_condition_id")
 	private BookCondition condition;
+	
 	@Column(name = "for_borrow")
 	private boolean forBorrow;
+	
 	@Column(name = "for_sale")
 	private boolean forSale;
+	
 	@Column(name = "sale_price")
 	private double salePrice;
 
-	public ShelfBook() {
-	}
+	public ShelfBook() {}
 
 	public List<Checkout> getCheckouts() {
 		return checkouts;

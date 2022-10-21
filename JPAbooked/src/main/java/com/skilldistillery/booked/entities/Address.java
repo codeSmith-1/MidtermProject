@@ -13,9 +13,13 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
 	private String street;
+	
 	private String street2;
+
 	private String city;
+
 	private String state;
 	
 	@Column(name="zip_code")
@@ -93,10 +97,5 @@ public class Address {
 		return "Address [id=" + id + ", street=" + street + ", street2=" + street2 + ", city=" + city + ", state="
 				+ state + ", zipcode=" + zipcode + "]";
 	}
-	
-	
-	
-	
-	
 
 }

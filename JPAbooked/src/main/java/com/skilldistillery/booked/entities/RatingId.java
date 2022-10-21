@@ -13,6 +13,7 @@ public class RatingId implements Serializable {
 
 	@Column(name="user_id")
 	private int userId;
+	
 	@Column(name="book_id")
 	private int bookId;
 	
@@ -45,8 +46,5 @@ public class RatingId implements Serializable {
 	public String toString() {
 		return "RatingId [userId=" + userId + ", bookId=" + bookId + "]";
 	}
-	
-	
-
 	
 }

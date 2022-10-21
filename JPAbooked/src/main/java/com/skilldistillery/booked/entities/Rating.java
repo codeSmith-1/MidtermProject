@@ -30,8 +30,7 @@ public class Rating {
 	@MapsId(value ="bookId")
 	private Book book;
 
-	public Rating() {
-	}
+	public Rating() {}
 
 	public User getUser() {
 		return user;

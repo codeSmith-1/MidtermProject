@@ -17,12 +17,16 @@ public class Checkout {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
 	@Column(name="request_date")
 	private LocalDate requestDate;
+	
 	@Column(name="return_date")
 	private LocalDate returnDate;
+	
 	@Column(name="request_message")
 	private String requestMessage;
+	
 	@Column(name="checkout_date")
 	private LocalDate checkoutDate;
 	
@@ -39,30 +43,39 @@ public class Checkout {
 	public int getId() {
 		return id;
 	}
+	
 	public void setId(int id) {
 		this.id = id;
 	}
+	
 	public LocalDate getRequestDate() {
 		return requestDate;
 	}
+	
 	public void setRequestDate(LocalDate requestDate) {
 		this.requestDate = requestDate;
 	}
+	
 	public LocalDate getReturnDate() {
 		return returnDate;
 	}
+	
 	public void setReturnDate(LocalDate returnDate) {
 		this.returnDate = returnDate;
 	}
+	
 	public String getRequestMessage() {
 		return requestMessage;
 	}
+	
 	public void setRequestMessage(String requestMessage) {
 		this.requestMessage = requestMessage;
 	}
+	
 	public LocalDate getCheckoutDate() {
 		return checkoutDate;
 	}
+	
 	public void setCheckoutDate(LocalDate checkoutDate) {
 		this.checkoutDate = checkoutDate;
 	}
@@ -89,6 +102,5 @@ public class Checkout {
 		return "Checkout [id=" + id + ", requestDate=" + requestDate + ", returnDate=" + returnDate
 				+ ", requestMessage=" + requestMessage + ", checkoutDate=" + checkoutDate + "]";
 	}
-	
 	
 }
