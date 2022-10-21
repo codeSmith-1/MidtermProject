@@ -1,6 +1,21 @@
 @charset "UTF-8";
 
 body {
-	background-color: lightgray;
-	color: navy;
+	  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
+	--bs-bg-opacity: .1;
+		color: black;
+}
+
+.bg-info {
+  --bs-bg-opacity: .1;
+  background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
+}
+
+.dropdown-toggle {
+	background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
+	--bs-bg-opacity: .5;
+} 
+
+.position-absolute {
+	
 }
