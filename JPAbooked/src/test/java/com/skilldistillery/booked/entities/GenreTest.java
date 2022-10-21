@@ -43,7 +43,7 @@ class GenreTest {
 	@Test
 	void test_Genre_basic_mappings() {
 		assertNotNull(genre);
-//		assertNotNull(genre.getName());
+		assertNotNull(genre.getName());
 	}	
 
 }

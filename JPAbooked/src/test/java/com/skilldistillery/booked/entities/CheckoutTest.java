@@ -43,7 +43,7 @@ class CheckoutTest {
 	@Test
 	void test_Checkout_basic_mappings() {
 		assertNotNull(checkout);
-//		assertNotNull(checkout.getRequestDate());
+		assertNotNull(checkout.getRequestDate());
 	}	
 
 }

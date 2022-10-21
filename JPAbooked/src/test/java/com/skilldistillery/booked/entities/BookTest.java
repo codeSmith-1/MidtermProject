@@ -43,7 +43,7 @@ class BookTest {
 	@Test
 	void test_Book_basic_mappings() {
 		assertNotNull(book);
-//		assertNotNull(book.getTitle());
+		assertNotNull(book.getTitle());
 	}	
 
 }

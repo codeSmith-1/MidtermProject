@@ -43,8 +43,8 @@ class AddressTest {
 	@Test
 	void test_Address_basic_mappings() {
 		assertNotNull(address);
-//		assertNotNull(address.getStreet());
-//		assertNotNull(address.getState());
+		assertNotNull(address.getStreet());
+		assertNotNull(address.getState());
 	}	
 
 }

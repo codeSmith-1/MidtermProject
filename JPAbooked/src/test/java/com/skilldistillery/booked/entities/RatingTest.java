@@ -43,7 +43,7 @@ class RatingTest {
 	@Test
 	void test_Rating_basic_mappings() {
 		assertNotNull(rating);
-//		assertNotNull(rating.getRatingComment());
+		assertNotNull(rating.getRatingComment());
 	}	
 
 }

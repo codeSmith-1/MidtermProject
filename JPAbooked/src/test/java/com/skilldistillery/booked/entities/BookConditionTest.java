@@ -43,7 +43,7 @@ class BookConditionTest {
 	@Test
 	void test_BookCondition_basic_mappings() {
 		assertNotNull(bookCondition);
-//		assertNotNull(bookCondition.getName());
+		assertNotNull(bookCondition.getName());
 	}	
 
 }

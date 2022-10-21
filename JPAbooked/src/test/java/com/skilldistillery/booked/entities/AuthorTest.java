@@ -43,7 +43,7 @@ class AuthorTest {
 	@Test
 	void test_Author_basic_mappings() {
 		assertNotNull(author);
-//		assertNotNull(author.getFirstName());
+		assertNotNull(author.getFirstName());
 	}	
 
 }

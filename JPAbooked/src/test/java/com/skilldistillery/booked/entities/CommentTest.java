@@ -43,7 +43,7 @@ class CommentTest {
 	@Test
 	void test_Comment_basic_mappings() {
 		assertNotNull(comment);
-//		assertNotNull(comment.getComment());
+		assertNotNull(comment.getComment());
 	}	
 
 }
