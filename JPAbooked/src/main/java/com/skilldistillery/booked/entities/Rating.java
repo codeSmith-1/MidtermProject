@@ -3,30 +3,41 @@ package com.skilldistillery.booked.entities;
 import java.util.Objects;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 
 @Entity
 public class Rating {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
-	
+	@EmbeddedId
+	private RatingId id;
+
 	private int rating;
-	
-	@Column(name="rating_comment")
+
+	@Column(name = "rating_comment")
 	private String ratingComment;
 	
-	public Rating() {}
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	@MapsId(value ="userId")
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name="book_id")
+	@MapsId(value ="bookId")
+	private Book book;
 
-	public int getId() {
+	public Rating() {
+	}
+
+	public RatingId getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(RatingId id) {
 		this.id = id;
 	}
 
@@ -67,7 +78,5 @@ public class Rating {
 	public String toString() {
 		return "Rating [id=" + id + ", rating=" + rating + ", ratingComment=" + ratingComment + "]";
 	}
-	
-	
-	
+
 }

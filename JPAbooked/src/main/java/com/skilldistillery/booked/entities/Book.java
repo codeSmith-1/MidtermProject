@@ -1,11 +1,13 @@
 package com.skilldistillery.booked.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Book {
@@ -17,10 +19,22 @@ public class Book {
 	private String description;
 	private String cover;
 	
+	@OneToMany(mappedBy="book")
+	private List<Rating> ratings;
+	
 	public Book() {}
 
 	public int getId() {
 		return id;
+	}
+	
+
+	public List<Rating> getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(List<Rating> ratings) {
+		this.ratings = ratings;
 	}
 
 	public void setId(int id) {
