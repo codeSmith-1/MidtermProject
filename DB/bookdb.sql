@@ -43,6 +43,11 @@ CREATE TABLE IF NOT EXISTS `user` (
   `enabled` TINYINT(1) NULL,
   `role` VARCHAR(45) NULL,
   `address_id` INT NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `first_name` VARCHAR(45) NULL,
+  `last_name` VARCHAR(45) NULL,
+  `about_me` TEXT NULL,
+  `profile_img` TEXT(1000) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC),
   INDEX `fk_user_address1_idx` (`address_id` ASC),
@@ -75,8 +80,9 @@ DROP TABLE IF EXISTS `book` ;
 CREATE TABLE IF NOT EXISTS `book` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
-  `description` VARCHAR(45) NULL,
+  `description` TEXT NULL,
   `author_id` INT NOT NULL,
+  `cover` VARCHAR(1000) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_book_author1_idx` (`author_id` ASC),
   CONSTRAINT `fk_book_author1`
@@ -95,6 +101,21 @@ DROP TABLE IF EXISTS `genre` ;
 CREATE TABLE IF NOT EXISTS `genre` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
+  `description` TEXT NULL,
+  `image` VARCHAR(1000) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `book_condition`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `book_condition` ;
+
+CREATE TABLE IF NOT EXISTS `book_condition` (
+  `id` INT NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
+  `condition_desc` VARCHAR(255) NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -106,14 +127,29 @@ DROP TABLE IF EXISTS `shelf_book` ;
 
 CREATE TABLE IF NOT EXISTS `shelf_book` (
   `id` INT NOT NULL,
-  `condition` VARCHAR(45) NOT NULL,
-  `availability` VARCHAR(45) NOT NULL,
+  `for_borrow` TINYINT NOT NULL,
   `book_id` INT NOT NULL,
+  `book_condition_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  `for_sale` TINYINT NULL,
+  `sale_price` DECIMAL(5,2) NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_shelf_book_book1_idx` (`book_id` ASC),
+  INDEX `fk_shelf_book_book_condition1_idx` (`book_condition_id` ASC),
+  INDEX `fk_shelf_book_user1_idx` (`user_id` ASC),
   CONSTRAINT `fk_shelf_book_book1`
     FOREIGN KEY (`book_id`)
     REFERENCES `book` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_shelf_book_book_condition1`
+    FOREIGN KEY (`book_condition_id`)
+    REFERENCES `book_condition` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_shelf_book_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -144,18 +180,21 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `comments`
+-- Table `comment`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `comments` ;
+DROP TABLE IF EXISTS `comment` ;
 
-CREATE TABLE IF NOT EXISTS `comments` (
+CREATE TABLE IF NOT EXISTS `comment` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `comment` LONGTEXT NOT NULL,
   `user_id` INT NOT NULL,
   `book_id` INT NOT NULL,
+  `comment_date` DATETIME NULL,
+  `in_reply_to_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_comments_user1_idx` (`user_id` ASC),
   INDEX `fk_comments_book1_idx` (`book_id` ASC),
+  INDEX `fk_comment_comment1_idx` (`in_reply_to_id` ASC),
   CONSTRAINT `fk_comments_user1`
     FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
@@ -165,29 +204,10 @@ CREATE TABLE IF NOT EXISTS `comments` (
     FOREIGN KEY (`book_id`)
     REFERENCES `book` (`id`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `user_has_shelf_book`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `user_has_shelf_book` ;
-
-CREATE TABLE IF NOT EXISTS `user_has_shelf_book` (
-  `user_id` INT NOT NULL,
-  `shelf_book_id` INT NOT NULL,
-  PRIMARY KEY (`user_id`, `shelf_book_id`),
-  INDEX `fk_user_has_shelf_book_shelf_book1_idx` (`shelf_book_id` ASC),
-  INDEX `fk_user_has_shelf_book_user1_idx` (`user_id` ASC),
-  CONSTRAINT `fk_user_has_shelf_book_user1`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `user` (`id`)
-    ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_user_has_shelf_book_shelf_book1`
-    FOREIGN KEY (`shelf_book_id`)
-    REFERENCES `shelf_book` (`id`)
+  CONSTRAINT `fk_comment_comment1`
+    FOREIGN KEY (`in_reply_to_id`)
+    REFERENCES `comment` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -199,13 +219,13 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `rating` ;
 
 CREATE TABLE IF NOT EXISTS `rating` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `rating` DECIMAL(2,1) NULL,
+  `rating` INT NULL,
   `book_id` INT NOT NULL,
   `user_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
+  `rating_comment` VARCHAR(255) NULL,
   INDEX `fk_rating_book1_idx` (`book_id` ASC),
   INDEX `fk_rating_user1_idx` (`user_id` ASC),
+  PRIMARY KEY (`book_id`, `user_id`),
   CONSTRAINT `fk_rating_book1`
     FOREIGN KEY (`book_id`)
     REFERENCES `book` (`id`)
@@ -214,6 +234,131 @@ CREATE TABLE IF NOT EXISTS `rating` (
   CONSTRAINT `fk_rating_user1`
     FOREIGN KEY (`user_id`)
     REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `checkout`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `checkout` ;
+
+CREATE TABLE IF NOT EXISTS `checkout` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `user_id` INT NOT NULL,
+  `shelf_book_id` INT NOT NULL,
+  `request_date` DATETIME NULL,
+  `return_date` DATETIME NULL,
+  `request_message` TEXT NULL,
+  `checkout_date` DATETIME NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_checkout_user1_idx` (`user_id` ASC),
+  INDEX `fk_checkout_shelf_book1_idx` (`shelf_book_id` ASC),
+  CONSTRAINT `fk_checkout_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_checkout_shelf_book1`
+    FOREIGN KEY (`shelf_book_id`)
+    REFERENCES `shelf_book` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `favorite_book`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `favorite_book` ;
+
+CREATE TABLE IF NOT EXISTS `favorite_book` (
+  `user_id` INT NOT NULL,
+  `book_id` INT NOT NULL,
+  PRIMARY KEY (`user_id`, `book_id`),
+  INDEX `fk_user_has_book_book1_idx` (`book_id` ASC),
+  INDEX `fk_user_has_book_user1_idx` (`user_id` ASC),
+  CONSTRAINT `fk_user_has_book_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_has_book_book1`
+    FOREIGN KEY (`book_id`)
+    REFERENCES `book` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `genre_has_user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `genre_has_user` ;
+
+CREATE TABLE IF NOT EXISTS `genre_has_user` (
+  `genre_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`genre_id`, `user_id`),
+  INDEX `fk_genre_has_user_user1_idx` (`user_id` ASC),
+  INDEX `fk_genre_has_user_genre1_idx` (`genre_id` ASC),
+  CONSTRAINT `fk_genre_has_user_genre1`
+    FOREIGN KEY (`genre_id`)
+    REFERENCES `genre` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_genre_has_user_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `user_has_author`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `user_has_author` ;
+
+CREATE TABLE IF NOT EXISTS `user_has_author` (
+  `user_id` INT NOT NULL,
+  `author_id` INT NOT NULL,
+  PRIMARY KEY (`user_id`, `author_id`),
+  INDEX `fk_user_has_author_author1_idx` (`author_id` ASC),
+  INDEX `fk_user_has_author_user1_idx` (`user_id` ASC),
+  CONSTRAINT `fk_user_has_author_user1`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_has_author_author1`
+    FOREIGN KEY (`author_id`)
+    REFERENCES `author` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `currently_reading`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `currently_reading` ;
+
+CREATE TABLE IF NOT EXISTS `currently_reading` (
+  `user_id` INT NOT NULL,
+  `book_id` INT NOT NULL,
+  PRIMARY KEY (`user_id`, `book_id`),
+  INDEX `fk_user_has_book_book2_idx` (`book_id` ASC),
+  INDEX `fk_user_has_book_user2_idx` (`user_id` ASC),
+  CONSTRAINT `fk_user_has_book_user2`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_has_book_book2`
+    FOREIGN KEY (`book_id`)
+    REFERENCES `book` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -244,7 +389,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `bookdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`) VALUES (1, 'admin', 'admin', 1, NULL, 1);
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (1, 'admin', 'admin', 1, NULL, 1, 'cullen1882@gmail.com', NULL, NULL, NULL, NULL);
 
 COMMIT;
 
