@@ -393,3 +393,56 @@ INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id
 
 COMMIT;
 
+
+-- -----------------------------------------------------
+-- Data for table `author`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bookdb`;
+INSERT INTO `author` (`id`, `first_name`, `last_name`) VALUES (1, 'Jaideva', 'Goswami');
+INSERT INTO `author` (`id`, `first_name`, `last_name`) VALUES (2, 'John', 'Foreman');
+INSERT INTO `author` (`id`, `first_name`, `last_name`) VALUES (3, 'Edward', 'Said');
+INSERT INTO `author` (`id`, `first_name`, `last_name`) VALUES (4, 'V.P.', 'Menon');
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `book`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bookdb`;
+INSERT INTO `book` (`id`, `title`, `description`, `author_id`, `cover`) VALUES (1, 'Fundamentals of Wavelets', NULL, 1, NULL);
+INSERT INTO `book` (`id`, `title`, `description`, `author_id`, `cover`) VALUES (2, 'Data Smart', NULL, 2, NULL);
+INSERT INTO `book` (`id`, `title`, `description`, `author_id`, `cover`) VALUES (3, 'Orientalism', NULL, 3, NULL);
+INSERT INTO `book` (`id`, `title`, `description`, `author_id`, `cover`) VALUES (4, 'Integration of the Indian States', NULL, 4, NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `genre`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bookdb`;
+INSERT INTO `genre` (`id`, `name`, `description`, `image`) VALUES (1, 'Signal Processing', 'Processing signals', NULL);
+INSERT INTO `genre` (`id`, `name`, `description`, `image`) VALUES (2, 'Data Science', 'The science of data', NULL);
+INSERT INTO `genre` (`id`, `name`, `description`, `image`) VALUES (3, 'History', 'History Description', NULL);
+INSERT INTO `genre` (`id`, `name`, `description`, `image`) VALUES (4, 'Fiction', 'make believe', NULL);
+INSERT INTO `genre` (`id`, `name`, `description`, `image`) VALUES (5, 'Biography', 'about people written by other people', NULL);
+
+COMMIT;
+
+
+-- -----------------------------------------------------
+-- Data for table `book_has_genre`
+-- -----------------------------------------------------
+START TRANSACTION;
+USE `bookdb`;
+INSERT INTO `book_has_genre` (`book_id`, `genre_id`) VALUES (1, 1);
+INSERT INTO `book_has_genre` (`book_id`, `genre_id`) VALUES (2, 2);
+INSERT INTO `book_has_genre` (`book_id`, `genre_id`) VALUES (3, 3);
+INSERT INTO `book_has_genre` (`book_id`, `genre_id`) VALUES (4, 3);
+
+COMMIT;
+
