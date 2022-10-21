@@ -44,6 +44,13 @@ class GenreTest {
 	void test_Genre_basic_mappings() {
 		assertNotNull(genre);
 		assertNotNull(genre.getName());
-	}	
+	}
+	
+	@Test
+	void test_Genre_books() {
+		assertNotNull(genre);
+		assertNotNull(genre.getBooks());
+		assertTrue(genre.getBooks().size() > 0);
+	}
 
 }

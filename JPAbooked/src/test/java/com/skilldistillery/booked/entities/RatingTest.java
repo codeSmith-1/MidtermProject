@@ -44,6 +44,18 @@ class RatingTest {
 	void test_Rating_basic_mappings() {
 		assertNotNull(rating);
 		assertNotNull(rating.getRatingComment());
-	}	
+	}
+	
+	@Test
+	void test_Rating_user() {
+		assertNotNull(rating);
+		assertNotNull(rating.getUser());
+	}
+	
+	@Test
+	void test_Rating_book() {
+		assertNotNull(rating);
+		assertNotNull(rating.getBook());
+	}
 
 }

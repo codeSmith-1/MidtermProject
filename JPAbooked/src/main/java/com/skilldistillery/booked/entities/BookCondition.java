@@ -1,5 +1,6 @@
 package com.skilldistillery.booked.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,10 +17,15 @@ public class BookCondition {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	
 	private String name;
 	
 	@Column(name="condition_desc")
 	private String conditionDescription;
+	
+	@OneToMany(mappedBy="condition")
+	private List<ShelfBook> shelfBooks;
 	
 	public BookCondition() {}
 	

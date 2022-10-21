@@ -44,6 +44,20 @@ class CheckoutTest {
 	void test_Checkout_basic_mappings() {
 		assertNotNull(checkout);
 		assertNotNull(checkout.getRequestDate());
-	}	
+	}
+	
+	@Test
+	void test_Checkout_user() {
+		assertNotNull(checkout);
+		assertNotNull(checkout.getUser());
+		assertEquals("admin", checkout.getUser().getUsername());
+	}
+	
+	@Test
+	void test_Checkout_shelfBook() {
+		assertNotNull(checkout);
+		assertNotNull(checkout.getShelfBook());
+		assertEquals(1, checkout.getShelfBook().getId());
+	}
 
 }
