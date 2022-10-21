@@ -127,12 +127,12 @@ DROP TABLE IF EXISTS `shelf_book` ;
 
 CREATE TABLE IF NOT EXISTS `shelf_book` (
   `id` INT NOT NULL,
-  `for_borrow` TINYINT NOT NULL,
+  `for_borrow` TINYINT NULL DEFAULT 0,
   `book_id` INT NOT NULL,
   `book_condition_id` INT NOT NULL,
   `user_id` INT NOT NULL,
-  `for_sale` TINYINT NULL,
-  `sale_price` DECIMAL(5,2) NULL,
+  `for_sale` TINYINT NULL DEFAULT 0,
+  `sale_price` DECIMAL(5,2) NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   INDEX `fk_shelf_book_book1_idx` (`book_id` ASC),
   INDEX `fk_shelf_book_book_condition1_idx` (`book_condition_id` ASC),
