@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import com.skilldistillery.booked.entities.User;
 
-@Repository
+
 public class InMemoryUserDAO implements UserDAO {
 	
 	private Map<Integer, User> users;
@@ -15,7 +15,7 @@ public class InMemoryUserDAO implements UserDAO {
 	public InMemoryUserDAO() {
 		users = new LinkedHashMap<>(); 
 		
-		users.put(2, new User("TKC", "password", true, "admin"));
+	
 	}
 
 	@Override
