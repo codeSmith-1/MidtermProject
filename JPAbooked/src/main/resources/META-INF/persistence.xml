@@ -17,6 +17,7 @@
 		<class>com.skilldistillery.booked.entities.Genre</class>
 		<class>com.skilldistillery.booked.entities.Rating</class>
 		<class>com.skilldistillery.booked.entities.ShelfBook</class>
+		<class>com.skilldistillery.booked.entities.RatingId</class>
 		
 		<!-- end entities -->
 

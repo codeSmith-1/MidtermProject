@@ -1,5 +1,7 @@
 package com.skilldistillery.booked.entities;
 
+
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 
 @Entity
 public class User {
@@ -14,6 +18,9 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	
+	@OneToMany(mappedBy="user")
+	private List<Rating> ratings;
 
 	private String username;
 	
@@ -48,6 +55,14 @@ public class User {
 		this.role = role;
 	}
 	
+	public List<Rating> getRatings() {
+		return ratings;
+	}
+
+	public void setRatings(List<Rating> ratings) {
+		this.ratings = ratings;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -135,6 +150,8 @@ public class User {
 	public void setProfileImg(String profileImg) {
 		this.profileImg = profileImg;
 	}
+
+	
 
 	@Override
 	public int hashCode() {
