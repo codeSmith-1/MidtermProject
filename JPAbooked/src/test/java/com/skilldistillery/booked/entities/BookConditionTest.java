@@ -44,6 +44,7 @@ class BookConditionTest {
 	void test_BookCondition_basic_mappings() {
 		assertNotNull(bookCondition);
 		assertNotNull(bookCondition.getName());
-	}	
-
+		assertEquals("New", bookCondition.getName());
+	}
+	
 }

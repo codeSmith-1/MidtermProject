@@ -26,7 +26,7 @@ public class Book {
 	private String cover;
 	
 	@ManyToOne
-	@JoinColumn(name="author")
+	@JoinColumn(name="author_id")
 	private Author author;
 	
 	@ManyToMany(mappedBy="reading")

@@ -25,14 +25,15 @@ public class ShelfBook {
 	private List<Checkout> checkouts;
 
 	@ManyToOne
-	@JoinColumn(name = "user")
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	@ManyToOne
-	@JoinColumn(name = "book")
+	@JoinColumn(name = "book_id")
 	private Book book;
 	
-	@Column(name="book_condition_id")
+	@ManyToOne
+	@JoinColumn(name="book_condition_id")
 	private BookCondition condition;
 	
 	@Column(name = "for_borrow")
@@ -42,7 +43,7 @@ public class ShelfBook {
 	private boolean forSale;
 	
 	@Column(name = "sale_price")
-	private double salePrice;
+	private Double salePrice;
 
 	public ShelfBook() {}
 

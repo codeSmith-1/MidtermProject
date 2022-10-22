@@ -56,6 +56,22 @@ public class Author {
 		this.lastName = lastName;
 	}
 
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

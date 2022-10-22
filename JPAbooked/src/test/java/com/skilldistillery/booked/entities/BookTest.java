@@ -44,6 +44,34 @@ class BookTest {
 	void test_Book_basic_mappings() {
 		assertNotNull(book);
 		assertNotNull(book.getTitle());
-	}	
+	}
+	
+	@Test
+	void test_Book_comments() {
+		assertNotNull(book);
+		assertNotNull(book.getComments());
+		assertEquals("Looking for some books", book.getComments().get(0).getComment());
+	}
+	
+	@Test
+	void test_Book_genres() {
+		assertNotNull(book);
+		assertNotNull(book.getGenres());
+		assertTrue(book.getGenres().size() > 0);
+	}
+	
+	@Test
+	void test_Book_rating() {
+		assertNotNull(book);
+		assertNotNull(book.getRatings());
+		assertTrue(book.getRatings().size() > 0);
+	}
+	
+	@Test
+	void test_Book_author() {
+		assertNotNull(book);
+		assertNotNull(book.getAuthor());
+		assertEquals("Jaideva", book.getAuthor().getFirstName());
+	}
 
 }

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -27,7 +28,9 @@ public class Genre {
 	private List<User> users;
 
 	@ManyToMany
-	@JoinColumn(name = "book_has_genre")
+	@JoinTable(name="book_has_genre",
+	joinColumns=@JoinColumn(name = "genre_id"),
+	inverseJoinColumns=@JoinColumn(name="book_id"))
 	private List<Book> books;
 
 	public Genre() {}

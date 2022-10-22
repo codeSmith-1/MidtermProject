@@ -44,6 +44,27 @@ class CommentTest {
 	void test_Comment_basic_mappings() {
 		assertNotNull(comment);
 		assertNotNull(comment.getComment());
-	}	
+	}
+	
+	@Test
+	void test_Comment_user() {
+		assertNotNull(comment);
+		assertNotNull(comment.getUser());
+		assertEquals("admin", comment.getUser().getUsername());
+	}
+	
+	@Test
+	void test_Comment_book() {
+		assertNotNull(comment);
+		assertNotNull(comment.getBook());
+		assertEquals("Fundamentals of Wavelets", comment.getBook().getTitle());
+	}
+	
+	@Test
+	void test_Comment_self_join() {
+		assertNotNull(comment);
+		assertNotNull(comment.getReplies());
+		
+	}
 
 }

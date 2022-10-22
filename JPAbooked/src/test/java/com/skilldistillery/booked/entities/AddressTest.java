@@ -45,6 +45,6 @@ class AddressTest {
 		assertNotNull(address);
 		assertNotNull(address.getStreet());
 		assertNotNull(address.getState());
-	}	
+	}
 
 }

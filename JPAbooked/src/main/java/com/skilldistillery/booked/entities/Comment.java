@@ -29,11 +29,11 @@ public class Comment {
 //	private int reply;
 
 	@ManyToOne
-	@JoinColumn(name = "user")
+	@JoinColumn(name = "user_id")
 	private User user;
 
 	@ManyToOne
-	@JoinColumn(name = "book")
+	@JoinColumn(name = "book_id")
 	private Book book;
 
 	@ManyToOne
