@@ -10,8 +10,7 @@
 <body>
 <jsp:include page="navBar.jsp"/>
 
-<h2>Library</h2>
-<p>User: ${loggedIn.username }</p>
+<h2>Hello DBA</h2>
 
 
 <div class="dropdown">
@@ -26,6 +25,7 @@
 </div>
 
 
+<button class="bg-primary" value="${SMOKETEST}" />
 <jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>

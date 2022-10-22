@@ -26,16 +26,16 @@ public class LoginController {
 	}
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
-	public String loginUser(User user, HttpSession session) {
-		user = dao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
-		
+	public String loginUser(String username, String password, HttpSession session) {
+		User user = dao.getUserByUserNameAndPassword(username, password);
+		boolean invalid = false;
 		if (user == null) {
-			boolean invalid = true;
+			invalid = true;
 			session.setAttribute("invalid", invalid);
 			return "login";
 		} else {
 			session.setAttribute("loggedIn", user);
-			return "account";
+			return "home";
 		}
 	}
 
