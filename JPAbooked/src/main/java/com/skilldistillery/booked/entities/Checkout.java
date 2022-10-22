@@ -35,7 +35,7 @@ public class Checkout {
 	private User user;
 	
 	@ManyToOne
-	@JoinColumn(name="shelf_book")
+	@JoinColumn(name="shelf_book_id")
 	private ShelfBook shelfBook;
 	
 	public Checkout() {}
@@ -80,6 +80,22 @@ public class Checkout {
 		this.checkoutDate = checkoutDate;
 	}
 	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public ShelfBook getShelfBook() {
+		return shelfBook;
+	}
+
+	public void setShelfBook(ShelfBook shelfBook) {
+		this.shelfBook = shelfBook;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);

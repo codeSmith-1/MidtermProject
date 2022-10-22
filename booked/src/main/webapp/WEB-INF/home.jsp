@@ -25,7 +25,6 @@
 </div>
 
 
-<button class="bg-primary" value="${SMOKETEST}" />
 <jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>

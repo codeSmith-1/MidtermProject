@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
@@ -65,9 +66,10 @@ public class User {
 	private Boolean enabled;
 
 	private String role;
-
-	@Column(name = "address_id")
-	private int addressId;
+	
+	@OneToOne
+	@JoinColumn(name = "address_id")
+	private Address address;
 
 	@Column(name = "first_name")
 	private String firstName;
@@ -85,7 +87,7 @@ public class User {
 
 	public User(int id, List<Book> favBooks, List<Book> reading, List<Author> authors, List<Genre> genres,
 			List<Rating> ratings, List<Checkout> checkouts, List<ShelfBook> shelfBooks, List<Comment> comments,
-			String username, String password, String email, Boolean enabled, String role, int addressId,
+			String username, String password, String email, Boolean enabled, String role, Address address,
 			String firstName, String lastName, String aboutMe, String profileImg) {
 		super();
 		this.id = id;
@@ -102,7 +104,7 @@ public class User {
 		this.email = email;
 		this.enabled = enabled;
 		this.role = role;
-		this.addressId = addressId;
+		this.address = address;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.aboutMe = aboutMe;
@@ -221,12 +223,12 @@ public class User {
 		this.email = email;
 	}
 
-	public int getAddressId() {
-		return addressId;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setAddressId(int addressId) {
-		this.addressId = addressId;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	public String getFirstName() {
@@ -281,7 +283,7 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email
-				+ ", enabled=" + enabled + ", role=" + role + ", addressId=" + addressId + ", firstName=" + firstName
+				+ ", enabled=" + enabled + ", role=" + role + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", aboutMe=" + aboutMe + ", profileImg=" + profileImg + "]";
 	}
 

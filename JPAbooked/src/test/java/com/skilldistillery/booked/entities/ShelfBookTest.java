@@ -45,5 +45,33 @@ class ShelfBookTest {
 		assertNotNull(shelfBook);
 		assertNotNull(shelfBook.isForBorrow());
 	}	
-
+	
+	@Test
+	void test_ShelfBook_user() {
+		assertNotNull(shelfBook);
+		assertNotNull(shelfBook.getUser());
+		
+	}
+	
+	@Test
+	void test_ShelfBook_condition() {
+		assertNotNull(shelfBook);
+		assertNotNull(shelfBook.getCondition());
+		
+	}
+	
+	@Test
+	void test_ShelfBook_book() {
+		assertNotNull(shelfBook);
+		assertNotNull(shelfBook.getBook());
+		
+	}
+	
+	@Test
+	void test_ShelfBook_checkouts() {
+		assertNotNull(shelfBook);
+		assertNotNull(shelfBook.getCheckouts());
+		
+	}
+	
 }

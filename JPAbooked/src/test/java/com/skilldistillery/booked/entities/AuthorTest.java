@@ -1,6 +1,8 @@
 package com.skilldistillery.booked.entities;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -45,5 +47,21 @@ class AuthorTest {
 		assertNotNull(author);
 		assertNotNull(author.getFirstName());
 	}	
-
+	
+	@Test
+	void test_Author_book_mapping() {
+		assertNotNull(author);
+		assertNotNull(author.getBooks());
+		assertTrue(author.getBooks().size() > 0);
+		assertEquals("Fundamentals of Wavelets", author.getBooks().get(0).getTitle());
+	}
+	
+	@Test
+	void test_Author_users_mapping() {
+		assertNotNull(author);
+		assertNotNull(author.getUsers());
+		assertTrue(author.getUsers().size() > 0);
+		assertEquals(1, author.getUsers().size());
+	}
+	
 }
