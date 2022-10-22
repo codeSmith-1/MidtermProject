@@ -13,19 +13,14 @@
 
 	<h2>LOGIN</h2>
 
-	<form action="login.do">
+	<form action="login.do" method="POST">
 		<input type="text" name="username"> <input type="password"
-			name="password" /> <input type="submit" value="Log In">
+			name="password" /> 
+			<input type="submit" value="Log In">
 	</form>
 		<c:choose>
-			<c:when test="${bothIncorrect}">
-				<p>Invalid username <strong>AND</strong> password.</p>
-			</c:when>
-			<c:when test="${usernameIncorrect}">
-				<p>Invalid username.</p>
-			</c:when>
-			<c:when test="${passwordIncorrect}">
-				<p>Invalid password.</p>
+			<c:when test="${invalid}">
+				<p>Invalid username and password.</p>
 			</c:when>
 		</c:choose>
 </body>

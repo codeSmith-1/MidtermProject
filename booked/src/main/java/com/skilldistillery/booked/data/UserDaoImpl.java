@@ -22,24 +22,8 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public User getUserByUserNameAndPassword(String username, String password) {
-		User user = null;
-//		String jpql = "SELECT u FROM User u where u.username = :username AND u.password = :password";
-		String jpqlUsername = "Select u.username FROM User u WHERE u.username = :username";
-		String jpqlPassword = "Select u.password FROM User u WHERE u.password = :password";
-//		User user = em.createQuery(jpql, User.class).setParameter("username", username).setParameter("password", password).getSingleResult();
-//		em.close();
-		String dbUserNameResult = em.createQuery(jpqlUsername, String.class).setParameter("username", username).getSingleResult();
-		String dbPassword = em.createQuery(jpqlPassword, String.class).setParameter("password", password).getSingleResult();
-//		if(username.equals(dbUserNameResult)) {
-//			user.setUsername(dbUserNameResult);
-//		} else {
-//			user.setUsername("false");
-//		}
-//		if(username.equals(dbPassword)) {
-//			user.setPassword(dbPassword);
-//		} else {
-//			user.setPassword("false");
-//		}
+		String jpql = "SELECT u FROM User u where u.username = :username AND u.password = :password";
+		User user = em.createQuery(jpql, User.class).setParameter("username", username).setParameter("password", password).getSingleResult();
 		return user;
 	}
 
