@@ -10,7 +10,7 @@
 <body>
 <jsp:include page="navBar.jsp"/>
 
-<h2>Library</h2>
+<h2>INDEX</h2>
 
 
 <div class="dropdown">
