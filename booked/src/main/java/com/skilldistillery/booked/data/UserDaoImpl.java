@@ -31,45 +31,50 @@ public class UserDaoImpl implements UserDAO {
 	public User updateUser(int userId, User user) {
 		User updateMe = em.find(User.class, userId);
 		if (updateMe != null) {
+			updateMe.setAddress(user.getAddress());
 			updateMe.setFirstName(user.getFirstName());
 			updateMe.setLastName(user.getLastName());
 			updateMe.setAboutMe(user.getAboutMe());
 			updateMe.setEmail(user.getEmail());
-			em.getTransaction().begin();
+			updateMe.setProfileImg(user.getProfileImg());
 			em.persist(updateMe);
-			em.getTransaction().commit();
 		}
-		em.close();
 		return updateMe;
+	}
+	
+	@Override
+	public User updateUserPassword(int userId, String newPassword) {
+		User updateMyPword = em.find(User.class, userId);
+		if (updateMyPword != null && newPassword.length() > 8) {
+			updateMyPword.setPassword(newPassword);
+			em.persist(updateMyPword);
+		}
+		return updateMyPword;
 	}
 
 	@Override
 	public User createUser(User user) {
+		// Setting fields to the same value already in that object?
 		if (user != null) {
-			em.getTransaction().begin();
 			user.setEmail(user.getEmail());
-			user.setPassword(user.getEmail());
+			user.setPassword(user.getPassword());
 			user.setEnabled(true);
 			user.setRole("user");
 			user.setProfileImg(user.getProfileImg());
 			em.persist(user);
-			em.getTransaction().commit();
-			em.close();
 		}
 		return user;
 	}
 
 	@Override
 	public boolean removeUser(int userId) {
+		// Do we want to actually remove the user, or set them to disabled?
 		boolean success = false;
 		User deleteMe = em.find(User.class, findUserById(userId));
 		if (deleteMe != null) {
-			em.getTransaction().begin();
 			em.remove(deleteMe);
 			success = !em.contains(deleteMe);
-			em.getTransaction().commit();
 		}
-		em.close();
 		return success;
 	}
 
