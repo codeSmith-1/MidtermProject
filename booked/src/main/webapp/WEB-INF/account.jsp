@@ -19,7 +19,7 @@
     Dropdown button
   </button>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="update.do?id=${user.id}">Update Account</a></li>
+    <li><a class="dropdown-item" href="editAccountForm.do?id=${user.id}">Update Account</a></li>
     <li><a class="dropdown-item" href="#">Another action</a></li>
     <li><a class="dropdown-item" href="#">Something else here</a></li>
   </ul>
