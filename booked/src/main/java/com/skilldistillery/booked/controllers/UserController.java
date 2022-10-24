@@ -30,14 +30,25 @@ public class UserController {
 		// if logic to check if user in session
 		return "account";
 	}
-	@RequestMapping(path = "editAccount.do", method = RequestMethod.GET)
+	@RequestMapping(path = "editAccountForm.do", method = RequestMethod.GET)
 	public String editAccount(HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		if((user) != null) {
-			return "editAccount";
+//			model.addAttribute("updated", dao.updateUser(id, user));
+			return "editAccountForm";
 		}
 		return "login";
 	}
+	@RequestMapping(path = "editAccount.do", method = RequestMethod.POST)
+	public String editAccount(HttpSession session, Model model, User user, int id) {
+		user = dao.updateUser(id, user);
+		if(user != null) {
+			session.setAttribute("user", user);
+			return "redirect:account.do";
+		}
+		return "login";
+	}
+	
 	
 	@RequestMapping(path = "createAccount.do", method = RequestMethod.GET)
 	public String createAccount() {

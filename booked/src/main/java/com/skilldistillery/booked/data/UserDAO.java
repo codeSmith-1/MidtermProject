@@ -7,7 +7,7 @@ public interface UserDAO {
 	
 	public User findUserById(int userId);
 	public User getUserByUserNameAndPassword(String username, String password);
-	public User updateUser(int userId, User user);
+	public User updateUser(int id, User user);
 	public User updateUserPassword(int userId, String password);
 	public User createUser(User user);
 	public boolean removeUser(int id);

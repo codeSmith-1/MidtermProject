@@ -43,15 +43,22 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public User updateUser(int userId, User user) {
-		User updateMe = em.find(User.class, userId);
+	public User updateUser(int id, User user) {
+		User updateMe = em.find(User.class, id);
 		if (updateMe != null) {
-			updateMe.setAddress(user.getAddress());
+//			updateMe.setAddress(user.getAddress());
 			updateMe.setFirstName(user.getFirstName());
 			updateMe.setLastName(user.getLastName());
 			updateMe.setAboutMe(user.getAboutMe());
-			updateMe.setEmail(user.getEmail());
+//			updateMe.setEmail(user.getEmail());
 			updateMe.setProfileImg(user.getProfileImg());
+			if(user.getAddress() != null) {
+				updateMe.getAddress().setStreet(user.getAddress().getStreet());
+				updateMe.getAddress().setStreet2(user.getAddress().getStreet2());
+				updateMe.getAddress().setCity(user.getAddress().getCity());
+				updateMe.getAddress().setState(user.getAddress().getState());
+				updateMe.getAddress().setZipcode(user.getAddress().getZipcode());
+			}
 			em.persist(updateMe);
 		}
 		return updateMe;
