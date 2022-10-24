@@ -11,6 +11,5 @@ public interface UserDAO {
 	public User updateUserPassword(int userId, String password);
 	public User createUser(User user);
 	public boolean removeUser(int id);
-	public User createShelfBook(int user);
 	public Address createAddress(Address addr);
 }
