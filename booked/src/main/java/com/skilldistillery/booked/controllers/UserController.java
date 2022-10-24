@@ -51,4 +51,6 @@ public class UserController {
 //		dao.createUser(user, addr);
 		return "login";
 	}
+	
+	
 }

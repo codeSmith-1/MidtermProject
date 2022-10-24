@@ -11,7 +11,7 @@
 </head>
 <body>
 	<jsp:include page="navBar.jsp" />
-
+<div class="col-6">
 	<table>
 		<thead>
 			<tr>
@@ -36,6 +36,31 @@
 			</c:choose>
 		</tbody>
 	</table>
+</div>
+<div class="col-6">
+	<table>
+		<thead>
+			<tr>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Genre</th>
+				<th>Condition</th>
+				<th>Rating</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:choose>
+				<c:forEach var="fav" items="${favs}">
+					<tr>
+						<td>${fav.title}</td>
+						<td>${fav.author}</td>
+						<td>${fav.genre}</td>
+					</tr>
+				</c:forEach>
+			</c:choose>
+		</tbody>
+	</table>
+</div>
 
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>

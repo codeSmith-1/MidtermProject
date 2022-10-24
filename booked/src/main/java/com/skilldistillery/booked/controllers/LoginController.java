@@ -38,7 +38,7 @@ public class LoginController {
 		if (user != null) {
 			session.setAttribute("user", user);
 		}
-		return "account";
+		return "home";
 		
 	}
 

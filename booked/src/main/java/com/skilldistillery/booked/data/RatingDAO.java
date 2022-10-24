@@ -5,8 +5,8 @@ import com.skilldistillery.booked.entities.Rating;
 import com.skilldistillery.booked.entities.User;
 
 public interface RatingDAO {
-	public Rating getAverageRating(int bid);
-	public Rating createRating(Rating rating);
-	public Rating getUserRating(User uid, Book bid);
-	public Rating updateRating(Rating rating);
+	Rating getAverageRating(int bid);
+	Rating createRating(Rating rating);
+	Rating getUserRating(User uid, Book bid);
+	Rating updateRating(Rating rating);
 }
