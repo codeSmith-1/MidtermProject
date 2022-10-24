@@ -1206,6 +1206,11 @@ COMMIT;
 START TRANSACTION;
 USE `bookdb`;
 INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (5, 1, 1, 'it was really good');
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (4, 1, 2, 'ehhhhhh it wasnt great');
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (4, 1, 3, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (2, 1, 4, 'waste of time');
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (5, 1, 5, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (4, 1, 6, NULL);
 
 COMMIT;
 
