@@ -24,6 +24,9 @@ public class UserDaoImpl implements UserDAO {
 	public User getUserByUserNameAndPassword(String username, String password) {
 		String jpql = "SELECT u FROM User u where u.username = :username AND u.password = :password";
 		User user = em.createQuery(jpql, User.class).setParameter("username", username).setParameter("password", password).getSingleResult();
+		if (user == null) {
+			System.out.println("idk what happened");
+		}
 		return user;
 	}
 
