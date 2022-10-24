@@ -19,6 +19,12 @@ public class ShelfBookDaoImpl implements ShelfBookDAO {
 	private EntityManager em;
 
 	@Override
+	public ShelfBook createShelfBook(ShelfBook shelfBook) {
+		em.persist(shelfBook);
+		return shelfBook;
+	}
+	
+	@Override
 	public List<ShelfBook> findAllShelfBooks() {
 		String query = "SELECT sb FROM ShelfBook sb";
 		List<ShelfBook> allBooks = em.createQuery(query, ShelfBook.class).getResultList();
@@ -27,8 +33,8 @@ public class ShelfBookDaoImpl implements ShelfBookDAO {
 
 	@Override
 	public List<ShelfBook> findShelfBooksByKeyword(String keyword) {
-		String query = "SELECT sb FROM ShelfBook sb WHERE sb.title LIKE :title";
-		List<ShelfBook> keywordBooks = em.createQuery("%"+query+"%", ShelfBook.class).setParameter("title", keyword).getResultList();
+		String query = "SELECT sb FROM ShelfBook sb WHERE sb.book.title = :title";
+		List<ShelfBook> keywordBooks = em.createQuery(query, ShelfBook.class).setParameter("title", keyword).getResultList();
 		return keywordBooks;
 	}
 
@@ -42,10 +48,30 @@ public class ShelfBookDaoImpl implements ShelfBookDAO {
 
 	@Override
 	public ShelfBook findShelfBookById(int id) {
-		ShelfBook book = em.find(ShelfBook.class, id);
+		ShelfBook book = new ShelfBook();
+		book = em.find(ShelfBook.class, id);
 		return book;
 	}
 	
+	@Override
+	public ShelfBook updateShelfBook(int id, ShelfBook shelfBook) {
+		ShelfBook bookFromDB = em.find(ShelfBook.class, id);
+		bookFromDB.setCondition(shelfBook.getCondition());
+		bookFromDB.setForBorrow(shelfBook.isForBorrow());
+		bookFromDB.setForSale(shelfBook.isForSale());
+		bookFromDB.setSalePrice(shelfBook.getSalePrice());
+		return bookFromDB;
+	}
 	
+	@Override
+	public Boolean removeShelfBook(int id) {
+		ShelfBook bookToDelete = em.find(ShelfBook.class, id);
+		em.remove(bookToDelete);
+		if (em.find(ShelfBook.class, id) != null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
 	
 }
