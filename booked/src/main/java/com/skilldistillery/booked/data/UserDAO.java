@@ -4,11 +4,11 @@ import com.skilldistillery.booked.entities.User;
 
 public interface UserDAO {
 	
-	User findUserById(int userId);
-	User getUserByUserNameAndPassword(String username, String password);
-	User updateUser(int userId, User user);
+	public User findUserById(int userId);
+	public User getUserByUserNameAndPassword(String username, String password);
+	public User updateUser(int userId, User user);
 	public User updateUserPassword(int userId, String password);
-	User createUser(User user);
-	boolean removeUser(int id);
-	
+	public User createUser(User user);
+	public boolean removeUser(int id);
+	public User createShelfBook(int user);
 }

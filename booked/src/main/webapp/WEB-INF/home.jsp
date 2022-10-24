@@ -11,7 +11,7 @@
 <jsp:include page="navBar.jsp"/>
 
 <h2>Library</h2>
-<p>User: ${loggedIn.username }</p>
+<p>Welcome ${user.username }</p>
 
 
 <div class="dropdown">

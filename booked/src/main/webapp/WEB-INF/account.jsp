@@ -10,7 +10,7 @@
 <body>
 <jsp:include page="navBar.jsp"/>
 
-<h2>Hello DBA</h2>
+<h2>Hey ${user.firstName }</h2>
 
 
 <div class="dropdown">

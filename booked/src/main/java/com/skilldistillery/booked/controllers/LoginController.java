@@ -27,22 +27,25 @@ public class LoginController {
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public String loginUser(String username, String password, HttpSession session) {
-		User user = dao.getUserByUserNameAndPassword(username, password);
-		boolean invalid = false;
-		if (user == null) {
-			invalid = true;
+		User user;
+		try {
+			user = dao.getUserByUserNameAndPassword(username, password);
+		} catch (Exception e) {
+			boolean invalid = true;
 			session.setAttribute("invalid", invalid);
 			return "login";
-		} else {
-			session.setAttribute("loggedIn", user);
-			return "home";
 		}
+		if (user != null) {
+			session.setAttribute("user", user);
+		}
+		return "account";
+		
 	}
 
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("loggedIn");
-		return "index";
+		return "login";
 	}
 
 }
