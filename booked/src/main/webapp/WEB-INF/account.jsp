@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>booked</title>
-<jsp:include page="bootstrapHead.jsp"/>
+<jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
-<jsp:include page="navBar.jsp"/>
+	<jsp:include page="navBar.jsp" />
 
-<h2>Hey ${user.firstName }</h2>
-<h2>Addr ${user.address }</h2>
+	<h2>Hey ${user.firstName }</h2>
+	<h2>Addr ${user.address }</h2>
+
 
 
 <div class="dropdown">
@@ -26,7 +28,7 @@
 </div>
 
 
-<button class="bg-primary" value="${SMOKETEST}" />
-<jsp:include page="bootstrapFoot.jsp" />
+
+	<jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>
