@@ -19,7 +19,7 @@
 			<input type="submit" value="Log In">
 	</form>
 		<c:choose>
-			<c:when test="${invalid}">
+			<c:when test="${invalid == true}">
 				<p>Invalid username and password.</p>
 			</c:when>
 		</c:choose>
