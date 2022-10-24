@@ -19,6 +19,13 @@ public class BookController {
 	private BookDAO bookdao;
 	@Autowired
 	private ShelfBookDAO sbdao;
+	
+	@RequestMapping(path = "viewBook.do", method = RequestMethod.GET)
+	public String viewBook(int id, HttpSession session) {
+		session.setAttribute("book", bookdao.findBookById(id));
+		session.setAttribute("books", sbdao.findShelfBooksByBookId(id));
+		return "bookView";
+	}
 
 	@RequestMapping(path = "myBookshelf.do", method = RequestMethod.GET)
 	public String viewBookshelf(HttpSession session) {
@@ -30,11 +37,12 @@ public class BookController {
 			return "bookshelf";
 		}
 		return "login";
-	}	
-	@RequestMapping(path = "viewBook.do", method = RequestMethod.GET)
-	public String viewBook(int id, HttpSession session) {
-		session.setAttribute("book", bookdao.findBookById(id));
-		session.setAttribute("books", sbdao.findShelfBooksByBookId(id));
-		return "bookView";
-	}	
+	}
+	
+	@RequestMapping(path = "library.do", method = RequestMethod.GET)
+	public String viewLibrary(HttpSession session) {
+		session.setAttribute("allBooks", sbdao.findAllShelfBooks());
+		return "library";
+	}
+	
 }

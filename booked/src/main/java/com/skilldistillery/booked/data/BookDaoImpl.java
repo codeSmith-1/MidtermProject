@@ -39,5 +39,4 @@ public class BookDaoImpl implements BookDAO {
 		return em.find(Book.class, id);
 	}
 
-	
 }

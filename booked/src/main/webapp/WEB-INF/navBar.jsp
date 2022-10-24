@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Home</a>
+    <a class="navbar-brand" href="home.do">Home</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -10,7 +10,7 @@
           <a class="nav-link active" aria-current="page" href="myBookshelf.do">myBookshelf</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Library</a>
+          <a class="nav-link" href="library.do">Library</a>
         </li>
         <li>
         <form class="d-flex" role="search">
@@ -29,7 +29,7 @@
   </button>
   <ul class="dropdown-menu dropdown-menu-end">
     <li><a class="dropdown-item gap-2" href="account.do">Account</a></li>
-    <li><a class="dropdown-item gap-2" href="#">Shelf</a></li>
+    <li><a class="dropdown-item gap-2" href="myBookshelf.do">Shelf</a></li>
     <li><a class="dropdown-item gap-2" href="logout.do">Logout</a></li>
   </ul>
 	</div>
