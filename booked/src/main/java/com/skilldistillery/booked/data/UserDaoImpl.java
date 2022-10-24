@@ -6,6 +6,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.booked.entities.Address;
 import com.skilldistillery.booked.entities.User;
 
 @Service
@@ -52,15 +53,6 @@ public class UserDaoImpl implements UserDAO {
 		return updateMyPword;
 	}
 
-	@Override
-	public User createUser(User user) {
-		if (user != null) {
-			user.setEnabled(true);
-			user.setRole("user");
-			em.persist(user);
-		}
-		return user;
-	}
 
 	@Override
 	public boolean removeUser(int userId) {
@@ -75,12 +67,30 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public User createShelfBook(int userId) {
-		User user = em.find(User.class, findUserById(userId));
+	public User createUser(User user) {
 		if (user != null) {
-		
+			user.setEnabled(true);
+			user.setRole("user");
+			user.setUsername(user.getEmail());
+			createAddress(user.getAddress());
+			em.persist(user);
 		}
+		return user;
+	}
+
+	@Override
+	public Address createAddress(Address addr) {
+		if(addr != null) {
+			em.persist(addr);
+		}
+		return addr;
+	}
+
+	@Override
+	public User createShelfBook(int user) {
+		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 }

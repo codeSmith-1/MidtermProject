@@ -47,5 +47,7 @@ public class LoginController {
 		session.removeAttribute("loggedIn");
 		return "login";
 	}
+	
+
 
 }

@@ -14,9 +14,12 @@
 	<h2>LOGIN</h2>
 
 	<form action="login.do" method="POST">
-		<input type="text" name="username"> <input type="password"
+		<input type="text" placeholder="ilovebooks@novels.com" name="username"> <input placeholder="password" type="password"
 			name="password" /> 
 			<input type="submit" value="Log In">
+	</form>
+	<form action="createAccount.do" method="GET">
+			<input type="submit" value="Create Account">
 	</form>
 		<c:choose>
 			<c:when test="${invalid == true}">

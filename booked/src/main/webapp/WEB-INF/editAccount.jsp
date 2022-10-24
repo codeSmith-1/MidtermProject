@@ -11,7 +11,6 @@
 <jsp:include page="navBar.jsp"/>
 
 <h2>Hey ${user.firstName }</h2>
-<h2>Addr ${user.address }</h2>
 
 
 <div class="dropdown">
@@ -26,7 +25,6 @@
 </div>
 
 
-<button class="bg-primary" value="${SMOKETEST}" />
 <jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>
