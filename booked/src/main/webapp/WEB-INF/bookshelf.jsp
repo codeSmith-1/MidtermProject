@@ -51,7 +51,7 @@
 					<tr>
 						<td>${fav.title}</td>
 						<td>${fav.author}</td>
-						<td>${fav.genre}</td>
+						<td>${fav.genres}</td>
 					</tr>
 				</c:forEach>
 		</tbody>

@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.booked.entities.Address;
+import com.skilldistillery.booked.entities.Book;
 import com.skilldistillery.booked.entities.ShelfBook;
 import com.skilldistillery.booked.entities.User;
 
@@ -34,7 +35,9 @@ public class UserDaoImpl implements UserDAO {
 			sb.getBook().getGenres().size();
 //			getAverageRating(sb.getId());
 		}
-		user.getFavBooks().size();
+		for(Book book : user.getFavBooks()) {
+			book.getGenres().size();
+		}
 		em.clear();
 		return user;
 	}

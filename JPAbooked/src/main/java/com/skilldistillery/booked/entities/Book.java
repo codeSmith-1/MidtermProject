@@ -28,7 +28,7 @@ public class Book {
 	private String cover;
 	
 	@Formula("(SELECT AVG(r.rating) FROM Rating r WHERE r.book_id = id)")
-	private int rating;
+	private Integer rating;
 	
 	@ManyToOne
 	@JoinColumn(name="author_id")
@@ -54,11 +54,11 @@ public class Book {
 	
 	public Book() {}
 	
-	public int getRating() {
+	public Integer getRating() {
 		return rating;
 	}
 
-	public void setRating(int rating) {
+	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
 
