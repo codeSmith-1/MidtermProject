@@ -126,7 +126,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `shelf_book` ;
 
 CREATE TABLE IF NOT EXISTS `shelf_book` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `for_borrow` TINYINT NULL DEFAULT 0,
   `book_id` INT NOT NULL,
   `book_condition_id` INT NOT NULL,

@@ -44,6 +44,7 @@ class ShelfBookTest {
 	void test_ShelfBook_basic_mappings() {
 		assertNotNull(shelfBook);
 		assertNotNull(shelfBook.isForBorrow());
+		System.out.println(shelfBook);
 	}	
 	
 	@Test
