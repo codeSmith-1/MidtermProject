@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.booked.entities.Book;
 import com.skilldistillery.booked.entities.Rating;
+import com.skilldistillery.booked.entities.RatingId;
 import com.skilldistillery.booked.entities.User;
 
 @Service
@@ -34,11 +35,20 @@ public class RatingDaoImpl implements RatingDAO {
 	}
 
 	@Override
-	public Rating createRating(Rating rating) {
-		if (rating != null) {
+	public boolean createRating(int bid, int uid) {
+		boolean rated = false;
+		Book book = em.find(Book.class, uid);
+		User user = em.find(User.class, uid);
+		if (user != null && book != null) {
+			RatingId id = new RatingId(bid, uid);
+			Rating rating = new Rating();
+			rating.setId(id);
+			rating.setBook(book);
+			rating.setUser(user);
 			em.persist(rating);
+			rated = true;
 		}
-		return rating;
+		return rated;
 	}
 
 	@Override

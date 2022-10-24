@@ -17,22 +17,18 @@
 				<th>Title</th>
 				<th>Author</th>
 				<th>Genre</th>
-				<th>Condition</th>
 				<th>Rating</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:choose>
-				<c:forEach var="book" items="${books}">
+				<c:forEach var="bk" items="${allBooks}">
 					<tr>
-						<td>${book.title}</td>
-						<td>${book.author}</td>
-						<td>${book.genre}</td>
-						<td>${book.condition}</td>
-						<td>${book.rating}</td>
+						<td>${bk.book.title}</td>
+						<td>${bk.book.author.firstName} ${bk.book.author.lastName}</td>
+						<td><c:forEach var="genre" items="${bk.book.genres}">${genre.name}</c:forEach></td>
+						<td>${bk.book.rating}</td>
 					</tr>
 				</c:forEach>
-			</c:choose>
 		</tbody>
 	</table>
 

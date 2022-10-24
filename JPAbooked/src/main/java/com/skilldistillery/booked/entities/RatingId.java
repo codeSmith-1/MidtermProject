@@ -20,7 +20,6 @@ public class RatingId implements Serializable {
 	public RatingId() {}
 
 	public RatingId(int userId, int bookId) {
-		super();
 		this.userId = userId;
 		this.bookId = bookId;
 	}
