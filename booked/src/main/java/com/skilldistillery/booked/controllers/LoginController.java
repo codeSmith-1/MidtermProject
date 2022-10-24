@@ -31,7 +31,7 @@ public class LoginController {
 		try {
 			user = dao.getUserByUserNameAndPassword(username, password);
 		} catch (Exception e) {
-			boolean invalid = false;
+			boolean invalid = true;
 			session.setAttribute("invalid", invalid);
 			return "login";
 		}
@@ -45,7 +45,7 @@ public class LoginController {
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("loggedIn");
-		return "index";
+		return "login";
 	}
 
 }

@@ -30,7 +30,7 @@
   <ul class="dropdown-menu dropdown-menu-end">
     <li><a class="dropdown-item gap-2" href="account.do">Account</a></li>
     <li><a class="dropdown-item gap-2" href="#">Shelf</a></li>
-    <li><a class="dropdown-item gap-2" href="#">Logout</a></li>
+    <li><a class="dropdown-item gap-2" href="logout.do">Logout</a></li>
   </ul>
 	</div>
        
