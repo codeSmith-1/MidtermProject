@@ -23,17 +23,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:choose>
-				<c:forEach var="book" items="${books}">
+				<c:forEach var="sb" items="${books}">
 					<tr>
-						<td>${book.title}</td>
-						<td>${book.author}</td>
-						<td>${book.genre}</td>
-						<td>${book.condition}</td>
-						<td>${book.rating}</td>
+						<td>${sb.book.title}</td>
+						<td>${sb.book.author}</td>
+						<td>${sb.book.genres}</td>
+						<td>${sb.condition}</td>
+						<td>${sb.book.rating}</td>
 					</tr>
 				</c:forEach>
-			</c:choose>
 		</tbody>
 	</table>
 </div>
@@ -49,7 +47,6 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:choose>
 				<c:forEach var="fav" items="${favs}">
 					<tr>
 						<td>${fav.title}</td>
@@ -57,7 +54,6 @@
 						<td>${fav.genre}</td>
 					</tr>
 				</c:forEach>
-			</c:choose>
 		</tbody>
 	</table>
 </div>

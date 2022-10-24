@@ -12,6 +12,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Formula;
+
 @Entity
 public class Book {
 	
@@ -24,6 +26,9 @@ public class Book {
 	private String description;
 
 	private String cover;
+	
+	@Formula("(SELECT AVG(r.rating) FROM Rating r WHERE r.book_id = id)")
+	private int rating;
 	
 	@ManyToOne
 	@JoinColumn(name="author_id")
@@ -49,6 +54,14 @@ public class Book {
 	
 	public Book() {}
 	
+	public int getRating() {
+		return rating;
+	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+
 	public int getId() {
 		return id;
 	}

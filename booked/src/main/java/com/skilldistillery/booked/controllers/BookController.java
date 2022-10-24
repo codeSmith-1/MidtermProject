@@ -14,10 +14,11 @@ public class BookController {
 
 	@RequestMapping(path = "myBookshelf.do", method = RequestMethod.GET)
 	public String viewBookshelf(HttpSession session) {
-		if (session.getAttribute("loggedIn") != null) {
+		if (session.getAttribute("user") != null) {
 			User user = (User) session.getAttribute("user");
 			session.setAttribute("books", user.getShelfBooks());
 			session.setAttribute("favs", user.getFavBooks());
+			
 			return "bookshelf";
 		}
 		return "login";

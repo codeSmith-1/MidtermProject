@@ -17,6 +17,7 @@ public class RatingDaoImpl implements RatingDAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	
 	@Override
 	public Rating getUserRating(User uid, Book bid) {
 		String sql = "SELECT r FROM Rating WHERE user.id = :uid AND book.id = :bid";
