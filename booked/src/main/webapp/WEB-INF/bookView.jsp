@@ -20,20 +20,16 @@
 							<th>Title</th>
 							<th>Author</th>
 							<th>Genre</th>
-							<th>Condition</th>
 							<th>Rating</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="sb" items="${books}">
 							<tr>
-								<td><a href="viewBook.do?id=${sb.book.id }"> ${sb.book.title}</a></td>
-								<td>${sb.book.author.firstName}${sb.book.author.lastName}</td>
-								<td><c:forEach var="genre" items="${sb.book.genres}">${genre.name}</c:forEach></td>
-								<td>${sb.condition.name}</td>
-								<td>${sb.book.rating}</td>
+								<td>${book.title}</td>
+								<td>${book.author.firstName} ${book.author.lastName}</td>
+								<td><c:forEach var="genre" items="${book.genres}">${genre.name}</c:forEach></td>
+								<td>${book.rating}</td>
 							</tr>
-						</c:forEach>
 					</tbody>
 				</table>
 			</div>
@@ -41,17 +37,19 @@
 				<table class="table table-bordered">
 					<thead>
 						<tr>
-							<th>Title</th>
-							<th>Author</th>
-							<th>Genre</th>
+							<th>Copies</th>
+							<th>Condition</th>
+							<th>Available to borrow</th>
+							<th>Available to purchase</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="fav" items="${favs}">
+						<c:forEach var="b" items="${books}">
 							<tr>
-								<td>${fav.title}</td>
-								<td>${fav.author.firstName}${fav.author.lastName}</td>
-								<td><c:forEach var="genre" items="${fav.genres}">${genre.name}</c:forEach></td>
+								<td>${b.book.title}</td>
+								<td>${b.condition.name }</td>
+								<td><c:choose><c:when test="${b.forBorrow}">   </c:when><c:otherwise>Unavailable</c:otherwise></c:choose></td>
+								<td><c:choose><c:when test="${b.forSale}">   </c:when><c:otherwise>Not for sale</c:otherwise></c:choose></td>
 							</tr>
 						</c:forEach>
 					</tbody>

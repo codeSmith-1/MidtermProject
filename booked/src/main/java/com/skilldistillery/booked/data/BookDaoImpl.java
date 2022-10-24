@@ -8,8 +8,10 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.booked.entities.Book;
 import com.skilldistillery.booked.entities.Comment;
 import com.skilldistillery.booked.entities.Rating;
+import com.skilldistillery.booked.entities.ShelfBook;
 
 @Service
 @Transactional
@@ -31,5 +33,11 @@ public class BookDaoImpl implements BookDAO {
 		List<Comment> comments = em.createQuery(query, Comment.class).setParameter("bId", bId).getResultList();
 		return comments;
 	}
+
+	@Override
+	public Book findBookById(int id) {
+		return em.find(Book.class, id);
+	}
+
 	
 }

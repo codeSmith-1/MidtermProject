@@ -13,5 +13,7 @@ public interface ShelfBookDAO {
 	ShelfBook findShelfBookById(int id);
 	ShelfBook updateShelfBook(int id, ShelfBook shelfBook);
 	Boolean removeShelfBook(int id);
+	List<ShelfBook> findShelfBooksByBookId(int id);
+
 	
 }

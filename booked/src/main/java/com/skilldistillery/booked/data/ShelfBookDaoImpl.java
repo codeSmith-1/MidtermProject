@@ -74,4 +74,11 @@ public class ShelfBookDaoImpl implements ShelfBookDAO {
 		}
 	}
 	
+	@Override
+	public List<ShelfBook> findShelfBooksByBookId(int bid) {
+		String sql = "SELECT sb FROM ShelfBook sb WHERE sb.book.id = :bid";
+		List<ShelfBook> books = em.createQuery(sql, ShelfBook.class).setParameter("bid", bid).getResultList();
+		return books;
+	}
+	
 }

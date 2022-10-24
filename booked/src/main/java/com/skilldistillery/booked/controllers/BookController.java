@@ -2,15 +2,23 @@ package com.skilldistillery.booked.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.skilldistillery.booked.data.BookDAO;
+import com.skilldistillery.booked.data.ShelfBookDAO;
 import com.skilldistillery.booked.entities.User;
 
 
 @Controller
 public class BookController {
+	
+	@Autowired
+	private BookDAO bookdao;
+	@Autowired
+	private ShelfBookDAO sbdao;
 
 	@RequestMapping(path = "myBookshelf.do", method = RequestMethod.GET)
 	public String viewBookshelf(HttpSession session) {
@@ -22,5 +30,11 @@ public class BookController {
 			return "bookshelf";
 		}
 		return "login";
+	}	
+	@RequestMapping(path = "viewBook.do", method = RequestMethod.GET)
+	public String viewBook(int id, HttpSession session) {
+		session.setAttribute("book", bookdao.findBookById(id));
+		session.setAttribute("books", sbdao.findShelfBooksByBookId(id));
+		return "bookView";
 	}	
 }
