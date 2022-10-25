@@ -20,8 +20,12 @@ public class UserController {
 	private UserDAO dao;
 
 	@RequestMapping(path = { "/", "home.do" })
-	public String home(Model model) {
+	public String home(HttpSession session, Model model) {
+		User user = (User) session.getAttribute("user");
 		model.addAttribute("user", dao.findUserById(1));
+		if (user != null) {
+			return "library";
+		}
 		return "login";
 	}
 
