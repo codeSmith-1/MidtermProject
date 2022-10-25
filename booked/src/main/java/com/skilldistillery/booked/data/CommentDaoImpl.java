@@ -34,7 +34,7 @@ public class CommentDaoImpl implements CommentDAO {
 
 	@Override
 	public List<Comment> findCommentsByBookId(int bid) {
-		String sql = "SELECT c FROM Comment WHERE c.book.id = :bid";
+		String sql = "SELECT c FROM Comment c WHERE c.book.id = :bid ORDER BY c.commentDate";
 		List<Comment> comments = em.createQuery(sql, Comment.class).setParameter("bid", bid).getResultList();
 //		return comments.stream().sorted(Comparator.comparing(Comment::getCommentDate)).collect(Collectors.toList());
 		return comments;
