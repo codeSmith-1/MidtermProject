@@ -79,5 +79,23 @@ public class UserController {
 		return "login";
 	}
 	
+	@RequestMapping(path = "updatePassword.do", method = RequestMethod.GET)
+	public String updatePassword(HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		if((user) != null) {
+			return "passwordChange";
+		}
+		return "login";
+	}
+	
+	@RequestMapping(path = "updatePassword.do", method = RequestMethod.POST)
+	public String updatePassword(User user, String password, Model model) {
+		user = dao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
+		dao.updateUserPassword(user.getId(), password);
+		
+		return "login";
+	}
+	
+	
 	
 }

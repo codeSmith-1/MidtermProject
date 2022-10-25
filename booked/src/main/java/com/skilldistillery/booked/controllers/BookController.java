@@ -30,21 +30,21 @@ public class BookController {
 	private CommentDAO cdao;
 	
 	@RequestMapping(path = "viewBook.do", method = RequestMethod.GET)
-	public String viewBook(int id, HttpSession session) {
+	public String viewBook(int id, HttpSession session, Model model) {
 		Book book = bookdao.findBookById(id);
 	
 		List<Comment> comments = cdao.findCommentsByBookId(id);
 		book.setComments(comments);
-		session.setAttribute("book", book);
+		model.addAttribute("book", book);
 		// in jsp access list comments
-		session.setAttribute("books", sbdao.findShelfBooksByBookId(id));
-		return "viewShelfBook";
+		model.addAttribute("books", sbdao.findShelfBooksByBookId(id));
+		return "bookView";
 	}
 	
 	@RequestMapping(path = "viewShelfBook.do", method = RequestMethod.GET)
-	public String viewShelfBook(int id, HttpSession session) {
+	public String viewShelfBook(int id, HttpSession session, Model model) {
 		ShelfBook sb = sbdao.findShelfBookById(id);
-		session.setAttribute("sb", sb);
+		model.addAttribute("sb", sb);
 		// in jsp access list comments
 		return "viewShelfBook";
 	}
@@ -84,7 +84,12 @@ public class BookController {
 	
 	@RequestMapping(path = "addShelfBook.do", method = RequestMethod.POST)
 	public String addShelfBook(Integer bookId, ShelfBook sBook, HttpSession session, Model model) {
-		
+		// add author, title to jsp
+		// Book book = new Book();
+		// book.setTitle(title);
+		// book.setAuthor(author);
+		// need to create author dao
+		// persist book
 		sBook.setBook(bookdao.findBookById(bookId));
 		sBook.setUser((User) session.getAttribute("user"));
 		sbdao.createShelfBook(sBook);
