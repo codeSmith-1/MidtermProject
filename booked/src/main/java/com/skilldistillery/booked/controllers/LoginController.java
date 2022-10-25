@@ -17,7 +17,7 @@ public class LoginController {
 	private UserDAO dao;
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
 	public String loginView(HttpSession session) {
-		if (session.getAttribute("loggedIn") != null) {
+		if (session.getAttribute("user") != null) {
 			return "account";
 		} 
 		return "login";
@@ -38,7 +38,6 @@ public class LoginController {
 			session.setAttribute("user", user);
 		}
 		return "account";
-		
 	}
 
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
@@ -47,6 +46,4 @@ public class LoginController {
 		return "login";
 	}
 	
-
-
 }
