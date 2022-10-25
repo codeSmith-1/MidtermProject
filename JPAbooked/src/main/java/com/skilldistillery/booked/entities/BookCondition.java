@@ -45,6 +45,22 @@ public class BookCondition {
 		this.conditionDescription = conditionDescription;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public List<ShelfBook> getShelfBooks() {
+		return shelfBooks;
+	}
+
+	public void setShelfBooks(List<ShelfBook> shelfBooks) {
+		this.shelfBooks = shelfBooks;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(conditionDescription, name);

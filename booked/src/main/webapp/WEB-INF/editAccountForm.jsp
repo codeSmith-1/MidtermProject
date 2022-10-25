@@ -5,8 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>${user}</title>
+<jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
+<jsp:include page="navBar.jsp" />
 	<form action="editAccount.do?id=${user.id}" method="POST">
 		<input type="text" name="firstName" value="${user.firstName}"/>
 		<input type="text" name="lastName" value="${user.lastName}"/>
@@ -16,8 +18,8 @@
 		<input type="text" name="address.state" value="${user.address.state}"/>
 		<input type="text" name="address.zipcode" value="${user.address.zipcode}"/>
 		<input type="text" name="username" value="${user.username}"/>
-		<input type="text" name="password" placeholder="Password"/>
 		<input type="submit" value="Submit"/>
 	</form>
+	<jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>

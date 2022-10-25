@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${user.firstName}'s Bookshelf
-</title>
+<title>${user.firstName}'sBookshelf</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
@@ -22,16 +21,22 @@
 							<th>Genre</th>
 							<th>Condition</th>
 							<th>Rating</th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="sb" items="${books}">
 							<tr>
-								<td><a href="viewBook.do?id=${sb.book.id }"> ${sb.book.title}</a></td>
+								<td><a href="viewShelfBook.do?id=${sb.book.id }">
+										${sb.book.title}</a></td>
 								<td>${sb.book.author.firstName}${sb.book.author.lastName}</td>
 								<td><c:forEach var="genre" items="${sb.book.genres}">${genre.name}</c:forEach></td>
 								<td>${sb.condition.name}</td>
 								<td>${sb.book.rating}</td>
+								<td><form action="deleteShelfBook.do" method="GET">
+										<input type="hidden" name="id" value="${sb.id}">
+										<input type="submit" value="Remove Book">
+									</form></td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -56,6 +61,13 @@
 						</c:forEach>
 					</tbody>
 				</table>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<form action="addShelfBook.do" method="GET">
+					<input type="submit" value="Add a Book to My Shelf">
+				</form>
 			</div>
 		</div>
 	</div>

@@ -6,8 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.booked.entities.Book;
+import com.skilldistillery.booked.entities.BookCondition;
 import com.skilldistillery.booked.entities.ShelfBook;
 import com.skilldistillery.booked.entities.User;
 
@@ -17,9 +20,16 @@ public class ShelfBookDaoImpl implements ShelfBookDAO {
 	
 	@PersistenceContext
 	private EntityManager em;
+	@Autowired
+	private BookDAO bookDao;
 
 	@Override
 	public ShelfBook createShelfBook(ShelfBook shelfBook) {
+		Book book = em.find(Book.class, shelfBook.getBook().getId());
+		if (book == null) {
+			bookDao.createBook(em.find(Book.class, shelfBook.getBook()));
+		}
+		shelfBook.setCondition(em.find(BookCondition.class, 1));
 		em.persist(shelfBook);
 		return shelfBook;
 	}
@@ -48,9 +58,7 @@ public class ShelfBookDaoImpl implements ShelfBookDAO {
 
 	@Override
 	public ShelfBook findShelfBookById(int id) {
-		ShelfBook book = new ShelfBook();
-		book = em.find(ShelfBook.class, id);
-		return book;
+		return em.find(ShelfBook.class, id);
 	}
 	
 	@Override
@@ -65,8 +73,7 @@ public class ShelfBookDaoImpl implements ShelfBookDAO {
 	
 	@Override
 	public Boolean removeShelfBook(int id) {
-		ShelfBook bookToDelete = em.find(ShelfBook.class, id);
-		em.remove(bookToDelete);
+		em.remove(em.find(ShelfBook.class, id));
 		if (em.find(ShelfBook.class, id) != null) {
 			return false;
 		} else {

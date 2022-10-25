@@ -2,6 +2,7 @@ package com.skilldistillery.booked.controllers;
 
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,12 +17,11 @@ public class LoginController {
 
 	@Autowired
 	private UserDAO dao;
-
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
 	public String loginView(HttpSession session) {
 		if (session.getAttribute("loggedIn") != null) {
 			return "account";
-		}
+		} 
 		return "login";
 	}
 
@@ -45,7 +45,7 @@ public class LoginController {
 
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
-		session.removeAttribute("loggedIn");
+		session.removeAttribute("user");
 		return "login";
 	}
 	

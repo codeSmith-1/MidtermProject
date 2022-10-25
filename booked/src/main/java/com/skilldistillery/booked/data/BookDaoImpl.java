@@ -9,9 +9,9 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.booked.entities.Book;
+import com.skilldistillery.booked.entities.BookCondition;
 import com.skilldistillery.booked.entities.Comment;
 import com.skilldistillery.booked.entities.Rating;
-import com.skilldistillery.booked.entities.ShelfBook;
 
 @Service
 @Transactional
@@ -19,7 +19,7 @@ public class BookDaoImpl implements BookDAO {
 	
 	@PersistenceContext
 	private EntityManager em;
-	
+	 
 	@Override
 	public List<Rating> getRatingsByBookId(int bId) {
 		String query = "SELECT r FROM Rating r WHERE bookId = :bId";
@@ -39,4 +39,30 @@ public class BookDaoImpl implements BookDAO {
 		return em.find(Book.class, id);
 	}
 
+	@Override
+	public List<Book> findAllBooks() {
+		String query = "SELECT b FROM Book b";
+		List<Book> books = em.createQuery(query, Book.class).getResultList();
+		return books;
+	}
+	
+	@Override
+	public List<Book> findBooksByKeyword(String keyword) {
+		String query = "SELECT b FROM Book b WHERE b.title = :title";
+		List<Book> keywordBooks = em.createQuery(query, Book.class).setParameter("title", keyword).getResultList();
+		return keywordBooks;
+	}
+	
+	@Override
+	public Book createBook(Book book) {
+		em.persist(book);
+		return book;
+	}
+	
+	@Override
+	public List<BookCondition> findAllConditions() {
+		String query = "SELECT c FROM BookCondition c";
+		return em.createQuery(query, BookCondition.class).getResultList();
+	}
+	
 }
