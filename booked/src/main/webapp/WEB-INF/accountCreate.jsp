@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,22 +11,27 @@
 </head>
 <body>
 <jsp:include page="navBar.jsp"/>
-
+<c:if test="${not empty Error }">Account not created : ${Error}</c:if>
 	<form action="createAccount.do" method="POST" class="row g-3">
 		<div class="col-md-4">
 			<label for="validationDefault01" class="form-label">First
 				name</label> <input name="firstName" type="text" class="form-control"
-				id="validationDefault01" value="first" required>
+				id="validationDefault01" value="${user.firstName}" required>
 		</div>
 		<div class="col-md-4">
 			<label for="validationDefault02" class="form-label">Last name</label>
 			<input name="lastName" type="text" class="form-control" id="validationDefault02"
-				value="last" required>
+				value="${user.lastName}" required>
 		</div>
 		<div class="col-md-4">
 			<label for="validationDefault02" class="form-label">Email</label>
 			<input name="email" type="text" class="form-control" id="validationDefault02"
 				value="bookworm@email.com" required>
+		</div>
+		<div class="col-md-4">
+			<label for="validationDefault02" class="form-label">UserName</label>
+			<input name="username" type="text" class="form-control" id="validationDefault02"
+				value="not password" required>
 		</div>
 		<div class="col-md-4">
 			<label for="validationDefault02" class="form-label">Password</label>

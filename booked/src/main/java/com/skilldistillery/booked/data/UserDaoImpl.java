@@ -1,5 +1,7 @@
 package com.skilldistillery.booked.data;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -92,8 +94,12 @@ public class UserDaoImpl implements UserDAO {
 		if (user != null) {
 			user.setEnabled(true);
 			user.setRole("user");
-			user.setUsername(user.getEmail());
+			List<String> userList = getAllUserNames();
+			if(userList.contains(user.getUsername())) {
+				throw new RuntimeException("Username already exists");
+			}
 			createAddress(user.getAddress());
+			
 			em.persist(user);
 		}
 		return user;
@@ -107,6 +113,12 @@ public class UserDaoImpl implements UserDAO {
 		return addr;
 	}
 
+	@Override
+	public List<String> getAllUserNames(){
+		String jpql = "SELECT u.username FROM User u WHERE u.id > 0";
+		List<String> userList = em.createQuery(jpql, String.class).getResultList();
+		return userList;
+	}
 	
 
 

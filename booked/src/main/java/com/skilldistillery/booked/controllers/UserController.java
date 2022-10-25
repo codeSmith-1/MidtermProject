@@ -56,8 +56,18 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "createAccount.do", method = RequestMethod.POST)
-	public String createAccount(User user) {
-		dao.createUser(user);
+	public String createAccount(User user, Model model) {
+		try {
+			dao.createUser(user);
+			model.addAttribute("user", user);
+		} catch (Exception e) {
+			model.addAttribute("user", user);
+			e.printStackTrace();
+			if(e.getMessage().equals("Username already exists")) {
+				model.addAttribute("Error", "Username already exists");
+			}
+			return "accountCreate";
+		}
 //		Address addr = dao.createAddress(address);
 //		dao.createUser(user, addr);
 		return "login";
