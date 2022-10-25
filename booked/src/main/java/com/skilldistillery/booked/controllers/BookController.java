@@ -1,5 +1,9 @@
 package com.skilldistillery.booked.controllers;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.booked.data.BookDAO;
 import com.skilldistillery.booked.data.ShelfBookDAO;
+import com.skilldistillery.booked.entities.Book;
+import com.skilldistillery.booked.entities.Comment;
 import com.skilldistillery.booked.entities.User;
 
 
@@ -22,7 +28,13 @@ public class BookController {
 	
 	@RequestMapping(path = "viewBook.do", method = RequestMethod.GET)
 	public String viewBook(int id, HttpSession session) {
-		session.setAttribute("book", bookdao.findBookById(id));
+		Book book = bookdao.findBookById(id);
+		List<Comment> comments = book.getComments();
+		comments = comments.stream().sorted(Comparator.comparing(Comment::getCommentDate)).collect(Collectors.toList());
+		book.setComments(comments);
+		session.setAttribute("book", book);
+		
+		// in jsp access list comments
 		session.setAttribute("books", sbdao.findShelfBooksByBookId(id));
 		return "bookView";
 	}
