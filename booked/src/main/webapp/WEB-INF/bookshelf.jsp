@@ -27,7 +27,7 @@
 					<tbody>
 						<c:forEach var="sb" items="${books}">
 							<tr>
-								<td><a href="viewBook.do?id=${sb.book.id }">
+								<td><a href="viewShelfBook.do?id=${sb.book.id }">
 										${sb.book.title}</a></td>
 								<td>${sb.book.author.firstName}${sb.book.author.lastName}</td>
 								<td><c:forEach var="genre" items="${sb.book.genres}">${genre.name}</c:forEach></td>

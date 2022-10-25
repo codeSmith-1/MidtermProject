@@ -29,6 +29,7 @@
 							<td>${book.author.firstName}${book.author.lastName}</td>
 							<td><c:forEach var="genre" items="${book.genres}">${genre.name}</c:forEach></td>
 							<td>${book.rating}</td>
+							
 						</tr>
 					</tbody>
 				</table>
@@ -50,12 +51,12 @@
 								<td>${b.book.title}</td>
 								<td>${b.condition.name }</td>
 								<td><c:choose>
-										<c:when test="${b.forBorrow}">
+										<c:when test="${b.forBorrow}"><a href="checkout.do">Request</a>
 										</c:when>
 										<c:otherwise>Unavailable</c:otherwise>
 									</c:choose></td>
 								<td><c:choose>
-										<c:when test="${b.forSale}">
+										<c:when test="${b.forSale}">Request
 										</c:when>
 										<c:otherwise>Not for sale</c:otherwise>
 									</c:choose></td>
