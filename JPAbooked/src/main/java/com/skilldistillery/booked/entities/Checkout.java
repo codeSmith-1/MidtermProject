@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 public class Checkout {
 
@@ -18,6 +20,7 @@ public class Checkout {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	@CreationTimestamp
 	@Column(name="request_date")
 	private LocalDate requestDate;
 	

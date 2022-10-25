@@ -66,7 +66,7 @@
 
 		<ul class="list-group">
 			<c:forEach var="c" items="${book.comments}">
-				<li class="list-group-item">${c.commentDate}:  ${c.comment}</li>
+				<li class="list-group-item"><strong>${c.user.username}</strong>  <em>${c.commentDate}:</em>  <p>${c.comment}<p></li>
 			</c:forEach>
 		</ul>
 		
