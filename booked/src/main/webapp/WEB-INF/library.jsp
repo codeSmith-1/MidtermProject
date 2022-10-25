@@ -18,17 +18,21 @@
 				<th>Author</th>
 				<th>Genre</th>
 				<th>Rating</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
-				<c:forEach var="bk" items="${allBooks}">
-					<tr>
-						<td>${bk.book.title}</td>
-						<td>${bk.book.author.firstName} ${bk.book.author.lastName}</td>
-						<td><c:forEach var="genre" items="${bk.book.genres}">${genre.name}</c:forEach></td>
-						<td>${bk.book.rating}</td>
-					</tr>
-				</c:forEach>
+			<c:forEach var="bk" items="${allBooks}">
+				<tr>
+					<td>${bk.title}</td>
+					<td>${bk.author.firstName}${bk.author.lastName}</td>
+					<td><c:forEach var="genre" items="${bk.genres}">${genre.name}</c:forEach></td>
+					<td>${bk.rating}</td>
+					<td><form action="addShelfBook.do" method="GET">
+							<input type="submit" name="id" value="${bk.id}">
+						</form></td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>
 
