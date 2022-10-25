@@ -45,4 +45,10 @@ public class BookController {
 		return "library";
 	}
 	
+	@RequestMapping(path = "search.do", method = RequestMethod.GET)
+	public String searchLibrary(String search, HttpSession session) {
+		session.setAttribute("allBooks", sbdao.findShelfBooksByKeyword(search));
+		return "library";
+	}
+	
 }

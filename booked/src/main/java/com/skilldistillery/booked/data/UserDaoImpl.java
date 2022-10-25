@@ -74,7 +74,6 @@ public class UserDaoImpl implements UserDAO {
 		return updateMyPword;
 	}
 
-
 	@Override
 	public boolean removeUser(int userId) {
 		boolean success = false;
@@ -106,8 +105,5 @@ public class UserDaoImpl implements UserDAO {
 		}
 		return addr;
 	}
-
-	
-
 
 }
