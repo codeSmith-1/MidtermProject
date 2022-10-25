@@ -10,23 +10,20 @@
 </head>
 <body>
 	<jsp:include page="navBar.jsp" />
-
-	<h2>Hey ${user.firstName }</h2>
-	<h2>Addr ${user.address }</h2>
-
-
-
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Dropdown button</button>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" href="editAccountForm.do?id=${user.id}">Update Account</a></li>
-    <li><a class="dropdown-item" href="#">Change Password</a></li>
-    <li><a class="dropdown-item" href="#">Something else here</a></li>
-  </ul>
-</div>
+	<div class="container">
+		<h2>Hey ${user.firstName }</h2>
+		<div class="dropdown">
+			<button class="btn btn-secondary dropdown-toggle" type="button"
+				data-bs-toggle="dropdown" aria-expanded="false">Account Options</button>
+			<ul class="dropdown-menu">
+				<li><a class="dropdown-item" href="editAccountForm.do?id=${user.id}">Update Account</a></li>
+				<li><a class="dropdown-item" href="#">Change Password</a></li>
+			</ul>
+		</div>
 
 
 
+	</div>
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>

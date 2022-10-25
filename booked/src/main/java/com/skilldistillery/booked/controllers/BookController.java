@@ -62,14 +62,14 @@ public class BookController {
 	}
 	
 	@RequestMapping(path = "library.do", method = RequestMethod.GET)
-	public String viewLibrary(HttpSession session) {
-		session.setAttribute("allBooks", bookdao.findAllBooks());
+	public String viewLibrary(HttpSession session, Model model) {
+		model.addAttribute("allBooks", bookdao.findAllBooks());
 		return "library";
 	}
 	
 	@RequestMapping(path = "search.do", method = RequestMethod.GET)
-	public String searchLibrary(String search, HttpSession session) {
-		session.setAttribute("allBooks", bookdao.findBooksByKeyword(search));
+	public String searchLibrary(String search, HttpSession session, Model model) {
+		model.addAttribute("allBooks", bookdao.findBooksByKeyword(search));
 		return "library";
 	}
 	
