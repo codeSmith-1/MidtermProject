@@ -10,31 +10,33 @@
 </head>
 <body>
 	<jsp:include page="navBar.jsp" />
-
-	<table>
-		<thead>
-			<tr>
-				<th>Title</th>
-				<th>Author</th>
-				<th>Genre</th>
-				<th>Rating</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="bk" items="${allBooks}">
+	<div class="container">
+		<table class="table table-bordered">
+			<thead>
 				<tr>
-					<td>${bk.title}</td>
-					<td>${bk.author.firstName}${bk.author.lastName}</td>
-					<td><c:forEach var="genre" items="${bk.genres}">${genre.name}</c:forEach></td>
-					<td>${bk.rating}</td>
-					<td><form action="addShelfBook.do" method="GET">
-							<input type="submit" name="id" value="${bk.id}">
-						</form></td>
+					<th>Title</th>
+					<th>Author</th>
+					<th>Genre</th>
+					<th>Rating</th>
+					<th>Add to Your Bookshelf</th>
 				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				<c:forEach var="bk" items="${allBooks}">
+					<tr>
+						<td><a href="viewBook.do?id=${bk.id }">${bk.title}</a></td>
+						<td>${bk.author.firstName}${bk.author.lastName}</td>
+						<td><c:forEach var="genre" items="${bk.genres}">${genre.name}</c:forEach></td>
+						<td>${bk.rating}</td>
+						<td><form action="addShelfBook.do" method="GET">
+								<input type="hidden" name="id" value="${bk.id}">
+								<input type="submit" name="id" value="Add">
+							</form></td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</div>
 
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>

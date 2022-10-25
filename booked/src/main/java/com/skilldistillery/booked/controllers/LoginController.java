@@ -2,7 +2,6 @@ package com.skilldistillery.booked.controllers;
 
 import javax.servlet.http.HttpSession;
 
-import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +11,6 @@ import com.skilldistillery.booked.data.UserDAO;
 import com.skilldistillery.booked.entities.User;
 
 @Controller
-//@SessionAttributes("user")
 public class LoginController {
 
 	@Autowired
