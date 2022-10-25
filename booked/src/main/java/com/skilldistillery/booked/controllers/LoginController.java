@@ -38,7 +38,6 @@ public class LoginController {
 			session.setAttribute("user", user);
 		}
 		return "account";
-		
 	}
 
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
@@ -46,7 +45,5 @@ public class LoginController {
 		session.removeAttribute("user");
 		return "login";
 	}
-	
-
 
 }
