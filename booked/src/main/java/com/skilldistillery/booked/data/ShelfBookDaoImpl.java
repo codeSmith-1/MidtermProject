@@ -73,8 +73,7 @@ public class ShelfBookDaoImpl implements ShelfBookDAO {
 	
 	@Override
 	public Boolean removeShelfBook(int id) {
-		ShelfBook bookToDelete = em.find(ShelfBook.class, id);
-		em.remove(bookToDelete);
+		em.remove(em.find(ShelfBook.class, id));
 		if (em.find(ShelfBook.class, id) != null) {
 			return false;
 		} else {

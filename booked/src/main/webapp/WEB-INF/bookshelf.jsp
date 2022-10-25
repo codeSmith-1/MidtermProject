@@ -33,8 +33,9 @@
 								<td><c:forEach var="genre" items="${sb.book.genres}">${genre.name}</c:forEach></td>
 								<td>${sb.condition.name}</td>
 								<td>${sb.book.rating}</td>
-								<td><form action="deleteShelfBook.do" method="POST">
-										<input type="submit" name="id" value="${bk.id}">
+								<td><form action="deleteShelfBook.do" method="GET">
+										<input type="hidden" name="id" value="${sb.id}">
+										<input type="submit" value="Remove Book">
 									</form></td>
 							</tr>
 						</c:forEach>

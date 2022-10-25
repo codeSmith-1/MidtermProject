@@ -1,8 +1,6 @@
 package com.skilldistillery.booked.controllers;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,11 +14,8 @@ import com.skilldistillery.booked.data.BookDAO;
 import com.skilldistillery.booked.data.CommentDAO;
 import com.skilldistillery.booked.data.ShelfBookDAO;
 import com.skilldistillery.booked.entities.Book;
-
-import com.skilldistillery.booked.entities.ShelfBook;
-
 import com.skilldistillery.booked.entities.Comment;
-
+import com.skilldistillery.booked.entities.ShelfBook;
 import com.skilldistillery.booked.entities.User;
 
 
@@ -93,8 +88,8 @@ public class BookController {
 		return "bookshelf";
 	}
 	
-	@RequestMapping(path = "deleteShelfBook.do", method = RequestMethod.POST)
-	public String deleteShelfBook(int id, HttpSession session, Model model) {
+	@RequestMapping(path = "deleteShelfBook.do", method = RequestMethod.GET)
+	public String deleteShelfBook(Integer id, HttpSession session, Model model) {
 		sbdao.removeShelfBook(id);
 		if (session.getAttribute("user") != null) {
 			User user = (User) session.getAttribute("user");

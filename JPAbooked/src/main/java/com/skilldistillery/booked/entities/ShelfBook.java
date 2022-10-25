@@ -3,6 +3,7 @@ package com.skilldistillery.booked.entities;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class ShelfBook {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@OneToMany(mappedBy = "shelfBook")
+	@OneToMany(mappedBy = "shelfBook", cascade = CascadeType.REMOVE)
 	private List<Checkout> checkouts;
 
 	@ManyToOne
