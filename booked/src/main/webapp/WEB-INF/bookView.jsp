@@ -14,6 +14,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-6">
+			<!-- This table is Books, not ShelfBooks -->
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -34,6 +35,7 @@
 				</table>
 			</div>
 			<div class="col-6">
+			<!-- This table is ShelfBooks, not Books -->
 				<table class="table table-bordered">
 					<thead>
 						<tr>
