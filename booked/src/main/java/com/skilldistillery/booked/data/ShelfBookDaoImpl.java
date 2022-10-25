@@ -48,9 +48,7 @@ public class ShelfBookDaoImpl implements ShelfBookDAO {
 
 	@Override
 	public ShelfBook findShelfBookById(int id) {
-		ShelfBook book = new ShelfBook();
-		book = em.find(ShelfBook.class, id);
-		return book;
+		return em.find(ShelfBook.class, id);
 	}
 	
 	@Override

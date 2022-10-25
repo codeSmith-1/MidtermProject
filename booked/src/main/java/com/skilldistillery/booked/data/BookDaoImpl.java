@@ -19,12 +19,13 @@ public class BookDaoImpl implements BookDAO {
 	
 	@PersistenceContext
 	private EntityManager em;
-	
+	 
 	@Override
 	public List<Rating> getRatingsByBookId(int bId) {
 		String query = "SELECT r FROM Rating r WHERE bookId = :bId";
 		List<Rating> ratings = em.createQuery(query, Rating.class).setParameter("bId", bId).getResultList();
 		return ratings;
+	 
 	}
 
 	@Override
