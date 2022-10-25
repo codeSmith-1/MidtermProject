@@ -43,7 +43,15 @@ public class BookController {
 		session.setAttribute("book", book);
 		// in jsp access list comments
 		session.setAttribute("books", sbdao.findShelfBooksByBookId(id));
-		return "bookView";
+		return "viewShelfBook";
+	}
+	
+	@RequestMapping(path = "viewShelfBook.do", method = RequestMethod.GET)
+	public String viewShelfBook(int id, HttpSession session) {
+		ShelfBook sb = sbdao.findShelfBookById(id);
+		session.setAttribute("sb", sb);
+		// in jsp access list comments
+		return "viewShelfBook";
 	}
 
 	@RequestMapping(path = "myBookshelf.do", method = RequestMethod.GET)
