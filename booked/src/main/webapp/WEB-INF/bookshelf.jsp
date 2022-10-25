@@ -35,7 +35,7 @@
 								<td>${sb.book.rating}</td>
 								<td><form action="deleteShelfBook.do" method="GET">
 										<input type="hidden" name="id" value="${sb.id}">
-										<input type="submit" value="Remove Book">
+										<input type="submit" value="Remove">
 									</form></td>
 							</tr>
 						</c:forEach>

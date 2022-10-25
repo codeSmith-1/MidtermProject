@@ -8,22 +8,24 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.skilldistillery.booked.data.BookDAO;
 import com.skilldistillery.booked.data.UserDAO;
-import com.skilldistillery.booked.entities.Address;
 import com.skilldistillery.booked.entities.User;
-import com.skilldistillery.booked.entities.userAddressDTO;
 
 @Controller
 public class UserController {
 
 	@Autowired
 	private UserDAO dao;
+	@Autowired
+	private BookDAO bookdao;
 
 	@RequestMapping(path = { "/", "home.do" })
 	public String home(HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");
 		model.addAttribute("user", dao.findUserById(1));
 		if (user != null) {
+			model.addAttribute("allBooks", bookdao.findAllBooks());
 			return "library";
 		}
 		return "login";
