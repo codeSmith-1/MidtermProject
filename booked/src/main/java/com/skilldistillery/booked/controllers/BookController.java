@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.booked.data.BookDAO;
+import com.skilldistillery.booked.data.CommentDAO;
 import com.skilldistillery.booked.data.ShelfBookDAO;
 import com.skilldistillery.booked.entities.Book;
 import com.skilldistillery.booked.entities.Comment;
@@ -25,15 +26,16 @@ public class BookController {
 	private BookDAO bookdao;
 	@Autowired
 	private ShelfBookDAO sbdao;
+	@Autowired
+	private CommentDAO cdao;
 	
 	@RequestMapping(path = "viewBook.do", method = RequestMethod.GET)
 	public String viewBook(int id, HttpSession session) {
 		Book book = bookdao.findBookById(id);
-		List<Comment> comments = book.getComments();
-		comments = comments.stream().sorted(Comparator.comparing(Comment::getCommentDate)).collect(Collectors.toList());
+	
+		List<Comment> comments = cdao.findCommentsByBookId(id);
 		book.setComments(comments);
 		session.setAttribute("book", book);
-		
 		// in jsp access list comments
 		session.setAttribute("books", sbdao.findShelfBooksByBookId(id));
 		return "bookView";
