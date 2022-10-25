@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${user.firstName}'s Bookshelf
-</title>
+<title>${user.firstName}'sBookshelf</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
@@ -24,12 +23,12 @@
 						</tr>
 					</thead>
 					<tbody>
-							<tr>
-								<td>${book.title}</td>
-								<td>${book.author.firstName} ${book.author.lastName}</td>
-								<td><c:forEach var="genre" items="${book.genres}">${genre.name}</c:forEach></td>
-								<td>${book.rating}</td>
-							</tr>
+						<tr>
+							<td>${book.title}</td>
+							<td>${book.author.firstName}${book.author.lastName}</td>
+							<td><c:forEach var="genre" items="${book.genres}">${genre.name}</c:forEach></td>
+							<td>${book.rating}</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
@@ -48,15 +47,52 @@
 							<tr>
 								<td>${b.book.title}</td>
 								<td>${b.condition.name }</td>
-								<td><c:choose><c:when test="${b.forBorrow}">   </c:when><c:otherwise>Unavailable</c:otherwise></c:choose></td>
-								<td><c:choose><c:when test="${b.forSale}">   </c:when><c:otherwise>Not for sale</c:otherwise></c:choose></td>
+								<td><c:choose>
+										<c:when test="${b.forBorrow}">
+										</c:when>
+										<c:otherwise>Unavailable</c:otherwise>
+									</c:choose></td>
+								<td><c:choose>
+										<c:when test="${b.forSale}">
+										</c:when>
+										<c:otherwise>Not for sale</c:otherwise>
+									</c:choose></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 			</div>
 		</div>
+
+		<ul class="list-group">
+			<c:forEach var="c" items="${book.comments}">
+				<li class="list-group-item">${c.commentDate}:  ${c.comment}</li>
+			</c:forEach>
+		</ul>
+		
+	<form action="postComment.do" method="POST">
+		<div class="form-floating">
+			<textarea name="comment" class="form-control" placeholder="Leave a comment here"
+				id="floatingTextarea2" style="height: 100px"></textarea>
+			<input type="submit" value="Submit"> 
+		</div>
+	</form>
+
+
 	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>

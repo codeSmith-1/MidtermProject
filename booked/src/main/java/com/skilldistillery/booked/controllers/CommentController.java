@@ -19,15 +19,15 @@ public class CommentController {
 	@Autowired
 	private CommentDAO cdao;
 	
-	@RequestMapping(path = "Comment.do", method = RequestMethod.POST)
-	public String postComment(HttpSession session, ModelAndView mv, String cmnt) {
+	@RequestMapping(path = "postComment.do", method = RequestMethod.POST)
+	public String postComment(HttpSession session, String comment) {
 		User u = (User) session.getAttribute("user");
 		Book b = (Book) session.getAttribute("book");
-		Comment comment = new Comment();
-		comment.setComment(cmnt);
-		comment.setUser(u);
-		comment.setBook(b);
-		cdao.createComment(comment);
-		return "redirect:viewBook.do?id="+comment.getBook().getId();
+		Comment cmnt = new Comment();
+		cmnt.setComment(comment);
+		cmnt.setUser(u);
+		cmnt.setBook(b);
+		cdao.createComment(cmnt);
+		return "redirect:viewBook.do?id="+cmnt.getBook().getId();
 	}
 }
