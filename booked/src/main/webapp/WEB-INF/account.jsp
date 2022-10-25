@@ -17,7 +17,7 @@
 				data-bs-toggle="dropdown" aria-expanded="false">Account Options</button>
 			<ul class="dropdown-menu">
 				<li><a class="dropdown-item" href="editAccountForm.do?id=${user.id}">Update Account</a></li>
-				<li><a class="dropdown-item" href="#">Change Password</a></li>
+				<li><a class="dropdown-item" href="updatePassword.do">Change Password</a></li>
 			</ul>
 		</div>
 

@@ -24,32 +24,45 @@
 	<label for="validationDefault01" class="form-label">Genres</label>
 		<input type="text" name="book.genres" value="<c:forEach var="g" items="${book.genres}">${g.name}</c:forEach>"/>
 		-->
-			<div class="row justify-content-center"><div class="col">
-			<input type="hidden" name="bookId" value="${book.id }" />
-			</div></div>
-			<div class="row"><div class="col align-self-center">
-			<label for="condition.id" class="form-label">Condition</label>
-			<select name="condition.id" class="form-label" aria-label="Default select example">
-				<c:forEach var="cond" items="${conditions }">
-					<option value="${cond.id }">${cond.name }</option>
-				</c:forEach>
-			</select>
-			</div></div>
-			<div class="row justify-content-center"><div class="col">
-			<label for="forBorrow" class="form-label">For Borrow</label>
-				<input type="text" name="forBorrow" />
-			</div></div>
-			<div class="row justify-content-center"><div class="col">
-			<label for="forSale" class="form-label">For Sale</label>
-				<input type="text" name="forSale" />
-			</div></div>
-			<div class="row justify-content-center"><div class="col">
-			<label for="salePrice" class="form-label">Price</label>
-				<input type="text" name="salePrice" />
-			</div></div>
-			<div class="row justify-content-center"><div class="col">
-				<input type="submit" value="Submit" />
-			</div></div>
+			<div class="row justify-content-center">
+				<div class="col">
+					<input type="hidden" name="bookId" value="${book.id }" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col align-self-center">
+					<label for="condition.id" class="form-label">Condition</label> <select
+						name="condition.id" class="form-label"
+						aria-label="Default select example">
+						<c:forEach var="cond" items="${conditions }">
+							<option value="${cond.id }">${cond.name }</option>
+						</c:forEach>
+					</select>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col">
+					<label for="forBorrow" class="form-label">For Borrow</label> <input
+						type="text" name="forBorrow" />
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col">
+					<label for="forSale" class="form-label">For Sale</label> <input
+						type="text" name="forSale" />
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col">
+					<label for="salePrice" class="form-label">Price</label> <input
+						type="text" name="salePrice" />
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col">
+					<input type="submit" value="Submit" />
+				</div>
+			</div>
 		</form>
 	</div>
 	<jsp:include page="bootstrapFoot.jsp" />
