@@ -1,5 +1,7 @@
 package com.skilldistillery.booked.data;
 
+import java.util.List;
+
 import com.skilldistillery.booked.entities.Address;
 import com.skilldistillery.booked.entities.User;
 
@@ -12,4 +14,5 @@ public interface UserDAO {
 	public User createUser(User user);
 	public boolean removeUser(int id);
 	public Address createAddress(Address addr);
+	public List<String> getAllUserNames();
 }
