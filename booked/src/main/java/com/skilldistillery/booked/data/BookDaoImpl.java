@@ -1,5 +1,6 @@
 package com.skilldistillery.booked.data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -82,6 +83,22 @@ public class BookDaoImpl implements BookDAO {
 	@Override
 	public Genre findGenreById(int id) {
 		return em.find(Genre.class, id);
+	}
+
+	@Override
+	public List<Book> booksInGenre(int genreId) {
+		Genre genre = findGenreById(genreId);
+		List<Book> allBooks = findAllBooks();
+		List<Book> results = new ArrayList<>();
+		for (Book book : allBooks) {
+			if (book.getGenres().size() > 0) {
+				if (book.getGenres().get(0).equals(genre)) {
+					results.add(book);
+					book.getGenres().size();
+				}
+			}
+		}
+		return results;
 	}
 	
 }
