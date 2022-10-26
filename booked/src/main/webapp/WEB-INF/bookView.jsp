@@ -25,7 +25,7 @@
 					<tbody>
 						<tr>
 							<td>${book.title}</td>
-							<td>${book.author.firstName}${book.author.lastName}</td>
+							<td>${book.author.firstName} ${book.author.lastName}</td>
 							<td><c:forEach var="genre" items="${book.genres}">${genre.name}</c:forEach></td>
 							<td>${book.rating}</td>
 
@@ -50,7 +50,7 @@
 								<td>${b.condition.name }</td>
 								<td><c:choose>
 										<c:when test="${b.forBorrow}">
-											<a href="checkout.do">Request</a>
+											<a href="requestBook.do?id=${b.id}">Request</a>
 										</c:when>
 										<c:otherwise>Unavailable</c:otherwise>
 									</c:choose></td>
@@ -65,7 +65,7 @@
 				</table>
 			</div>
 		</div>
-
+	<div>
 		<ul class="list-group">
 			<c:forEach var="c" items="${book.comments}">
 				<li class="list-group-item"><strong>${c.user.username}</strong>

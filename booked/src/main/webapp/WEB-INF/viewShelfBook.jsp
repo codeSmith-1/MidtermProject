@@ -51,13 +51,38 @@
 											<c:when test="${not empty c.checkoutDate}">
 							${c.checkoutDate}
 							</c:when>
-											<c:otherwise>form w/button to approve/reject</c:otherwise>
+											<c:otherwise>
+
+
+												<form action="approveCheckout.do" method="POST">
+													<input type="hidden" name="id" value="${c.id}" />
+													<div class="form-floating">
+														<input type="submit" value="Approve">
+													</div>
+												</form>
+
+												<form action="rejectCheckout.do" method="POST">
+													<input type="hidden" name="id" value="${c.id}" />
+													<div class="form-floating">
+														<input type="submit" value="Reject">
+													</div>
+												</form>
+
+
+											</c:otherwise>
 										</c:choose></td>
 									<td><c:choose>
 											<c:when test="${not empty c.returnDate}">
-							${c.returnDate}
-							</c:when>
-											<c:otherwise>form w/button to approve/reject</c:otherwise>
+											${c.returnDate}
+									</c:when>
+											<c:otherwise>
+												<form action="returned.do" method="POST">
+													<input type="hidden" name="id" value="${c.id}" />
+													<div class="form-floating">
+														<input type="submit" value="Returned? Make available.">
+													</div>
+												</form>
+											</c:otherwise>
 										</c:choose></td>
 								</tr>
 							</c:forEach>
