@@ -72,38 +72,38 @@
 					</table>
 				</div>
 			</div>
-		</div>
-		<div class="col-6">
-			<table class="table table-bordered">
-				<caption class="sfcaption">Copies in library</caption>
-				<thead>
-					<tr>
-						<th>Title</th>
-						<th>Condition</th>
-						<th>Available to borrow</th>
-						<th>Available to purchase</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="b" items="${books}">
-						<tr>
-							<td>${b.book.title}</td>
-							<td>${b.condition.name }</td>
-							<td><c:choose>
-									<c:when test="${b.forBorrow}">
-										<a href="requestBook.do?id=${b.id}">Request</a>
-									</c:when>
-									<c:otherwise>Unavailable</c:otherwise>
-								</c:choose></td>
-							<td><c:choose>
-									<c:when test="${b.forSale}">Request
-										</c:when>
-									<c:otherwise>Not for sale</c:otherwise>
-								</c:choose></td>
+			<div class="col-5">
+				<table class="table table-secondary table-bordered border-black caption-top table-striped">
+					<caption><strong>Copies in library</strong></caption>
+					<thead>
+						<tr class="table-dark">
+							<th>Owner</th>
+							<th>Condition</th>
+							<th>Available to borrow</th>
+							<th>Available to purchase</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<c:forEach var="b" items="${books}">
+							<tr>
+								<td>${b.user.username}</td>
+								<td>${b.condition.name}</td>
+								<td><c:choose>
+										<c:when test="${b.forBorrow}">
+											<a href="requestBook.do?id=${b.id}">Request</a>
+										</c:when>
+										<c:otherwise>Unavailable</c:otherwise>
+									</c:choose></td>
+								<td><c:choose>
+										<c:when test="${b.forSale}">Request
+										</c:when>
+										<c:otherwise>Not for sale</c:otherwise>
+									</c:choose></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div>
 			<ul class="list-group">
