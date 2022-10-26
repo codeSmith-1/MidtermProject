@@ -113,14 +113,20 @@ public class UserDaoImpl implements UserDAO {
 		return addr;
 	}
 
-
 	@Override
 	public List<String> getAllUserNames(){
 		String jpql = "SELECT u.username FROM User u WHERE u.id > 0";
 		List<String> userList = em.createQuery(jpql, String.class).getResultList();
 		return userList;
 	}
-	
 
+	@Override
+	public User updateFavList(int id, User user) {
+		User dbUser = em.find(User.class, user.getId());
+		dbUser.setFavBooks(user.getFavBooks());
+		em.remove(em.find(User.class, id));
+		em.persist(dbUser);
+		return dbUser;
+	}
 
 }

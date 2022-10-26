@@ -32,7 +32,9 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "account.do", method = RequestMethod.GET)
-	public String getAccount(HttpSession session, Integer id) {
+	public String getAccount(HttpSession session, Integer id, Model model) {
+		User user = (User) session.getAttribute("user");
+		model.addAttribute("favs", user.getFavBooks());
 		// if logic to check if user in session
 		return "account";
 	}

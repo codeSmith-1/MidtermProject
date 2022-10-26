@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.skilldistillery.booked.data.BookDAO;
 import com.skilldistillery.booked.data.CommentDAO;
 import com.skilldistillery.booked.data.ShelfBookDAO;
+import com.skilldistillery.booked.data.UserDAO;
 import com.skilldistillery.booked.entities.Author;
 import com.skilldistillery.booked.entities.Book;
 import com.skilldistillery.booked.entities.Comment;
@@ -31,6 +32,8 @@ public class BookController {
 	private ShelfBookDAO sbdao;
 	@Autowired
 	private CommentDAO cdao;
+	@Autowired
+	private UserDAO udao;
 	
 	@RequestMapping(path = "viewBook.do", method = RequestMethod.GET)
 	public String viewBook(int id, HttpSession session, Model model) {
@@ -58,7 +61,6 @@ public class BookController {
 			User user = (User) session.getAttribute("user");
 			model.addAttribute("books", sbdao.findShelfBooksByOwnerId(user.getId()));
 			model.addAttribute("favs", user.getFavBooks());
-			
 			return "bookshelf";
 		}
 		return "login";
@@ -66,13 +68,17 @@ public class BookController {
 	
 	@RequestMapping(path = "library.do", method = RequestMethod.GET)
 	public String viewLibrary(HttpSession session, Model model) {
+		User user = (User) session.getAttribute("user");
 		model.addAttribute("allBooks", bookdao.findAllBooks());
+		model.addAttribute("favs", user.getFavBooks());
 		return "library";
 	}
 	
 	@RequestMapping(path = "search.do", method = RequestMethod.GET)
 	public String searchLibrary(String search, HttpSession session, Model model) {
+		User user = (User) session.getAttribute("user");
 		model.addAttribute("allBooks", bookdao.findBooksByKeyword(search));
+		model.addAttribute("favs", user.getFavBooks());
 		return "library";
 	}
 	
@@ -136,6 +142,19 @@ public class BookController {
 		model.addAttribute("genres", book.getGenres());
 		model.addAttribute("conditions", bookdao.findAllConditions());
 		return "shelfBookCreate";
+	}
+	
+	@RequestMapping(path = "addFavBook.do", method = RequestMethod.GET)
+	public String addFavBook(Integer id, HttpSession session, Model model) {
+		User user = (User) session.getAttribute("user");
+		Book newFavBook = bookdao.findBookById(id);
+		List<Book> favBooks = user.getFavBooks();
+		favBooks.add(newFavBook);
+		user.setFavBooks(favBooks);
+		user = udao.updateFavList(user.getId(), user);
+		model.addAttribute("favs", user.getFavBooks());
+		model.addAttribute("allBooks", bookdao.findAllBooks());
+		return "library";
 	}
 	
 }
