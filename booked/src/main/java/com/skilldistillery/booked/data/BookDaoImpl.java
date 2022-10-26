@@ -8,9 +8,11 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.booked.entities.Author;
 import com.skilldistillery.booked.entities.Book;
 import com.skilldistillery.booked.entities.BookCondition;
 import com.skilldistillery.booked.entities.Comment;
+import com.skilldistillery.booked.entities.Genre;
 import com.skilldistillery.booked.entities.Rating;
 
 @Service
@@ -48,8 +50,8 @@ public class BookDaoImpl implements BookDAO {
 	
 	@Override
 	public List<Book> findBooksByKeyword(String keyword) {
-		String query = "SELECT b FROM Book b WHERE b.title = :title";
-		List<Book> keywordBooks = em.createQuery(query, Book.class).setParameter("title", keyword).getResultList();
+		String query = "SELECT b FROM Book b WHERE b.title LIKE :title OR b.author.firstName LIKE :fname OR b.author.lastName LIKE :lname";
+		List<Book> keywordBooks = em.createQuery(query, Book.class).setParameter("title", "%"+keyword+"%").setParameter("fname", "%"+keyword+"%").setParameter("lname", "%"+keyword+"%").getResultList();
 		return keywordBooks;
 	}
 	
@@ -63,6 +65,23 @@ public class BookDaoImpl implements BookDAO {
 	public List<BookCondition> findAllConditions() {
 		String query = "SELECT c FROM BookCondition c";
 		return em.createQuery(query, BookCondition.class).getResultList();
+	}
+
+	@Override
+	public Author addAuthor(Author author) {
+		em.persist(author);
+		return author;
+	}
+
+	@Override
+	public List<Genre> findAllGenres() {
+		String query = "SELECT g FROM Genre g";
+		return em.createQuery(query, Genre.class).getResultList();
+	}
+
+	@Override
+	public Genre findGenreById(int id) {
+		return em.find(Genre.class, id);
 	}
 	
 }
