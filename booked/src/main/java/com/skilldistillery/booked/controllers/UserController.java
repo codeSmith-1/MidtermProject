@@ -1,5 +1,7 @@
 package com.skilldistillery.booked.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.booked.data.BookDAO;
 import com.skilldistillery.booked.data.UserDAO;
+import com.skilldistillery.booked.entities.Book;
 import com.skilldistillery.booked.entities.User;
 
 @Controller
@@ -21,30 +24,44 @@ public class UserController {
 	private BookDAO bookdao;
 
 	@RequestMapping(path = { "/", "home.do" })
-	public String home(HttpSession session, Model model) {
-		User user = (User) session.getAttribute("user");
-		model.addAttribute("user", dao.findUserById(1));
-		if (user != null) {
-			model.addAttribute("allBooks", bookdao.findAllBooks());
-			return "library";
-		}
+	public String home() {
+//		HttpSession session, Model model
+//		User user = (User) session.getAttribute("user");
+//		model.addAttribute("user", dao.findUserById());
+//		if (user != null) {
+//			model.addAttribute("allBooks", bookdao.findAllBooks());
+//			return "library";
+//		}
 		return "login";
 	}
 
 	@RequestMapping(path = "account.do", method = RequestMethod.GET)
-	public String getAccount(HttpSession session, Integer id) {
-		// if logic to check if user in session
+	public String getAccount(HttpSession session, Integer id, Model model) {
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "login";
+		}
+		user = dao.findUserById(user.getId());
+		user.getGenres().size();
+		model.addAttribute("favs", user.getFavBooks());
+		int genreId = user.getGenres().get(0).getId();
+		List<Book> books = bookdao.booksInGenre(genreId);
+		model.addAttribute("booksInGenre", books);
 		return "account";
 	}
+	
 	@RequestMapping(path = "editAccountForm.do", method = RequestMethod.GET)
 	public String editAccount(HttpSession session) {
-		User user = (User) session.getAttribute("user");
-		if((user) != null) {
+//		User user = (User) session.getAttribute("user");
+//		if((user) != null) {
+		if(session.getAttribute("user") !=null) {
+			
 //			model.addAttribute("updated", dao.updateUser(id, user));
 			return "editAccountForm";
 		}
 		return "login";
 	}
+	
 	@RequestMapping(path = "editAccount.do", method = RequestMethod.POST)
 	public String editAccount(HttpSession session, Model model, User user, int id) {
 		user = dao.updateUser(id, user);
@@ -54,7 +71,6 @@ public class UserController {
 		}
 		return "login";
 	}
-	
 	
 	@RequestMapping(path = "createAccount.do", method = RequestMethod.GET)
 	public String createAccount() {

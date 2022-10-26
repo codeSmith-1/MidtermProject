@@ -112,6 +112,9 @@ public class User {
 	}
 
 	public List<Book> getFavBooks() {
+		for (Book book : favBooks) {
+			book.getGenres().size();
+		}
 		return favBooks;
 	}
 

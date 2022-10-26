@@ -52,8 +52,8 @@ public class UserDaoImpl implements UserDAO {
 			updateMe.setFirstName(user.getFirstName());
 			updateMe.setLastName(user.getLastName());
 			updateMe.setAboutMe(user.getAboutMe());
-//			updateMe.setEmail(user.getEmail());
-			updateMe.setProfileImg(user.getProfileImg());
+			updateMe.setEmail(user.getEmail());
+			updateMe.setUsername(user.getUsername());
 			if(user.getAddress() != null) {
 				updateMe.getAddress().setStreet(user.getAddress().getStreet());
 				updateMe.getAddress().setStreet2(user.getAddress().getStreet2());
@@ -113,14 +113,27 @@ public class UserDaoImpl implements UserDAO {
 		return addr;
 	}
 
-
 	@Override
 	public List<String> getAllUserNames(){
 		String jpql = "SELECT u.username FROM User u WHERE u.id > 0";
 		List<String> userList = em.createQuery(jpql, String.class).getResultList();
 		return userList;
 	}
+
+	@Override
+	public List<User> getUsersbyCity(User user){
+		String qry = "SELECT u.username FROM User u WHERE u.address.city LIKE :param";
+		List<User> userCity = em.createQuery(qry, User.class).setParameter("param", user.getAddress().getCity()).getResultList();
+		return userCity;
+	}
+
+	@Override
+	public User updateFavList(int id, User user) {
+		User dbUser = em.find(User.class, user.getId());
+		dbUser.setFavBooks(user.getFavBooks());
+		em.remove(em.find(User.class, id));
+		em.persist(dbUser);
+		return dbUser;
+	}
 	
-
-
 }
