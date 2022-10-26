@@ -17,5 +17,6 @@ public interface UserDAO {
 	public Address createAddress(Address addr);
 	public List<String> getAllUserNames();
 	public User updateFavList(int id, User user);
-	
+	public List<User> getUsersbyCity(User user);
+
 }

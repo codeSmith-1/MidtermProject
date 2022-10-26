@@ -61,6 +61,7 @@ public class LoginController {
 		return "account";
 	}
 
+
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("user");
