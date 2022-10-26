@@ -26,47 +26,48 @@
 		<div class="col-md-4">
 			<label for="validationDefault02" class="form-label">Email</label>
 			<input name="email" type="text" class="form-control" id="validationDefault02"
-				value="bookworm@email.com" required>
+				value="${user.email}" required>
 		</div>
 		<div class="col-md-4">
 			<label for="validationDefault02" class="form-label">UserName</label>
 			<input name="username" type="text" class="form-control" id="validationDefault02"
-				value="not password" required>
+				placeholder="Unique UserName" required>
 		</div>
 		<div class="col-md-4">
 			<label for="validationDefault02" class="form-label">Password</label>
 			<input name="password" type="text" class="form-control" id="validationDefault02"
-				value="not password" required>
-		</div>
-		<div class="mb-3">
-  			<label for="formFile" class="form-label">Profile Picture</label>
-  			<input name="profileImg" class="form-control" type="file" id="formFile">
+				placeholder="Strong Password" required>
 		</div>
 		<div class="col-md-3">
 			<label for="validationDefault05" class="form-label">About Me:</label> <input
-				name="aboutMe" type="text" class="form-control" id="validationDefault05" value="optional">
+				name="aboutMe" type="text" class="form-control" id="validationDefault05" value="${user.aboutMe}">
 		</div>
+		<%-- <div class="col-md-3">
+			<label for="validationDefault05" class="form-label">Currently Reading</label> <input
+				name="reading" type="text" class="form-control" id="validationDefault05" value="${user.reading}">
+		</div> --%>
+		
 		<div class="col-md-4">
 			<label for="validationDefault02" class="form-label">Street</label>
 			<input name="address.street" type="text" class="form-control" id="validationDefault02"
-				value="last" required>
+				value="${user.address.street}" required>
 		</div>
 		<div class="col-md-4">
-			<label for="validationDefault02" class="form-label">Street</label>
+			<label for="validationDefault02" class="form-label">Apt/Suite:</label>
 			<input name="address.street2" type="text" class="form-control" id="validationDefault02"
-				value="last" required>
+				value="${user.address.street2}">
 		</div>
 			<div class="col-md-3">
 			<label for="validationDefault05" class="form-label">City</label> <input
-				name="address.city" type="text" class="form-control" id="validationDefault05" required>
+				name="address.city" type="text" class="form-control" id="validationDefault05" value="${user.address.city}" required>
 		</div>
 			<div class="col-md-3">
 			<label for="validationDefault05" class="form-label">State</label> <input
-				name="address.state" type="text" class="form-control" id="validationDefault05" required>
+				name="address.state" type="text" class="form-control" id="validationDefault05" value="${user.address.state}" required>
 		</div>
 		<div class="col-md-3">
 			<label for="validationDefault05" class="form-label">Zip</label> <input
-				name="address.zipcode" type="text" class="form-control" id="validationDefault05" required>
+				name="address.zipcode" type="text" class="form-control" id="validationDefault05" value="${user.address.zipcode}" required>
 		</div>
 		 <div class="col-12">
     <button class="btn btn-primary" type="submit">Submit form</button>

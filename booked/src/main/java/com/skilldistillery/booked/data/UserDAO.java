@@ -15,4 +15,5 @@ public interface UserDAO {
 	public boolean removeUser(int id);
 	public Address createAddress(Address addr);
 	public List<String> getAllUserNames();
+	public List<User> getUsersbyCity(User user);
 }
