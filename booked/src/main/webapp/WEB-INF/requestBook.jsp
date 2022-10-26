@@ -15,6 +15,7 @@
 			<div class="col-6">
 				<!-- This table is Books, not ShelfBooks -->
 				<table class="table table-bordered">
+				<caption class="sfcaption">Book information</caption>
 					<thead>
 						<tr>
 							<th>Title</th>

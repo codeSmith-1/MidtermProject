@@ -28,6 +28,7 @@
 			</div>
 			<div class="col-9">
 				<table class="table table-bordered">
+				<caption class="sfcaption">Suggested books based on genre</caption>
 					<thead>
 						<tr>
 							<th>Title</th>
@@ -48,6 +49,7 @@
 		</div>
 		<div class="row">
 			<table class="table table-bordered">
+			<caption class="sfcaption">Your favorite books</caption>
 				<thead>
 					<tr>
 						<th>Title</th>

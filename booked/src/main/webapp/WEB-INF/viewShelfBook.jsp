@@ -22,6 +22,7 @@
 				<c:if test="${not empty sb.checkouts }">
 
 					<table class="table table-bordered">
+					<caption class="sfcaption">Requests for this book</caption>
 						<thead>
 							<tr>
 								<th>User</th>
