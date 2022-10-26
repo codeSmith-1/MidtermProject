@@ -1,9 +1,11 @@
 package com.skilldistillery.booked.controllers;
 
+import java.util.IllegalFormatWidthException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,21 +20,20 @@ import com.skilldistillery.booked.entities.Comment;
 import com.skilldistillery.booked.entities.ShelfBook;
 import com.skilldistillery.booked.entities.User;
 
-
 @Controller
 public class BookController {
-	
+
 	@Autowired
 	private BookDAO bookdao;
 	@Autowired
 	private ShelfBookDAO sbdao;
 	@Autowired
 	private CommentDAO cdao;
-	
+
 	@RequestMapping(path = "viewBook.do", method = RequestMethod.GET)
 	public String viewBook(int id, HttpSession session, Model model) {
 		Book book = bookdao.findBookById(id);
-	
+
 		List<Comment> comments = cdao.findCommentsByBookId(id);
 		book.setComments(comments);
 		model.addAttribute("book", book);
@@ -40,7 +41,7 @@ public class BookController {
 		model.addAttribute("books", sbdao.findShelfBooksByBookId(id));
 		return "bookView";
 	}
-	
+
 	@RequestMapping(path = "viewShelfBook.do", method = RequestMethod.GET)
 	public String viewShelfBook(int id, HttpSession session, Model model) {
 		ShelfBook sb = sbdao.findShelfBookById(id);
@@ -53,26 +54,26 @@ public class BookController {
 	public String viewBookshelf(HttpSession session, Model model) {
 		if (session.getAttribute("user") != null) {
 			User user = (User) session.getAttribute("user");
-			model.addAttribute("books", sbdao.findShelfBooksByOwnerId(user.getId()));
+			List<ShelfBook> sBooks = sbdao.findShelfBooksByOwnerId(user.getId());
+			model.addAttribute("books", sBooks);
 			model.addAttribute("favs", user.getFavBooks());
-			
 			return "bookshelf";
 		}
 		return "login";
 	}
-	
+
 	@RequestMapping(path = "library.do", method = RequestMethod.GET)
 	public String viewLibrary(HttpSession session, Model model) {
 		model.addAttribute("allBooks", bookdao.findAllBooks());
 		return "library";
 	}
-	
+
 	@RequestMapping(path = "search.do", method = RequestMethod.GET)
 	public String searchLibrary(String search, HttpSession session, Model model) {
 		model.addAttribute("allBooks", bookdao.findBooksByKeyword(search));
 		return "library";
 	}
-	
+
 	@RequestMapping(path = "addShelfBook.do", method = RequestMethod.GET)
 	public String addShelfBook(Integer id, HttpSession session, Model model) {
 		if (id != null) {
@@ -81,7 +82,7 @@ public class BookController {
 		model.addAttribute("conditions", bookdao.findAllConditions());
 		return "shelfBookCreate";
 	}
-	
+
 	@RequestMapping(path = "addShelfBook.do", method = RequestMethod.POST)
 	public String addShelfBook(Integer bookId, ShelfBook sBook, HttpSession session, Model model) {
 		if (session.getAttribute("user") == null) {
@@ -103,7 +104,7 @@ public class BookController {
 		}
 		return "bookshelf";
 	}
-	
+
 	@RequestMapping(path = "deleteShelfBook.do", method = RequestMethod.GET)
 	public String deleteShelfBook(Integer id, HttpSession session, Model model) {
 		sbdao.removeShelfBook(id);
@@ -114,5 +115,5 @@ public class BookController {
 		}
 		return "bookshelf";
 	}
-	
+
 }
