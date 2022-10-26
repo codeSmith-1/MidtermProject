@@ -13,8 +13,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-6">
-			<table class="table caption-top">
-  					<caption>${user.username }'s Bookshelf</caption>
+			<table>
+  					<caption class="sfcaption">${user.username }'s Bookshelf</caption>
 					<thead>
 						<tr>
 							<th>Title</th>

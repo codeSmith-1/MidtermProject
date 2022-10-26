@@ -12,6 +12,7 @@
 	<jsp:include page="navBar.jsp" />
 	<div class="container">
 		<table class="table table-bordered">
+		<caption class="sfcaption">Library</caption>
 			<thead>
 				<tr>
 					<th>Title</th>
