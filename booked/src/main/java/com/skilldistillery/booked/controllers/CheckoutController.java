@@ -82,6 +82,8 @@ public class CheckoutController {
 	public String viewCheckoutRequests(HttpSession session, int id, Model model) {
 		boolean approved = cdao.reviewCheckout(id, true);
 //		ShelfBook sb = cdao.findCheckoutById(id).getShelfBook(); 
+		ShelfBook sb = cdao.findCheckoutById(id).getShelfBook();
+		model.addAttribute("sb", sb);
 		model.addAttribute("approved", approved);
 		return "viewShelfBook";
 	}

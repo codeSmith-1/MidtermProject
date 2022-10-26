@@ -18,12 +18,17 @@ public class RatingDaoImpl implements RatingDAO {
 	@PersistenceContext
 	private EntityManager em;
 
-	
 	@Override
-	public Rating getUserRating(User uid, Book bid) {
-		String sql = "SELECT r FROM Rating WHERE user.id = :uid AND book.id = :bid";
-		Rating rating = em.createQuery(sql, Rating.class).setParameter("uid", uid).setParameter("bid", bid)
-				.getSingleResult();
+	public Rating getUserRating(User user, Book book) {
+		String sql = "SELECT r FROM Rating r WHERE user.id = :uid AND book.id = :bid";
+		Rating rating = null;
+		try {
+			rating = em.createQuery(sql, Rating.class).setParameter("uid", user.getId()).setParameter("bid", book.getId())
+					.getSingleResult();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			System.err.println("Rating not found.");
+		}
 		return rating;
 	}
 
@@ -35,24 +40,23 @@ public class RatingDaoImpl implements RatingDAO {
 	}
 
 	@Override
-	public boolean createRating(int bid, int uid) {
-		boolean rated = false;
+	public boolean createRating(int bid, Rating rating, int uid) {
 		Book book = em.find(Book.class, uid);
 		User user = em.find(User.class, uid);
 		if (user != null && book != null) {
 			RatingId id = new RatingId(bid, uid);
-			Rating rating = new Rating();
 			rating.setId(id);
 			rating.setBook(book);
 			rating.setUser(user);
 			em.persist(rating);
-			rated = true;
+			return true;
+		} else {
+			return false;
 		}
-		return rated;
 	}
 
 	@Override
-	public Rating updateRating(Rating rating) {
+	public Rating updateRating(Rating rating, int rid) {
 		Rating userRating = em.find(Rating.class, rating.getId());
 		if (rating != null) {
 			userRating.setRating(rating.getRating());
