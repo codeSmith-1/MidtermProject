@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${user.firstName}'sBookshelf</title>
+<title>${book.title}</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
@@ -76,6 +76,7 @@
 		</ul>
 
 		<form action="postComment.do" method="POST">
+		<input type="hidden" name="id" value="${book.id}"/>
 			<div class="form-floating">
 				<textarea name="comment" class="form-control"
 					placeholder="Leave a comment here" id="floatingTextarea2"
