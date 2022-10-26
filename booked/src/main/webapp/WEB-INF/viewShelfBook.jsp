@@ -21,10 +21,10 @@
 <br>
 				<c:if test="${not empty sb.checkouts }">
 
-					<table class="table table-bordered">
-					<caption class="sfcaption">Requests for this book</caption>
+					<table class="table table-secondary table-bordered border-black caption-top table-striped">
+					<caption><strong>Requests for this book</strong></caption>
 						<thead>
-							<tr>
+							<tr class="table-dark">
 								<th>User</th>
 								<th>Request Date</th>
 								<th>Checked Out Date</th>

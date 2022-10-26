@@ -6,68 +6,66 @@
 <head>
 <meta charset="UTF-8">
 <title>${book.title}</title>
-<jsp:include page="bootstrapHead.jsp"/>
+<jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
-	<jsp:include page="navBar.jsp"/>
+	<jsp:include page="navBar.jsp" />
 	<div class="container">
 		<div class="row">
-			<div class="col-6">
-				<div class="table-responsive">
-					<table class="table table-bordered">
-						<caption class="sfcaption">${book.title}</caption>
-						<thead>
-							<tr>
-								<th>Title</th>
-								<th>Author</th>
-								<th>Genre</th>
-								<th>Rating</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>${book.title}</td>
-								<td>${book.author.firstName}${book.author.lastName}</td>
-								<td><c:forEach var="genre" items="${book.genres}">${genre.name}</c:forEach></td>
-								<td>${book.rating}</td>
-
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-		<div class="col-6">
-			<table class="table table-bordered">
-				<caption class="sfcaption">Copies in library</caption>
-				<thead>
-					<tr>
-						<th>Title</th>
-						<th>Condition</th>
-						<th>Available to borrow</th>
-						<th>Available to purchase</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="b" items="${books}">
-						<tr>
-							<td>${b.book.title}</td>
-							<td>${b.condition.name }</td>
-							<td><c:choose>
-									<c:when test="${b.forBorrow}">
-										<a href="requestBook.do?id=${b.id}">Request</a>
-									</c:when>
-									<c:otherwise>Unavailable</c:otherwise>
-								</c:choose></td>
-							<td><c:choose>
-									<c:when test="${b.forSale}">Request
-										</c:when>
-									<c:otherwise>Not for sale</c:otherwise>
-								</c:choose></td>
+			<div class="col-7">
+				<table class="table table-secondary table-bordered border-black caption-top table-striped">
+					<caption><strong>${book.title}</strong></caption>
+					<thead>
+						<tr class="table-dark">
+							<th>Title</th>
+							<th>Author</th>
+							<th>Genre</th>
+							<th>Rating</th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						<tr>
+							<td>${book.title}</td>
+							<td>${book.author.firstName}${book.author.lastName}</td>
+							<td><c:forEach var="genre" items="${book.genres}">${genre.name}</c:forEach></td>
+							<td>${book.rating}</td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-5">
+				<table class="table table-secondary table-bordered border-black caption-top table-striped">
+					<caption><strong>Copies in library</strong></caption>
+					<thead>
+						<tr class="table-dark">
+							<th>Owner</th>
+							<th>Condition</th>
+							<th>Available to borrow</th>
+							<th>Available to purchase</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="b" items="${books}">
+							<tr>
+								<td>${b.user.username}</td>
+								<td>${b.condition.name}</td>
+								<td><c:choose>
+										<c:when test="${b.forBorrow}">
+											<a href="requestBook.do?id=${b.id}">Request</a>
+										</c:when>
+										<c:otherwise>Unavailable</c:otherwise>
+									</c:choose></td>
+								<td><c:choose>
+										<c:when test="${b.forSale}">Request
+										</c:when>
+										<c:otherwise>Not for sale</c:otherwise>
+									</c:choose></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div>
 			<ul class="list-group">

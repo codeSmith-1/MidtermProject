@@ -14,10 +14,10 @@
 		<div class="row">
 			<div class="col-6">
 				<!-- This table is Books, not ShelfBooks -->
-				<table class="table table-bordered">
-				<caption class="sfcaption">Book information</caption>
+				<table class="table table-secondary table-bordered border-black caption-top table-striped">
+				<caption><strong>Book information</strong></caption>
 					<thead>
-						<tr>
+						<tr class="table-dark">
 							<th>Title</th>
 							<th>Author</th>
 							<th>Genre</th>

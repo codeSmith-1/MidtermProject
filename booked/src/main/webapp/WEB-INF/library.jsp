@@ -11,10 +11,10 @@
 <body>
 	<jsp:include page="navBar.jsp" />
 	<div class="container">
-		<table class="table table-bordered">
-		<caption class="sfcaption">Library</caption>
+		<table class="table table-secondary table-bordered border-black caption-top table-striped">
+		<caption><strong>Library</strong></caption>
 			<thead>
-				<tr>
+				<tr class="table-dark">
 					<th>Title</th>
 					<th>Author</th>
 					<th>Genre</th>
