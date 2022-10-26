@@ -50,8 +50,8 @@ public class BookDaoImpl implements BookDAO {
 	
 	@Override
 	public List<Book> findBooksByKeyword(String keyword) {
-		String query = "SELECT b FROM Book b WHERE b.title = :title";
-		List<Book> keywordBooks = em.createQuery(query, Book.class).setParameter("title", keyword).getResultList();
+		String query = "SELECT b FROM Book b WHERE b.title LIKE :title OR b.author.firstName LIKE :fname OR b.author.lastName LIKE :lname";
+		List<Book> keywordBooks = em.createQuery(query, Book.class).setParameter("title", "%"+keyword+"%").setParameter("fname", "%"+keyword+"%").setParameter("lname", "%"+keyword+"%").getResultList();
 		return keywordBooks;
 	}
 	
@@ -77,6 +77,11 @@ public class BookDaoImpl implements BookDAO {
 	public List<Genre> findAllGenres() {
 		String query = "SELECT g FROM Genre g";
 		return em.createQuery(query, Genre.class).getResultList();
+	}
+
+	@Override
+	public Genre findGenreById(int id) {
+		return em.find(Genre.class, id);
 	}
 	
 }

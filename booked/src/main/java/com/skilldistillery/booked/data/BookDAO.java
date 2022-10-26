@@ -20,5 +20,6 @@ public interface BookDAO {
 	List<BookCondition> findAllConditions();
 	List<Genre> findAllGenres();
 	Author addAuthor(Author author);
+	Genre findGenreById(int id);
 	
 }

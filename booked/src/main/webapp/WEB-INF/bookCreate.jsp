@@ -43,8 +43,8 @@
 			
 			<div class="row">
 				<div class="col align-self-center">
-					<label for="genre.id" class="form-label">Genre</label>
-					<select name="genre.id" class="form-label" aria-label="Default select example">
+					<label for="genreId" class="form-label">Genre</label>
+					<select name="genreId" class="form-label" aria-label="Default select example">
 						<c:forEach var="genre" items="${genres }">
 							<option value="${genre.id }">${genre.name }</option>
 						</c:forEach>

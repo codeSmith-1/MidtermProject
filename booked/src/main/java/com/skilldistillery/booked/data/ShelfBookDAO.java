@@ -2,6 +2,7 @@ package com.skilldistillery.booked.data;
 
 import java.util.List;
 
+import com.skilldistillery.booked.entities.BookCondition;
 import com.skilldistillery.booked.entities.ShelfBook;
 
 public interface ShelfBookDAO {
@@ -14,6 +15,6 @@ public interface ShelfBookDAO {
 	ShelfBook updateShelfBook(int id, ShelfBook shelfBook);
 	Boolean removeShelfBook(int id);
 	List<ShelfBook> findShelfBooksByBookId(int id);
-
+	BookCondition findConditionById(int id);
 	
 }
