@@ -84,6 +84,9 @@ public class BookController {
 	
 	@RequestMapping(path = "addShelfBook.do", method = RequestMethod.POST)
 	public String addShelfBook(Integer bookId, ShelfBook sBook, HttpSession session, Model model) {
+		if (session.getAttribute("user") == null) {
+			return "login";
+		}
 		// add author, title to jsp
 		// Book book = new Book();
 		// book.setTitle(title);

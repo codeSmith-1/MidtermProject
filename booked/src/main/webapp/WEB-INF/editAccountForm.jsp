@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,17 +10,19 @@
 </head>
 <body>
 <jsp:include page="navBar.jsp" />
-	<form action="editAccount.do?id=${user.id}" method="POST">
-		<input type="text" name="firstName" value="${user.firstName}"/>
-		<input type="text" name="lastName" value="${user.lastName}"/>
-		<input type="text" name="address.street" value="${user.address.street}"/>
-		<input type="text" name="address.street2" value="${user.address.street2}"/>
-		<input type="text" name="address.city" value="${user.address.city}"/>
-		<input type="text" name="address.state" value="${user.address.state}"/>
-		<input type="text" name="address.zipcode" value="${user.address.zipcode}"/>
-		<input type="text" name="username" value="${user.username}"/>
-		<input type="submit" value="Submit"/>
-	</form>
+	<div class="container">
+		<form action="editAccount.do?id=${user.id}" method="POST">
+			<input type="text" name="firstName" value="${user.firstName}" />
+			<input type="text" name="lastName" value="${user.lastName}" />
+			<input type="text" name="address.street" value="${user.address.street}" />
+			<input type="text" name="address.street2" value="${user.address.street2}" />
+			<input type="text" name="address.city" value="${user.address.city}" />
+			<input type="text" name="address.state" value="${user.address.state}" />
+			<input type="text" name="address.zipcode" value="${user.address.zipcode}" />
+			<input type="text" name="username" value="${user.username}" />
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>
