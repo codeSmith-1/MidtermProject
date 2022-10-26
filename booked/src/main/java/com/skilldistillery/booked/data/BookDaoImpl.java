@@ -87,18 +87,38 @@ public class BookDaoImpl implements BookDAO {
 
 	@Override
 	public List<Book> booksInGenre(int genreId) {
+		int numBooksToGet = 5;
 		Genre genre = findGenreById(genreId);
 		List<Book> allBooks = findAllBooks();
-		List<Book> results = new ArrayList<>();
-		for (Book book : allBooks) {
-			if (book.getGenres().size() > 0) {
-				if (book.getGenres().get(0).equals(genre)) {
-					results.add(book);
-					book.getGenres().size();
+		List<Book> resultList = new ArrayList<>();
+		
+//		To Return all books of the user's favorite genre:
+//		for (Book book : allBooks) {
+//			if (book.getGenres().size() > 0) {
+//				if (book.getGenres().get(0).equals(genre)) {
+//					results.add(book);
+//					book.getGenres().size();
+//				}
+//			}
+//		}
+		
+//		To Return 5 books of the user's favorite genre:
+		List<Integer> resultIds = new ArrayList<>();
+		int[] bookIds = new int[allBooks.size()];
+		for (int i = 0; i < allBooks.size(); i++) {
+			bookIds[i] = allBooks.get(i).getId();
+		}
+		while (numBooksToGet > resultList.size()) {
+			int randomNumGen = (int)(Math.random() * bookIds[bookIds.length-1] + bookIds[0]);
+			if (!resultIds.contains(randomNumGen) && this.findBookById(randomNumGen) != null) {
+				try {
+					resultList.add(this.findBookById(randomNumGen));
+					resultIds.add(randomNumGen);
+				} catch (NullPointerException npe) {
 				}
 			}
 		}
-		return results;
+		return resultList;
 	}
 	
 }
