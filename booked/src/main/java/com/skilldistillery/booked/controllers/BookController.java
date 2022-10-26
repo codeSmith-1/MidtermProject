@@ -1,15 +1,11 @@
 package com.skilldistillery.booked.controllers;
 
 
-import java.util.IllegalFormatWidthException;
-
 import java.util.ArrayList;
-
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.jasper.tagplugins.jstl.core.ForEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,12 +14,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.booked.data.BookDAO;
 import com.skilldistillery.booked.data.CommentDAO;
+import com.skilldistillery.booked.data.RatingDAO;
 import com.skilldistillery.booked.data.ShelfBookDAO;
 import com.skilldistillery.booked.data.UserDAO;
 import com.skilldistillery.booked.entities.Author;
 import com.skilldistillery.booked.entities.Book;
 import com.skilldistillery.booked.entities.Comment;
 import com.skilldistillery.booked.entities.Genre;
+import com.skilldistillery.booked.entities.Rating;
 import com.skilldistillery.booked.entities.ShelfBook;
 import com.skilldistillery.booked.entities.User;
 
@@ -36,6 +34,8 @@ public class BookController {
 	private ShelfBookDAO sbdao;
 	@Autowired
 	private CommentDAO cdao;
+	@Autowired
+	private RatingDAO rdao;
 
 	@Autowired
 	private UserDAO udao;
@@ -43,12 +43,17 @@ public class BookController {
 	@RequestMapping(path = "viewBook.do", method = RequestMethod.GET)
 	public String viewBook(int id, HttpSession session, Model model) {
 		Book book = bookdao.findBookById(id);
-
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
+			Rating userRating = rdao.getUserRating(user, book);
+			model.addAttribute("userRating", userRating);
+		}
+		
 		List<Comment> comments = cdao.findCommentsByBookId(id);
 		book.setComments(comments);
 		model.addAttribute("book", book);
-		// in jsp access list comments
 		model.addAttribute("books", sbdao.findShelfBooksByBookId(id));
+		
 		return "bookView";
 	}
 
@@ -59,7 +64,24 @@ public class BookController {
 		// in jsp access list comments
 		return "viewShelfBook";
 	}
-
+	
+	@RequestMapping(path = "rateBook.do", method = RequestMethod.POST)
+	public String rateBook(int id, Rating rating, HttpSession session, Model model) {
+		User user = (User) session.getAttribute("user");
+		boolean bool = rdao.createRating(id, rating, user.getId());
+		return "viewShelfBook?id="+id;
+	}
+	
+	@RequestMapping(path = "updateRating.do", method = RequestMethod.POST)
+	public String updateRating(int id, int rid, HttpSession session, Model model) {
+		User user = (User) session.getAttribute("user");
+		Book book = bookdao.findBookById(id);
+		Rating rating = rdao.getUserRating(user, book);
+		rating.setRating(rid);
+		rdao.updateRating(rating, rid);
+		return "viewShelfBook?id="+id;
+	}
+	
 	@RequestMapping(path = "myBookshelf.do", method = RequestMethod.GET)
 	public String viewBookshelf(HttpSession session, Model model) {
 		if (session.getAttribute("user") != null) {
