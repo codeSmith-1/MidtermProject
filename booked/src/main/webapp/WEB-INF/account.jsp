@@ -11,7 +11,7 @@
 <body>
 	<jsp:include page="navBar.jsp" />
 	<div class="container">
-		<h2>Hey ${user.firstName }</h2>
+		<h2>Hey ${user.firstName}</h2>
 		<div class="dropdown">
 			<button class="btn btn-secondary dropdown-toggle" type="button"
 				data-bs-toggle="dropdown" aria-expanded="false">Account

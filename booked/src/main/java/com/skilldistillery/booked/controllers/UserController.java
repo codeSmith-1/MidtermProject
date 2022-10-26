@@ -21,25 +21,30 @@ public class UserController {
 	private BookDAO bookdao;
 
 	@RequestMapping(path = { "/", "home.do" })
-	public String home(HttpSession session, Model model) {
-		User user = (User) session.getAttribute("user");
-		model.addAttribute("user", dao.findUserById(1));
-		if (user != null) {
-			model.addAttribute("allBooks", bookdao.findAllBooks());
-			return "library";
-		}
+	public String home() {
+//		HttpSession session, Model model
+//		User user = (User) session.getAttribute("user");
+//		model.addAttribute("user", dao.findUserById());
+//		if (user != null) {
+//			model.addAttribute("allBooks", bookdao.findAllBooks());
+//			return "library";
+//		}
 		return "login";
 	}
 
 	@RequestMapping(path = "account.do", method = RequestMethod.GET)
 	public String getAccount(HttpSession session, Integer id) {
-		// if logic to check if user in session
-		return "account";
+			if(session.getAttribute("user") != null) {
+				return "account";
+			}
+			return "login";
 	}
 	@RequestMapping(path = "editAccountForm.do", method = RequestMethod.GET)
 	public String editAccount(HttpSession session) {
-		User user = (User) session.getAttribute("user");
-		if((user) != null) {
+//		User user = (User) session.getAttribute("user");
+//		if((user) != null) {
+		if(session.getAttribute("user") !=null) {
+			
 //			model.addAttribute("updated", dao.updateUser(id, user));
 			return "editAccountForm";
 		}

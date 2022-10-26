@@ -10,23 +10,24 @@
 </head>
 <body>
 	<jsp:include page="navBar.jsp" />
-	<div class="container">
-		<h2>LOGIN</h2>
-		<form action="login.do" method="POST">
-			<input type="text" placeholder="ilovebooks@novels.com"
-				name="username"> <input placeholder="password"
-				type="password" name="password" /> <input type="submit"
-				value="Log In">
-		</form>
-		<form action="createAccount.do" method="GET">
-			<input type="submit" value="Create Account">
-		</form>
-		<c:choose>
-			<c:when test="${invalid == true}">
-				<p>Invalid username and password.</p>
-			</c:when>
-		</c:choose>
-	</div>
+
+
+	<h2>LOGIN</h2>
+
+	<form action="login.do" method="POST">
+		<input type="text" placeholder="Unique User Name" name="username">
+		<input placeholder="Password" type="password" name="password" /> <input
+			type="submit" value="Log In">
+	</form>
+	<form action="createAccount.do" method="GET">
+		<input type="submit" value="Create Account">
+	</form>
+	<c:choose>
+		<c:when test="${invalid == true}">
+			<p>Invalid User Name or Password</p>
+		</c:when>
+	</c:choose>
+
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>
