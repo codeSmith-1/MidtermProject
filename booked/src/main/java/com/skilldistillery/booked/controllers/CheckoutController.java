@@ -29,6 +29,9 @@ public class CheckoutController {
 	public String requestBook(HttpSession session, int id, Model model) {
 		ShelfBook sb = sbdao.findShelfBookById(id);
 		User u = (User) session.getAttribute("user");
+		if (u == null) {
+			return "login";
+		}
 		String message = "";
 		boolean bool = false;
 		if (cdao.checkoutHasCheckoutRequestFromUserId(u.getId(), id)) {
@@ -51,6 +54,9 @@ public class CheckoutController {
 	@RequestMapping(path = "checkoutBook.do", method = RequestMethod.POST)
 	public String postComment(HttpSession session, @RequestParam int id, @RequestParam String comment, Model model) {
 		User u = (User) session.getAttribute("user");
+		if (u == null) {
+			return "login";
+		}
 		ShelfBook sb = sbdao.findShelfBookById(id);
 		model.addAttribute("sb", sb);
 		Checkout chkout = new Checkout();
