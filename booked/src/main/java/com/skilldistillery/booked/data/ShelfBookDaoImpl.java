@@ -9,7 +9,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skilldistillery.booked.entities.Book;
 import com.skilldistillery.booked.entities.BookCondition;
 import com.skilldistillery.booked.entities.ShelfBook;
 import com.skilldistillery.booked.entities.User;
@@ -25,11 +24,6 @@ public class ShelfBookDaoImpl implements ShelfBookDAO {
 
 	@Override
 	public ShelfBook createShelfBook(ShelfBook shelfBook) {
-		Book book = em.find(Book.class, shelfBook.getBook().getId());
-		if (book == null) {
-			bookDao.createBook(em.find(Book.class, shelfBook.getBook()));
-		}
-		shelfBook.setCondition(em.find(BookCondition.class, 1));
 		em.persist(shelfBook);
 		return shelfBook;
 	}
@@ -86,6 +80,13 @@ public class ShelfBookDaoImpl implements ShelfBookDAO {
 		String sql = "SELECT sb FROM ShelfBook sb WHERE sb.book.id = :bid";
 		List<ShelfBook> books = em.createQuery(sql, ShelfBook.class).setParameter("bid", bid).getResultList();
 		return books;
+	}
+
+	@Override
+	public BookCondition findConditionById(int id) {
+		String sql = "SELECT c FROM BookCondition c WHERE c.id = :id";
+		BookCondition cond = em.createQuery(sql, BookCondition.class).setParameter("id", id).getSingleResult();
+		return cond;
 	}
 	
 }
