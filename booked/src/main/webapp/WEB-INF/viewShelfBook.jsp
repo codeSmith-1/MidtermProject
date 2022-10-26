@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${user.firstName}'sBook</title>
+<title>${user.firstName}'s Book</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
