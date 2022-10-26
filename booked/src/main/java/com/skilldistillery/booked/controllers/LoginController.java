@@ -27,12 +27,13 @@ public class LoginController {
 	public String loginView(HttpSession session, Model model) {
 		if (session.getAttribute("user") != null) {
 			User user = (User) session.getAttribute("user");
-			user = dao.findUserById(user.getId());
-			user.getGenres().size();
 			model.addAttribute("favs", user.getFavBooks());
-			int genreId = user.getGenres().get(0).getId();
-			List<Book> books = bookdao.booksInGenre(genreId);
-			model.addAttribute("booksInGenre", books);
+			user = dao.findUserById(user.getId());
+			if (user.getGenres().size() > 0) {
+				int genreId = user.getGenres().get(0).getId();
+				List<Book> books = bookdao.booksInGenre(genreId);
+				model.addAttribute("booksInGenre", books);
+			}
 			return "account";
 		} 
 		return "login";
@@ -52,12 +53,13 @@ public class LoginController {
 		if (user != null) {
 			session.setAttribute("user", user);
 		}
-		user = dao.findUserById(user.getId());
-		user.getGenres().size();
 		model.addAttribute("favs", user.getFavBooks());
-		int genreId = user.getGenres().get(0).getId();
-		List<Book> books = bookdao.booksInGenre(genreId);
-		model.addAttribute("booksInGenre", books);
+		user = dao.findUserById(user.getId());
+		if (user.getGenres().size() > 0) {
+			int genreId = user.getGenres().get(0).getId();
+			List<Book> books = bookdao.booksInGenre(genreId);
+			model.addAttribute("booksInGenre", books);
+		}
 		return "account";
 	}
 
