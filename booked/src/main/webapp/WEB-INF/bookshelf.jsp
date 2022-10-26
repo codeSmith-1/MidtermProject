@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${user.firstName}'sBookshelf</title>
+<title>${user.firstName}'s Bookshelf</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
@@ -20,8 +20,8 @@
 							<th>Author</th>
 							<th>Genre</th>
 							<th>Condition</th>
-							<th>Rating</th>
-							<th></th>
+							<th>Checkout Request</th>
+							<th>Remove Book</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -32,10 +32,14 @@
 								<td>${sb.book.author.firstName} ${sb.book.author.lastName}</td>
 								<td><c:forEach var="genre" items="${sb.book.genres}">${genre.name}</c:forEach></td>
 								<td>${sb.condition.name}</td>
-								<td>${sb.book.rating}</td>
+								<td><c:choose>
+										<c:when test="${not empty sb.activeRequests}"><strong>Rental requests pending.</strong>
+										</c:when>
+										<c:otherwise>No active requests</c:otherwise>
+									</c:choose>
 								<td><form action="deleteShelfBook.do" method="GET">
-										<input type="hidden" name="id" value="${sb.id}">
-										<input type="submit" value="Remove">
+										<input type="hidden" name="id" value="${sb.id}" /> <input
+											type="submit" value="Remove book from shelf." />
 									</form></td>
 							</tr>
 						</c:forEach>
@@ -55,7 +59,7 @@
 						<c:forEach var="fav" items="${favs}">
 							<tr>
 								<td>${fav.title}</td>
-								<td>${fav.author.firstName}${fav.author.lastName}</td>
+								<td>${fav.author.firstName} ${fav.author.lastName}</td>
 								<td><c:forEach var="genre" items="${fav.genres}">${genre.name}</c:forEach></td>
 							</tr>
 						</c:forEach>
@@ -65,7 +69,7 @@
 		</div>
 		<div class="row">
 			<div class="col-6">
-				<form action="addShelfBook.do" method="GET">
+				<form action="addBook.do" method="GET">
 					<input type="submit" value="Add a Book to My Shelf">
 				</form>
 			</div>

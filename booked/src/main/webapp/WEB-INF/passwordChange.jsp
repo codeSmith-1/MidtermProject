@@ -5,18 +5,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Change Password</title><jsp:include page="bootstrapHead.jsp" />
+<title>Change Password</title>
+<jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
 	<jsp:include page="navBar.jsp" />
-	
-	<form action="updatePassword.do?id=${user.id}" method="POST">
-		<input type="text" name="username" />
-		<input type="text" name="password" />
-		<input type="text" name="newPassword"/>
-		<input type="submit" value="Submit"/>
-	</form>
-	
+	<div class="container">
+		<form action="updatePassword.do?id=${user.id}" method="POST">
+			<div class="row justify-content-center">
+				<div class="col">
+				<label for="username" class="form-label">Username </label>
+					<input type="text" name="username" />
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col">
+				<label for="password" class="form-label">Old Password </label>
+					<input type="password" name="password" />
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col">
+				<label for="newPassword" class="form-label">New Password </label>
+					<input type="password" name="newPassword" />
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col">
+					<input type="submit" value="Submit" />
+				</div>
+			</div>
+		</form>
+	</div>
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>

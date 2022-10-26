@@ -11,6 +11,7 @@
 <body>
 	<jsp:include page="navBar.jsp" />
 
+
 	<h2>LOGIN</h2>
 
 	<form action="login.do" method="POST">
@@ -26,6 +27,7 @@
 			<p>Invalid User Name or Password</p>
 		</c:when>
 	</c:choose>
+
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.skilldistillery.booked.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -22,6 +23,7 @@ public class ShelfBook {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	
 	@OneToMany(mappedBy = "shelfBook", cascade = CascadeType.REMOVE)
 	private List<Checkout> checkouts;
 
@@ -47,6 +49,17 @@ public class ShelfBook {
 	private Double salePrice;
 
 	public ShelfBook() {}
+	
+	public List<Checkout> getActiveRequests(){
+		List<Checkout> requests = new ArrayList<>();
+		for (Checkout checkout : checkouts) {
+			if (checkout.getReturnDate() == null && checkout.getCheckoutDate()== null) {
+				requests.add(checkout);
+			}
+		}
+		return requests;
+		
+	}
 
 	public List<Checkout> getCheckouts() {
 		return checkouts;

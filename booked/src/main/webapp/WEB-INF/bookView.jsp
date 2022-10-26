@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${user.firstName}'sBookshelf</title>
+<title>${book.title}</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
@@ -13,7 +13,6 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-6">
-			<!-- This table is Books, not ShelfBooks -->
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -26,16 +25,15 @@
 					<tbody>
 						<tr>
 							<td>${book.title}</td>
-							<td>${book.author.firstName}${book.author.lastName}</td>
+							<td>${book.author.firstName} ${book.author.lastName}</td>
 							<td><c:forEach var="genre" items="${book.genres}">${genre.name}</c:forEach></td>
 							<td>${book.rating}</td>
-							
+
 						</tr>
 					</tbody>
 				</table>
 			</div>
 			<div class="col-6">
-			<!-- This table is ShelfBooks, not Books -->
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -51,7 +49,8 @@
 								<td>${b.book.title}</td>
 								<td>${b.condition.name }</td>
 								<td><c:choose>
-										<c:when test="${b.forBorrow}"><a href="checkout.do">Request</a>
+										<c:when test="${b.forBorrow}">
+											<a href="requestBook.do?id=${b.id}">Request</a>
 										</c:when>
 										<c:otherwise>Unavailable</c:otherwise>
 									</c:choose></td>
@@ -66,37 +65,26 @@
 				</table>
 			</div>
 		</div>
-
+	<div>
 		<ul class="list-group">
 			<c:forEach var="c" items="${book.comments}">
-				<li class="list-group-item"><strong>${c.user.username}</strong>  <em>${c.commentDate}:</em>  <p>${c.comment}<p></li>
+				<li class="list-group-item"><strong>${c.user.username}</strong>
+					<em>${c.commentDate}:</em>
+					<p>${c.comment}
+					<p></li>
 			</c:forEach>
 		</ul>
-		
-	<form action="postComment.do" method="POST">
-		<div class="form-floating">
-			<textarea name="comment" class="form-control" placeholder="Leave a comment here"
-				id="floatingTextarea2" style="height: 100px"></textarea>
-			<input type="submit" value="Submit"> 
-		</div>
-	</form>
 
-
+		<form action="postComment.do" method="POST">
+		<input type="hidden" name="id" value="${book.id}"/>
+			<div class="form-floating">
+				<textarea name="comment" class="form-control"
+					placeholder="Leave a comment here" id="floatingTextarea2"
+					style="height: 100px"></textarea>
+				<input type="submit" value="Submit">
+			</div>
+		</form>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>

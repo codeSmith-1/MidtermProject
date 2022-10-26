@@ -25,7 +25,7 @@
 				<c:forEach var="bk" items="${allBooks}">
 					<tr>
 						<td><a href="viewBook.do?id=${bk.id }">${bk.title}</a></td>
-						<td>${bk.author.firstName}${bk.author.lastName}</td>
+						<td>${bk.author.firstName} ${bk.author.lastName}</td>
 						<td><c:forEach var="genre" items="${bk.genres}">${genre.name}</c:forEach></td>
 						<td>${bk.rating}</td>
 						<td><form action="addShelfBook.do" method="GET">

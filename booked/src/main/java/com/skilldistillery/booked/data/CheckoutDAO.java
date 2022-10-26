@@ -10,7 +10,9 @@ public interface CheckoutDAO {
 	Checkout findCheckoutById(int id);
 	List<Checkout> findCheckOutsByUserId(int uid);
 	Checkout createCheckout(Checkout checkout);
-	Checkout reviewCheckout(int cid, boolean approved);
+	boolean reviewCheckout(int cid, boolean approved);
 	Checkout receiveCheckout(int cid);
 	boolean setForBorrow(int cid, boolean bool);
+	boolean checkoutHasCheckoutRequestFromUserId(int uid, int sbid);
+	boolean checkoutApprovedForUserByOwner(int uid, int sbid);
 }
