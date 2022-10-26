@@ -6,10 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>${book.title}</title>
-<jsp:include page="bootstrapHead.jsp"/>
+<jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
-	<jsp:include page="navBar.jsp"/>
+	<jsp:include page="navBar.jsp" />
 	<div class="container">
 		<div class="row">
 			<div class="col-6">
@@ -22,6 +22,9 @@
 								<th>Author</th>
 								<th>Genre</th>
 								<th>Rating</th>
+								<c:if test="${not empty sessionScope.user}">
+									<th>User Rating</th>
+								</c:if>
 							</tr>
 						</thead>
 						<tbody>
@@ -30,7 +33,40 @@
 								<td>${book.author.firstName}${book.author.lastName}</td>
 								<td><c:forEach var="genre" items="${book.genres}">${genre.name}</c:forEach></td>
 								<td>${book.rating}</td>
+								<c:if test="${not empty sessionScope.user}">
+									<td><c:choose>
+											<c:when test="${not empty userRating}">
+												<form action="updateRating.do" method="POST">
+													<select name="rating" class="form-select">
+														<c:forEach var="num" items="1,2,3,4,5">
+															<c:choose>
+																<c:when test="${userRating.rating == num}">
+																	<option selected value="${num}">${num}</option>
+																</c:when>
+																<c:otherwise>
+																	<option value="${num}">${num}</option>
+																</c:otherwise>
+															</c:choose>
 
+														</c:forEach>
+													</select>
+													<input type="submit" value="Update" />
+												</form>
+											</c:when>
+											<c:otherwise>
+												<form action="rateBook.do" method="POST">
+													<select name="rating" class="form-select">
+														<option selected>Open this select menu</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+													</select> <input type="submit" value="Rate"/>
+												</form>
+											</c:otherwise>
+										</c:choose></td>
+								</c:if>
 							</tr>
 						</tbody>
 					</table>
