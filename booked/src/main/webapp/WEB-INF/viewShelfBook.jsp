@@ -14,23 +14,11 @@
 		<div class="row">
 			<div class="col-6">
 				<!-- This table is Books, not ShelfBooks -->
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th>Title</th>
-							<th>Author</th>
-							<th>Genre</th>
-							<th>Borrow Request</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>${sb.book.title}</td>
-							<td>${sb.book.author.firstName}${sb.book.author.lastName}</td>
-							<td><c:forEach var="genre" items="${sb.book.genres}">${genre.name}</c:forEach></td>
-						</tr>
-					</tbody>
-				</table>
+					<h4>Borrow requests</h4>
+							<p>Title: <strong>${sb.book.title}</strong></p>
+							<p>by: <em>${sb.book.author.firstName} ${sb.book.author.lastName}</em></p>
+
+<br>
 				<c:if test="${not empty sb.checkouts }">
 
 					<table class="table table-bordered">

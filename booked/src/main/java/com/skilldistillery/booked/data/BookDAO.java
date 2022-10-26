@@ -21,5 +21,6 @@ public interface BookDAO {
 	List<Genre> findAllGenres();
 	Author addAuthor(Author author);
 	Genre findGenreById(int id);
+	List<Book> booksInGenre(int genreId);
 	
 }

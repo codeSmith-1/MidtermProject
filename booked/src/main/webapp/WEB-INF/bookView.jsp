@@ -13,6 +13,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-6">
+			<div class="table-responsive">
 				<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -32,6 +33,8 @@
 						</tr>
 					</tbody>
 				</table>
+			</div>
+			</div>
 			</div>
 			<div class="col-6">
 				<table class="table table-bordered">

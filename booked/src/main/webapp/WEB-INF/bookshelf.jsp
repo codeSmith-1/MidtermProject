@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${user.firstName}'s Bookshelf</title>
+<title>${user.username}'s Bookshelf</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
@@ -13,17 +13,18 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-6">
-				<table class="table table-bordered">
+			<table class="table caption-top">
+  					<caption>${user.username }'s Bookshelf</caption>
 					<thead>
 						<tr>
 							<th>Title</th>
 							<th>Author</th>
 							<th>Genre</th>
 							<th>Condition</th>
-							<th>Checkout Request</th>
+							<th>Requests</th>
 							<th>Remove Book</th>
 						</tr>
-					</thead>
+						</thead>
 					<tbody>
 						<c:forEach var="sb" items="${books}">
 							<tr>
@@ -47,24 +48,7 @@
 				</table>
 			</div>
 			<div class="col-6">
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th>Title</th>
-							<th>Author</th>
-							<th>Genre</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach var="fav" items="${favs}">
-							<tr>
-								<td>${fav.title}</td>
-								<td>${fav.author.firstName} ${fav.author.lastName}</td>
-								<td><c:forEach var="genre" items="${fav.genres}">${genre.name}</c:forEach></td>
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+				
 			</div>
 		</div>
 		<div class="row">
