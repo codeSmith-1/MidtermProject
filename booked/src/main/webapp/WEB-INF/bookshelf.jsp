@@ -29,13 +29,13 @@
 							<tr>
 								<td><a href="viewShelfBook.do?id=${sb.id }">
 										${sb.book.title}</a></td>
-								<td>${sb.book.author.firstName} ${sb.book.author.lastName}</td>
+								<td>${sb.book.author.firstName}${sb.book.author.lastName}</td>
 								<td><c:forEach var="genre" items="${sb.book.genres}">${genre.name}</c:forEach></td>
 								<td>${sb.condition.name}</td>
 								<td>${sb.book.rating}</td>
 								<td><form action="deleteShelfBook.do" method="GET">
-										<input type="hidden" name="id" value="${sb.id}">
-										<input type="submit" value="Remove">
+										<input type="hidden" name="id" value="${sb.id}"> <input
+											type="submit" value="Remove">
 									</form></td>
 							</tr>
 						</c:forEach>

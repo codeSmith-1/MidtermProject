@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${user.firstName}'s Book</title>
+<title>${user.firstName}'sBook</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
@@ -32,58 +32,42 @@
 					</tbody>
 				</table>
 				<c:if test="${not empty sb.checkouts }">
-				
-				<table class="table table-bordered">
-					<thead>
-						<tr>
-							<th>User</th>
-							<th>Request Date</th>
-							<th>Checked Out Date</th>
-							<th>Return Date</th>
-						</tr>
-					</thead>
-					<tbody>
-				<c:forEach var="c" items="${sb.checkouts }">
-						<tr>
-							<td>${c.user.username}</td>
-							<td>${c.requestDate}</td>
-							<td><c:choose> 
-							<c:when test="${not empty c.checkoutDate}">
+
+					<table class="table table-bordered">
+						<thead>
+							<tr>
+								<th>User</th>
+								<th>Request Date</th>
+								<th>Checked Out Date</th>
+								<th>Return Date</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="c" items="${sb.checkouts }">
+								<tr>
+									<td>${c.user.username}</td>
+									<td>${c.requestDate}</td>
+									<td><c:choose>
+											<c:when test="${not empty c.checkoutDate}">
 							${c.checkoutDate}
 							</c:when>
-							<c:otherwise>form w/button to approve/reject</c:otherwise>
-							</c:choose>
-							</td>
-							<td><c:choose> 
-							<c:when test="${not empty c.returnDate}">
+											<c:otherwise>form w/button to approve/reject</c:otherwise>
+										</c:choose></td>
+									<td><c:choose>
+											<c:when test="${not empty c.returnDate}">
 							${c.returnDate}
 							</c:when>
-							<c:otherwise>form w/button to approve/reject</c:otherwise>
-							</c:choose>
-							</td>
-						</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-				
+											<c:otherwise>form w/button to approve/reject</c:otherwise>
+										</c:choose></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+
 				</c:if>
 			</div>
 		</div>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>
