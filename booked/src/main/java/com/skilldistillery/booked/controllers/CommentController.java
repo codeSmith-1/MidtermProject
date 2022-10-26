@@ -24,6 +24,9 @@ public class CommentController {
 	@RequestMapping(path = "postComment.do", method = RequestMethod.POST)
 	public String postComment(int id, HttpSession session, String comment) {
 		User u = (User) session.getAttribute("user");
+		if (u == null) {
+			return "login";
+		}
 		Book b = bookdao.findBookById(id);
 		Comment cmnt = new Comment();
 		cmnt.setComment(comment);
