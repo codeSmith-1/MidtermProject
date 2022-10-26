@@ -65,7 +65,7 @@
 		</div>
 		<div class="row">
 			<div class="col-6">
-				<form action="addShelfBook.do" method="GET">
+				<form action="addBook.do" method="GET">
 					<input type="submit" value="Add a Book to My Shelf">
 				</form>
 			</div>

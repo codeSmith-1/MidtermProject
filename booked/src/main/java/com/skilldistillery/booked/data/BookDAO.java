@@ -2,9 +2,11 @@ package com.skilldistillery.booked.data;
 
 import java.util.List;
 
+import com.skilldistillery.booked.entities.Author;
 import com.skilldistillery.booked.entities.Book;
 import com.skilldistillery.booked.entities.BookCondition;
 import com.skilldistillery.booked.entities.Comment;
+import com.skilldistillery.booked.entities.Genre;
 import com.skilldistillery.booked.entities.Rating;
 
 public interface BookDAO {
@@ -16,5 +18,7 @@ public interface BookDAO {
 	List<Book> findBooksByKeyword(String keyword);
 	Book createBook(Book book);
 	List<BookCondition> findAllConditions();
+	List<Genre> findAllGenres();
+	Author addAuthor(Author author);
 	
 }

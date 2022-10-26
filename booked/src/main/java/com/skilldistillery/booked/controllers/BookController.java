@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.skilldistillery.booked.data.BookDAO;
 import com.skilldistillery.booked.data.CommentDAO;
 import com.skilldistillery.booked.data.ShelfBookDAO;
+import com.skilldistillery.booked.entities.Author;
 import com.skilldistillery.booked.entities.Book;
 import com.skilldistillery.booked.entities.Comment;
 import com.skilldistillery.booked.entities.ShelfBook;
@@ -113,6 +114,28 @@ public class BookController {
 			model.addAttribute("favs", user.getFavBooks());
 		}
 		return "bookshelf";
+	}
+	
+	@RequestMapping(path = "addBook.do", method = RequestMethod.GET)
+	public String addBook(HttpSession session, Model model) {
+		model.addAttribute("genres", bookdao.findAllGenres());
+		return "bookCreate";
+	}
+	
+	@RequestMapping(path = "addBook.do", method = RequestMethod.POST)
+	public String addBook(String firstName, String lastName, Book book, HttpSession session, Model model) {
+		if (session.getAttribute("user") == null) {
+			return "login";
+		}
+		Author author = new Author();
+		author.setFirstName(firstName);
+		author.setLastName(lastName);
+		bookdao.addAuthor(author);
+		book.setAuthor(author);
+		bookdao.createBook(book);
+		model.addAttribute("book", book);
+		model.addAttribute("conditions", bookdao.findAllConditions());
+		return "shelfBookCreate";
 	}
 	
 }

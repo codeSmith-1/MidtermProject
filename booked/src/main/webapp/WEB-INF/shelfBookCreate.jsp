@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>New Book</title>
+<title>New Shelf Book</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
@@ -29,6 +29,7 @@
 					<input type="hidden" name="bookId" value="${book.id }" />
 				</div>
 			</div>
+			
 			<div class="row">
 				<div class="col align-self-center">
 					<label for="condition.id" class="form-label">Condition</label> <select
@@ -40,29 +41,34 @@
 					</select>
 				</div>
 			</div>
+			
 			<div class="row justify-content-center">
 				<div class="col">
 					<label for="forBorrow" class="form-label">For Borrow</label> <input
 						type="text" name="forBorrow" />
 				</div>
 			</div>
+			
 			<div class="row justify-content-center">
 				<div class="col">
 					<label for="forSale" class="form-label">For Sale</label> <input
 						type="text" name="forSale" />
 				</div>
 			</div>
+			
 			<div class="row justify-content-center">
 				<div class="col">
 					<label for="salePrice" class="form-label">Price</label> <input
 						type="text" name="salePrice" />
 				</div>
 			</div>
+			
 			<div class="row justify-content-center">
 				<div class="col">
 					<input type="submit" value="Submit" />
 				</div>
 			</div>
+			
 		</form>
 	</div>
 	<jsp:include page="bootstrapFoot.jsp" />
