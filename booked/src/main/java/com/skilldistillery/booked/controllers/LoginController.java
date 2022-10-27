@@ -14,6 +14,7 @@ import com.skilldistillery.booked.data.BookDAO;
 import com.skilldistillery.booked.data.CheckoutDAO;
 import com.skilldistillery.booked.data.UserDAO;
 import com.skilldistillery.booked.entities.Book;
+import com.skilldistillery.booked.entities.Checkout;
 import com.skilldistillery.booked.entities.User;
 
 @Controller
@@ -45,7 +46,7 @@ public class LoginController {
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public String loginUser(String username, String password, HttpSession session, Model model) {
-		User user;
+		User user = new User();
 		try {
 			user = dao.getUserByUserNameAndPassword(username, password);
 		} catch (Exception e) {
@@ -57,8 +58,14 @@ public class LoginController {
 		if (user != null) {
 			session.setAttribute("user", user);
 		}
-		model.addAttribute("checkouts", cdao.userHasApprovedCheckouts(user.getId()));
-		model.addAttribute("favs", user.getFavBooks());
+		List<Checkout> checkouts = cdao.userHasApprovedCheckouts(user.getId());
+		if (checkouts != null) {
+			model.addAttribute("checkouts", checkouts);
+		}
+		List<Book> favs = user.getFavBooks();
+		if (favs != null) {
+			model.addAttribute("favs", favs);
+		}
 		user = dao.findUserById(user.getId());
 		if (user.getGenres().size() > 0) {
 			int genreId = user.getGenres().get(0).getId();

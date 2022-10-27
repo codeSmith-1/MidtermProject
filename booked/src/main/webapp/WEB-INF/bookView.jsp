@@ -16,7 +16,7 @@
 				<table class="table table-secondary table-bordered border-black caption-top table-striped">
 					<caption><strong>${book.title}</strong></caption>
 					<thead>
-						<tr>
+						<tr class="table-dark">
 							<th>Title</th>
 							<th>Author</th>
 							<th>Genre</th>
@@ -70,11 +70,8 @@
 			</div>
 		</div>
 		<div class="col-5">
-			<table
-				class="table table-secondary table-bordered border-black caption-top table-striped">
-				<caption>
-					<strong>Copies in library</strong>
-				</caption>
+			<table class="table table-secondary table-bordered border-black caption-top table-striped">
+				<caption><strong>Copies in library</strong></caption>
 				<thead>
 					<tr class="table-dark">
 						<th>Owner</th>
@@ -105,12 +102,13 @@
 			</table>
 		</div>
 	<div>
-		<ul class="list-group">
+		<ul class="list-group" style="background:transparent">
 			<c:forEach var="c" items="${book.comments}">
-				<li class="list-group-item"><strong>${c.user.username}</strong>
+				<li class="list-group-item comments">
+					<strong>${c.user.username}</strong>
 					<em>${c.commentDate}:</em>
 					<p>${c.comment}
-					<p></li>
+					</p></li>
 			</c:forEach>
 		</ul>
 

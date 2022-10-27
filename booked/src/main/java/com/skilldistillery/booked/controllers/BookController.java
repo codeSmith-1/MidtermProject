@@ -167,6 +167,7 @@ public class BookController {
 	
 	@RequestMapping(path = "addBook.do", method = RequestMethod.POST)
 	public String addBook(Integer genreId, String firstName, String lastName, Book book, HttpSession session, Model model) {
+		System.err.println(genreId);
 		if (session.getAttribute("user") == null) {
 			return "login";
 		}
