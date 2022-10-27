@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 body {
+	background-image: url("/images/librarypic.webp");
 	background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
 	--bs-bg-opacity: .1;
 	color: black;
@@ -15,3 +16,9 @@ body {
 	background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
 	--bs-bg-opacity: .5;
 } 
+
+.container h2{
+	font-family: "CopperPlate", fantasy;
+	font-size: 42px;
+	color: white;
+}
