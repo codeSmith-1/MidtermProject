@@ -44,7 +44,7 @@
 									</c:choose>
 								<td style="text-align:center"><form action="deleteShelfBook.do" method="GET">
 										<input type="hidden" name="id" value="${sb.id}" />
-										<button class="btn btn-dark" type="submit">
+										<button class="btn btn-secondary" type="submit">
 											<svg xmlns="http://www.w3.org/2000/svg" width="16"
 												height="16" fill="currentColor" class="bi bi-trash3"
 												viewBox="0 0 16 16">
@@ -62,7 +62,7 @@
 		<div class="row">
 			<div class="col-6">
 				<form action="addBook.do" method="GET">
-					<button class="btn btn-dark" type="submit">Add a Book to
+					<button class="btn btn-secondary" type="submit">Add a Book to
 						Bookshelf</button>
 				</form>
 			</div>

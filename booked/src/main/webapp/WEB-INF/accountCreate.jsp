@@ -89,7 +89,7 @@
 		</div></div>
 		 <div class="row justify-content-center">
 				<div class="col">
-    		<button class="btn btn-primary" type="submit">Create booked Account</button>
+    		<button class="btn btn-secondary" type="submit">Join booked.</button>
   		</div></div>
 
 	</form>

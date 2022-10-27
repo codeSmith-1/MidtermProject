@@ -324,7 +324,7 @@ public class User {
 			check.setUser(this);
 		}
 	}
-	public void removeComment(Checkout check) {
+	public void removeCheckout(Checkout check) {
 		if(checkouts != null && checkouts.contains(check)) {
 			checkouts.remove(check);
 			check.setUser(null);

@@ -3,6 +3,7 @@
 html {
    min-height: 100%;
 }
+
 body {
 	background-image: url("/images/libraryimg.jpeg");
 	background-size: cover;
@@ -57,6 +58,11 @@ div.login {
 	text-align: center;
 	box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
+
+.form-floating{
+	padding: 7px;
+}
+
 
 div.logo {
 	text-align: center;

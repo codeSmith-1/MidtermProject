@@ -12,7 +12,7 @@
 	<jsp:include page="navBar.jsp" />
 	<div class="container">
 		<div class="row">
-			<div class="col-6">
+			<div class="col">
 				<br>
 							<p><strong>${sb.book.title}</strong><br>
 							<em>Author: ${sb.book.author.firstName} ${sb.book.author.lastName}</em></p>
@@ -23,6 +23,7 @@
 							<tr class="table-dark">
 								<th>User</th>
 								<th>Request Date</th>
+								<th>Message</th>
 								<th>Checked Out Date</th>
 								<th>Return Date</th>
 							</tr>
@@ -32,20 +33,21 @@
 								<tr>
 									<td>${c.user.username}</td>
 									<td>${c.requestDate}</td>
+									<td>${c.requestMessage}</td>
 									<td><c:choose>
 											<c:when test="${not empty c.checkoutDate}">${c.checkoutDate}</c:when>
 											<c:otherwise>
 												<form action="approveCheckout.do" method="POST">
 													<input type="hidden" name="id" value="${c.id}" />
 													<div class="form-floating">
-														<button class="btn btn-dark" type="submit">Approve</button>
+														<button class="btn btn-secondary" type="submit">Approve</button>
 													</div>
 												</form>
-
+												
 												<form action="rejectCheckout.do" method="POST">
 													<input type="hidden" name="id" value="${c.id}" />
 													<div class="form-floating">
-														<button class="btn btn-dark" type="submit">Reject</button>
+														<button class="btn btn-secondary" type="submit">Reject</button>
 													</div>
 												</form>
 											</c:otherwise>
@@ -58,7 +60,7 @@
 												<form action="returned.do" method="POST">
 													<input type="hidden" name="id" value="${c.id}" />
 													<div class="form-floating">
-														<button class="btn btn-dark" type="submit">Returned? Make available.</button>
+														<button class="btn btn-secondary" type="submit">Returned</button>
 													</div>
 												</form>
 											</c:otherwise>
