@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <nav class="navbar navbar-expand-lg bg-light">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="home.do"> <svg
@@ -31,10 +33,12 @@
 				</li>
 			</ul>
 		</div>
-
 		<div class="btn-group">
 			<button class="btn btn-secondary dropdown-toggle" type="button"
 				data-bs-toggle="dropdown" aria-expanded="false">
+		<c:if test="${not empty sessionScope.user}">
+			<h4>${user.username}</h4>
+		</c:if>
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 					fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
 					<path
