@@ -1,5 +1,6 @@
 package com.skilldistillery.booked.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.skilldistillery.booked.data.BookDAO;
 import com.skilldistillery.booked.data.UserDAO;
 import com.skilldistillery.booked.entities.Book;
+import com.skilldistillery.booked.entities.Genre;
 import com.skilldistillery.booked.entities.User;
 
 @Controller
@@ -34,7 +36,7 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "account.do", method = RequestMethod.GET)
-	public String getAccount(HttpSession session, Integer id, Model model) {
+	public String getAccount(HttpSession session, int id, Model model) {
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
 			return "login";
@@ -72,14 +74,19 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "createAccount.do", method = RequestMethod.GET)
-	public String createAccount() {
+	public String createAccount(Model model) {
+		model.addAttribute("genres", bookdao.findAllGenres());
 		return "accountCreate";
 	}
 	
 	@RequestMapping(path = "createAccount.do", method = RequestMethod.POST)
-	public String createAccount(User user, Model model) {
+	public String createAccount(Integer genreId, User user, Model model) {
+		Genre favGenre = bookdao.findGenreById(genreId);
+		List<Genre> genres = new ArrayList<>();
+		genres.add(favGenre);
+		user.setGenres(genres);
 		try {
-			dao.createUser(user);
+			user = dao.createUser(user);
 			model.addAttribute("user", user);
 		} catch (Exception e) {
 			model.addAttribute("user", user);
