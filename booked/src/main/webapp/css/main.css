@@ -50,7 +50,7 @@ div.login {
 	top: 50%;
 	transform: translate(-50%, -50%);
 	width: 20%;
-	height: 40%;
+	height: 45%;
 	padding: 20px;
 	background: #a4a7a7;
 	color: #151713;
@@ -61,7 +61,7 @@ div.login {
 div.logo {
 	text-align: center;
 	font-family: "CopperPlate", fantasy;
-	font-size: 64px;
+	font-size: 128px;
 	color: white;
 }
 
