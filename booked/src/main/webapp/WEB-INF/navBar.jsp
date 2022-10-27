@@ -33,13 +33,13 @@
 					<form action="search.do" class="d-flex" role="search">
 						<input name="search" class="form-control me-2" type="search"
 							placeholder="Search" aria-label="Search">
-						<button class="btn btn-outline-success" type="submit">Search</button>
+						<button class="btn btn-dark" type="submit">Search</button>
 					</form>
 				</li>
 			</ul>
 		</div>
 		<div class="btn-group">
-			<button class="btn btn-secondary dropdown-toggle" type="button"
+			<button class="btn btn-dark dropdown-toggle" type="button"
 				data-bs-toggle="dropdown" aria-expanded="false">
 		<c:if test="${not empty sessionScope.user}">
 			<h4>${user.username}</h4>
