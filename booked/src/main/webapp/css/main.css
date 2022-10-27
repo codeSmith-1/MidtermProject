@@ -1,9 +1,13 @@
 @charset "UTF-8";
 
+html {
+   min-height: 100%;
+}
 body {
-	background-image: url("/images/librarypic.webp");
-	background-color: rgba(var(- -bs-success-rgb), var(- -bs-bg-opacity)) !important;
-	--bs-bg-opacity: .1;
+	background-image: url("/images/libraryimg.jpeg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
 	color: black;
 }
 

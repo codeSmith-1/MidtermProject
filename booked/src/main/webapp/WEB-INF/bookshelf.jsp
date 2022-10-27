@@ -34,9 +34,9 @@
 								<td><c:forEach var="genre" items="${sb.book.genres}">${genre.name}</c:forEach></td>
 								<td>${sb.condition.name}</td>
 								<td><c:choose>
-										<c:when test="${not empty sb.activeRequests}"><strong>Rental requests pending.</strong>
+										<c:when test="${not empty sb.activeRequests}"><strong>Borrow requests pending.</strong>
 										</c:when>
-										<c:otherwise>No active requests</c:otherwise>
+										<c:otherwise>No requests.</c:otherwise>
 									</c:choose>
 								<td><form action="deleteShelfBook.do" method="GET">
 										<input type="hidden" name="id" value="${sb.id}" /> <input
