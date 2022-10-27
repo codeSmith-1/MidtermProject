@@ -91,6 +91,7 @@ public class CheckoutDaoImpl implements CheckoutDAO {
 				.setParameter("uid", uid).getResultList();
 		return checkouts.size() > 0;
 	}
+	
 	@Override
 	public List<Checkout> userHasApprovedCheckouts(int uid) {
 		String sql = "SELECT c FROM Checkout c WHERE c.user.id = :uid AND c.requestDate IS NOT NULL "
@@ -99,4 +100,5 @@ public class CheckoutDaoImpl implements CheckoutDAO {
 				.setParameter("uid", uid).getResultList();
 		return checkouts;
 	}
+	
 }

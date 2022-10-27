@@ -35,7 +35,7 @@
 						</tr>
 					</tbody>
 				</table>
-				<c:if test="${checkedOut}"> ${message}</c:if>
+				<c:if test="${checkedOut}"> <p>${message}</p></c:if>
 				
 				<c:choose><c:when test="${!checkedOut}"> 
 				<p>If you want to borrow this book, send a greeting to the host expressing your interest. They will be notified by your message.</p>

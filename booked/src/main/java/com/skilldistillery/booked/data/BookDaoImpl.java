@@ -104,7 +104,8 @@ public class BookDaoImpl implements BookDAO {
 		}
 		while (numBooksToGet > resultList.size()) {
 			int randomNumGen = (int)(Math.random() * bookIds[bookIds.length-1] + bookIds[0]);
-			if (!resultIds.contains(randomNumGen) && this.findBookById(randomNumGen) != null && this.findBookById(randomNumGen).getGenres().get(0).getId() == genreId) {
+			if (!resultIds.contains(randomNumGen) && this.findBookById(randomNumGen) != null 
+					&& this.findBookById(randomNumGen).getGenres().get(0).getId() == genreId) {
 				resultList.add(this.findBookById(randomNumGen));
 				resultIds.add(randomNumGen);
 			}
