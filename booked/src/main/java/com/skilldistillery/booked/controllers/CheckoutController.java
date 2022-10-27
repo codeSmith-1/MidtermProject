@@ -44,7 +44,6 @@ public class CheckoutController {
 		model.addAttribute("checkedOut", bool);
 		model.addAttribute("message", message);
 
-		// redirect issue
 		return "requestBook";
 	}
 
@@ -75,7 +74,6 @@ public class CheckoutController {
 	@RequestMapping(path = "approveCheckout.do", method = RequestMethod.POST)
 	public String viewCheckoutRequests(HttpSession session, int id, Model model) {
 		boolean approved = cdao.reviewCheckout(id, true);
-//		ShelfBook sb = cdao.findCheckoutById(id).getShelfBook(); 
 		ShelfBook sb = cdao.findCheckoutById(id).getShelfBook();
 		model.addAttribute("sb", sb);
 		model.addAttribute("approved", approved);
@@ -97,5 +95,12 @@ public class CheckoutController {
 		model.addAttribute("sb", sb);
 		return "viewShelfBook";
 	}
+//	@RequestMapping(path = "returnedByBorrower.do", method = RequestMethod.POST)
+//	public String returnedByBorrower(HttpSession session, int id, Model model) {
+//		cdao.receiveCheckout(id);
+//		ShelfBook sb = cdao.findCheckoutById(id).getShelfBook();
+//		model.addAttribute("sb", sb);
+//		return "viewShelfBook";
+//	}
 
 }

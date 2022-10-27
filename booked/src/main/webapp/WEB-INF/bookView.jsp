@@ -36,8 +36,8 @@
 								<c:if test="${not empty sessionScope.user}">
 									<td><c:choose>
 											<c:when test="${not empty userRating}">
-												<form action="updateRating.do" method="POST">
-													<select name="rating" class="form-select">
+												<form action="updateRating.do?id=${book.id}" method="POST">
+													<select name="ratingValue" class="form-select">
 														<c:forEach var="num" items="1,2,3,4,5">
 															<c:choose>
 																<c:when test="${userRating.rating == num}">
@@ -54,9 +54,9 @@
 												</form>
 											</c:when>
 											<c:otherwise>
-												<form action="rateBook.do" method="POST">
-													<select name="rating" class="form-select">
-														<option selected>Open this select menu</option>
+												<form action="rateBook.do?id=${book.id}" method="POST">
+													<select name="ratingValue" class="form-select">
+														<option selected>Rate book</option>
 														<option value="1">1</option>
 														<option value="2">2</option>
 														<option value="3">3</option>
