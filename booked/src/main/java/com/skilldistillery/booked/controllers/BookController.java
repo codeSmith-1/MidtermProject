@@ -189,9 +189,11 @@ public class BookController {
 		}
 		Book newFavBook = bookdao.findBookById(id);
 		List<Book> favBooks = user.getFavBooks();
-		favBooks.add(newFavBook);
-		user.setFavBooks(favBooks);
-		user = udao.updateFavList(user.getId(), user);
+		if (!favBooks.contains(newFavBook)) {
+			favBooks.add(newFavBook);
+			user.setFavBooks(favBooks);
+			user = udao.updateFavList(user.getId(), user);
+		}
 		model.addAttribute("favs", user.getFavBooks());
 		model.addAttribute("allBooks", bookdao.findAllBooks());
 		return "library";

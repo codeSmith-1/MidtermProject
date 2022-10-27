@@ -10,6 +10,7 @@
 </head>
 <body>
 	<jsp:include page="navBar.jsp" />
+	<br>
 	<div class="container">
 	<div style="height:700px;overflow:auto;">
 		<table class="table table-secondary table-bordered border-black caption-top table-striped">
