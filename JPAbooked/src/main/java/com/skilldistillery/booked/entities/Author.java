@@ -1,5 +1,6 @@
 package com.skilldistillery.booked.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -94,4 +95,17 @@ public class Author {
 		return "Author [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + "]";
 	}
 
+	public void addUser(User user) {
+		if(users == null) {users = new ArrayList<>();}
+		if(users.contains(user)) {
+			users.add(user);
+			user.addAuthor(this);
+		}
+	}
+	public void removeUser(User user) {
+		if(users != null && users.contains(user)) {
+			users.remove(user);
+			user.removeAuthor(this);
+		}
+	}
 }
