@@ -9,23 +9,31 @@
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
-	<jsp:include page="navBar.jsp" />
-	<div class="container">
+<div class="logo">
+<p>booked</p>
+</div>
+<div class="login">
 		<h2>LOGIN</h2>
 		<form action="login.do" method="POST">
-			<input type="text" placeholder="Unique User Name" name="username">
-			<input placeholder="Password" type="password" name="password" /> <input
-				type="submit" value="Log In">
+		<br><input type="text" placeholder="User Name" name="username">
+		<br><input placeholder="Password" type="password" name="password" />
+		<br><input type="submit" value="Log In">
 		</form>
 		<form action="createAccount.do" method="GET">
-			<input type="submit" value="Create Account">
+		<br><input type="submit" value="Create Account">
 		</form>
+		<form action="library.do" method="GET">
+		<br><input type="submit" value="Browse">
+		</form>
+	
 		<c:choose>
 			<c:when test="${invalid == true}">
 				<p>Invalid User Name or Password</p>
 			</c:when>
 		</c:choose>
-	</div>
+		
+		
+</div>
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>
