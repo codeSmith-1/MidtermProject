@@ -39,15 +39,12 @@
 			</ul>
 		</div>
 		<div class="btn-group">
+
 			<button class="btn btn-dark dropdown-toggle" type="button"
-				data-bs-toggle="dropdown" aria-expanded="false">
-		<c:if test="${not empty sessionScope.user}">
-			<h4>${user.username}</h4>
-		</c:if>
+				data-bs-toggle="dropdown" aria-expanded="false"> ${user.username}
 				<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 					fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-					<path
-						d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" /></svg>
+					<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" /></svg>
 			</button>
 			<ul class="dropdown-menu dropdown-menu-end">
 				<li><a class="dropdown-item gap-2" href="account.do">Account</a></li>
