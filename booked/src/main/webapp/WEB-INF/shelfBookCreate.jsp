@@ -11,6 +11,7 @@
 <body>
 	<jsp:include page="navBar.jsp" />
 	<div class="container">
+	<h2>Add a ${book.title} to shelf</h2>
 		<form action="addShelfBook.do" method="POST">
 		
 			<div class="row">
@@ -48,7 +49,7 @@
 			<br>			
 			<div class="row justify-content-center">
 				<div class="col">
-					<input type="submit" value="Submit" />
+					<button class="btn btn-secondary" type="submit">Add</button>
 				</div>
 			</div>
 			
