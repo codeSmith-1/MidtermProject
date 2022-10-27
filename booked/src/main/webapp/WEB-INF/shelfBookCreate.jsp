@@ -21,22 +21,10 @@
 			
 			<div class="row">
 				<div class="col align-self-center">
-					<h3>Title: ${book.title}</h3>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col align-self-center">
-					<h3>Author: ${book.author.firstName} ${book.author.lastName}</h3>
-				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col align-self-center">
-				<h3>Genres: </h3><c:forEach var="genre" items="${genres }"><h3>${genre.name}</h3></c:forEach>
-				</div>
-			</div>
-			
+					<p><strong>${book.title}</strong><br>
+					<em>Author: ${book.author.firstName} ${book.author.lastName}</em></p>
+					</div>
+			</div>			
 			<div class="row">
 				<div class="col align-self-center">
 					<label for="conditionId" class="form-label">Condition</label> <select

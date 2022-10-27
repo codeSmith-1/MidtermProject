@@ -44,11 +44,13 @@ public class BookController {
 	public String viewBook(int id, HttpSession session, Model model) {
 		Book book = bookdao.findBookById(id);
 		User user = (User) session.getAttribute("user");
-		if (user != null) {
+		if (user != null && rdao.getUserRating(user, book) != null) {
+			System.out.println(book);
+			System.out.println(user);
 			Rating userRating = rdao.getUserRating(user, book);
+			System.out.println(rdao.getUserRating(user, book));
 			model.addAttribute("userRating", userRating);
 		}
-		
 		List<Comment> comments = cdao.findCommentsByBookId(id);
 		book.setComments(comments);
 		model.addAttribute("book", book);
@@ -56,31 +58,32 @@ public class BookController {
 		
 		return "bookView";
 	}
+	
+	@RequestMapping(path = "rateBook.do", method = RequestMethod.POST)
+	public String rateBook(int id, int ratingValue, HttpSession session, Model model) {
+		User user = (User) session.getAttribute("user");
+		boolean bool = rdao.createRating(id, ratingValue, user.getId());
+		return "redirect:viewBook.do?id="+id;
+	}
+	
+	@RequestMapping(path = "updateRating.do", method = RequestMethod.POST)
+	public String updateRating(int id, int ratingValue, HttpSession session, Model model) {
+		
+		User user = (User) session.getAttribute("user");
+		Book book = bookdao.findBookById(id);
+		Rating rating = rdao.getUserRating(user, book);
+		rating.setRating(ratingValue);
+		rdao.updateRating(rating);
+		return "redirect:viewBook.do?id="+id;
+	}
 
 	@RequestMapping(path = "viewShelfBook.do", method = RequestMethod.GET)
 	public String viewShelfBook(int id, HttpSession session, Model model) {
 		ShelfBook sb = sbdao.findShelfBookById(id);
 		model.addAttribute("sb", sb);
-		// in jsp access list comments
 		return "viewShelfBook";
 	}
 	
-	@RequestMapping(path = "rateBook.do", method = RequestMethod.POST)
-	public String rateBook(int id, Rating rating, HttpSession session, Model model) {
-		User user = (User) session.getAttribute("user");
-		boolean bool = rdao.createRating(id, rating, user.getId());
-		return "viewShelfBook?id="+id;
-	}
-	
-	@RequestMapping(path = "updateRating.do", method = RequestMethod.POST)
-	public String updateRating(int id, int rid, HttpSession session, Model model) {
-		User user = (User) session.getAttribute("user");
-		Book book = bookdao.findBookById(id);
-		Rating rating = rdao.getUserRating(user, book);
-		rating.setRating(rid);
-		rdao.updateRating(rating, rid);
-		return "viewShelfBook?id="+id;
-	}
 	
 	@RequestMapping(path = "myBookshelf.do", method = RequestMethod.GET)
 	public String viewBookshelf(HttpSession session, Model model) {
