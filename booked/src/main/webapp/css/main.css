@@ -22,3 +22,19 @@ body {
 	font-size: 42px;
 	color: white;
 }
+
+p{
+	color: white;
+}
+
+caption{
+	font-family: "CopperPlate", fantasy;
+	font-size: 28px;
+	color: white;
+}
+
+label{
+	font-family: "CopperPlate", fantasy;
+	font-size: 18px;
+	color: white;
+}
