@@ -51,7 +51,7 @@ public class LoginController {
 			user = dao.getUserByUserNameAndPassword(username, password);
 		} catch (Exception e) {
 			boolean invalid = true;
-			session.setAttribute("invalid", invalid);
+			model.addAttribute("invalid", invalid);
 			return "login";
 		}
 		if (user != null) {

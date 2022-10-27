@@ -11,6 +11,8 @@
 <body>
 	<jsp:include page="navBar.jsp" />
 	<div class="container">
+	<br>
+	<h2>Change Password for ${user.firstName}</h2>
 		<form action="updatePassword.do?id=${user.id}" method="POST">
 			<div class="row justify-content-center">
 				<div class="col">
@@ -32,7 +34,7 @@
 			</div>
 			<div class="row justify-content-center">
 				<div class="col">
-					<input type="submit" value="Submit" />
+					<button class="btn btn-dark" type="submit">Submit</button>
 				</div>
 			</div>
 		</form>
