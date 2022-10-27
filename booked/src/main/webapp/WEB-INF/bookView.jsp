@@ -11,8 +11,11 @@
 <body>
 	<jsp:include page="navBar.jsp" />
 	<div class="container">
-		<div class="row">
+	
+	
+	
 			<div class="col-6">
+			<div class="row">
 				<table class="table table-secondary table-bordered border-black caption-top table-striped">
 					<caption><strong>${book.title}</strong></caption>
 					<thead>
@@ -48,7 +51,7 @@
 														</c:choose>
 
 													</c:forEach>
-												</select> <input type="submit" value="Update" />
+												</select><button class="btn btn-dark" type="submit">Update</button>
 											</form>
 										</c:when>
 										<c:otherwise>
@@ -59,7 +62,7 @@
 													<option value="3">3</option>
 													<option value="4">4</option>
 													<option value="5">5</option>
-												</select> <input type="submit" value="Rate" />
+												</select><button class="btn btn-dark" type="submit">Rate</button>
 											</form>
 										</c:otherwise>
 									</c:choose></td>
@@ -68,8 +71,10 @@
 					</tbody>
 				</table>
 			</div>
-		</div>
-		<div class="col-5">
+		
+		
+		
+		<div class="row">
 			<table class="table table-secondary table-bordered border-black caption-top table-striped">
 				<caption><strong>Copies in library</strong></caption>
 				<thead>
@@ -101,7 +106,11 @@
 				</tbody>
 			</table>
 		</div>
-	<div>
+			</div>
+		
+		
+		
+	<div class="col-6">
 		<ul class="list-group" style="background:transparent">
 			<c:forEach var="c" items="${book.comments}">
 				<li class="list-group-item comments">
@@ -117,8 +126,8 @@
 			<div class="form-floating">
 				<textarea name="comment" class="form-control"
 					placeholder="Leave a comment here" id="floatingTextarea2"
-					style="height: 75px; width:700px"></textarea>
-				<input type="submit" value="Submit">
+					style="height: 75px; width:500px"></textarea>
+				<button class="btn btn-dark" type="submit">Submit</button>
 			</div>
 		</form>
 	</div>

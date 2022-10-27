@@ -15,7 +15,7 @@
 			<div class="col-3">
 				<h2>Hey ${user.firstName}</h2>
 				<div class="dropdown">
-					<button class="btn btn-secondary dropdown-toggle" type="button"
+					<button class="btn btn-dark dropdown-toggle" type="button"
 						data-bs-toggle="dropdown" aria-expanded="false">Account
 						Options</button>
 					<ul class="dropdown-menu">

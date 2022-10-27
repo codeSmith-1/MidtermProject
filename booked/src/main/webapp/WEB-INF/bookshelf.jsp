@@ -39,8 +39,8 @@
 										<c:otherwise>No requests.</c:otherwise>
 									</c:choose>
 								<td><form action="deleteShelfBook.do" method="GET">
-										<input type="hidden" name="id" value="${sb.id}" /> <input
-											type="submit" value="Remove book from shelf." />
+										<input type="hidden" name="id" value="${sb.id}" />
+										<button class="btn btn-dark" type="submit">Remove From Bookshelf</button>
 									</form></td>
 							</tr>
 						</c:forEach>
@@ -54,7 +54,7 @@
 		<div class="row">
 			<div class="col-6">
 				<form action="addBook.do" method="GET">
-					<input type="submit" value="Add a Book to My Shelf">
+					<button class="btn btn-dark" type="submit">Add a Book to Bookshelf</button>
 				</form>
 			</div>
 		</div>

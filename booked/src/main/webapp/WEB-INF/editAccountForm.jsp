@@ -5,13 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${user}</title>
+<title>Update Account</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
 	<jsp:include page="navBar.jsp" />
 	<div class="container">
-		<h3>Edit Account Details for ${user.firstName}</h3>
+	<br>
+		<h2>Edit Account Details for ${user.firstName}</h2>
 		<form action="editAccount.do?id=${user.id}" method="POST">
 			<div class="row justify-content-center">
 				<div class="col">
@@ -62,8 +63,11 @@
 		<input type="text" name="email" value="${user.reading}"/> --%>
 		<div class="row justify-content-center">
 				<div class="col">
-			<input type="submit" value="Submit" />
+			<button class="btn btn-dark" type="submit">Submit</button>
 			</div></div>
+		</form>
+		<form action="delete.do" method="POST">
+			<button class="btn btn-dark" type="submit">Delete My Account</button>
 		</form>
 	</div>
 	<jsp:include page="bootstrapFoot.jsp" />
