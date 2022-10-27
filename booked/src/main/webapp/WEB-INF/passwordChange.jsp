@@ -15,7 +15,7 @@
 			<div class="row justify-content-center">
 				<div class="col">
 				<label for="username" class="form-label">Username </label>
-					<input type="text" name="username" />
+					<input type="text" value="${user.username}" />
 				</div>
 			</div>
 			<div class="row justify-content-center">
