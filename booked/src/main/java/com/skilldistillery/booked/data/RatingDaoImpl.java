@@ -23,10 +23,10 @@ public class RatingDaoImpl implements RatingDAO {
 		String sql = "SELECT r FROM Rating r WHERE user.id = :uid AND book.id = :bid";
 		Rating rating = null;
 		try {
-			rating = em.createQuery(sql, Rating.class).setParameter("uid", user.getId()).setParameter("bid", book.getId())
+			rating = em.createQuery(sql, Rating.class).setParameter("uid", user.getId())
+					.setParameter("bid", book.getId())
 					.getSingleResult();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			System.err.println("Rating not found.");
 		}
 		return rating;
@@ -40,12 +40,14 @@ public class RatingDaoImpl implements RatingDAO {
 	}
 
 	@Override
-	public boolean createRating(int bid, Rating rating, int uid) {
-		Book book = em.find(Book.class, uid);
+	public boolean createRating(int bid, int ratingValue, int uid) {
+		Book book = em.find(Book.class, bid);
 		User user = em.find(User.class, uid);
 		if (user != null && book != null) {
 			RatingId id = new RatingId(bid, uid);
+			Rating rating = new Rating();
 			rating.setId(id);
+			rating.setRating(ratingValue);
 			rating.setBook(book);
 			rating.setUser(user);
 			em.persist(rating);
@@ -56,15 +58,10 @@ public class RatingDaoImpl implements RatingDAO {
 	}
 
 	@Override
-	public Rating updateRating(Rating rating, int rid) {
+	public Rating updateRating(Rating rating) {
 		Rating userRating = em.find(Rating.class, rating.getId());
-		if (rating != null) {
-			userRating.setRating(rating.getRating());
-		}
-		// will overwrite existing rating with "empty string" if none provided. Need to
-		// test for " " if we want to use
-//		userRating.setRatingComment(rating.getRatingComment());
-		em.persist(userRating);
+		em.remove(userRating);
+		em.persist(rating);
 		return userRating;
 	}
 

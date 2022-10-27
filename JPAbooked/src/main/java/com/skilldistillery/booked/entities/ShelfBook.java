@@ -149,5 +149,17 @@ public class ShelfBook {
 		return "ShelfBook [id=" + id + ", forBorrow=" + forBorrow + ", forSale=" + forSale + ", salePrice=" + salePrice
 				+ "]";
 	}
-
+	public void addCheckout(Checkout check) {
+		if(checkouts == null) {checkouts = new ArrayList<>();}
+		if(!checkouts.contains(check)) {
+			checkouts.add(check);
+			check.setShelfBook(this);
+		}
+	}
+	public void removeCheckout(Checkout check) {
+		if(checkouts != null && checkouts.contains(check)) {
+			checkouts.remove(check);
+			check.setShelfBook(null);
+		}
+	}
 }

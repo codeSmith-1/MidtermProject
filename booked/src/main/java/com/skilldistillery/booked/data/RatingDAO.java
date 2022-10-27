@@ -6,7 +6,7 @@ import com.skilldistillery.booked.entities.User;
 
 public interface RatingDAO {
 	Rating getAverageRating(int bid);
-	boolean createRating(int bid, Rating rating, int uid);
+	boolean createRating(int bid, int ratingValue, int uid);
 	Rating getUserRating(User uid, Book bid);
-	Rating updateRating(Rating rating, int rid);
+	Rating updateRating(Rating rating);
 }

@@ -27,6 +27,7 @@
 				</div>
 			</div>
 			<div class="col-9">
+
 				<table class="table table-secondary table-bordered border-black caption-top table-striped">
 				<caption><strong>Suggested books based on genre</strong></caption>
 					<thead>
@@ -48,8 +49,10 @@
 
 		</div>
 		<div class="row">
+
 			<table class="table table-secondary table-bordered border-black caption-top table-striped">
 			<caption><strong>Your favorite books</strong></caption>
+
 				<thead>
 					<tr class="table-dark">
 						<th>Title</th>
@@ -69,6 +72,41 @@
 			</table>
 		</div>
 	</div>
+
+	<c:if test="${not empty checkouts}">
+		<div class="row">
+			<table class="table table-bordered">
+				<caption class="sfcaption">Active checkouts</caption>
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Owner</th>
+						<th>Checkout Date</th>
+						<th>Return</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach var="chk" items="${checkouts}">
+						<tr>
+							<td>${chk.shelfBook.book.title}</td>
+							<td>${chk.shelfBook.user.username}
+								<td>${chk.checkoutDate}</td>
+							<td>
+								<form action="returned.do" method="POST">
+													<input type="hidden" name="id" value="${chk.id}" />
+													<div class="form-floating">
+														<input type="submit" value="Return">
+													</div>
+												</form>
+							
+							<td></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			</div>
+	</c:if>
+
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>
 </html>

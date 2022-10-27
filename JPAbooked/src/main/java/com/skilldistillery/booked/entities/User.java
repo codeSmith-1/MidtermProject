@@ -1,5 +1,6 @@
 package com.skilldistillery.booked.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -290,4 +291,96 @@ public class User {
 				+ ", lastName=" + lastName + ", aboutMe=" + aboutMe + ", profileImg=" + profileImg + "]";
 	}
 
+	public void addComment(Comment comment) {
+		if(comments == null) {comments = new ArrayList<>();}
+		if(!comments.contains(comment)) {
+			comments.add(comment);
+			comment.setUser(this);
+		}
+	}
+	public void removeComment(Comment comment) {
+		if(comments != null && comments.contains(comment)) {
+			comments.remove(comment);
+			comment.setUser(null);
+		}
+	}
+	public void addShelfBook(ShelfBook sb) {
+		if(shelfBooks == null) {shelfBooks = new ArrayList<>();}
+		if(!shelfBooks.contains(sb)) {
+			shelfBooks.add(sb);
+			sb.setUser(this);;
+		}
+	}
+	public void removeShelfBook(ShelfBook sb) {
+		if(shelfBooks != null && shelfBooks.contains(sb)) {
+			shelfBooks.remove(sb);
+			sb.setUser(null);
+		}
+	}
+	public void addCheckout(Checkout check) {
+		if(checkouts == null) {checkouts = new ArrayList<>();}
+		if(!checkouts.contains(check)) {
+			checkouts.add(check);
+			check.setUser(this);
+		}
+	}
+	public void removeComment(Checkout check) {
+		if(checkouts != null && checkouts.contains(check)) {
+			checkouts.remove(check);
+			check.setUser(null);
+		}
+	}
+	public void addRating(Rating rating) {
+		if(ratings == null) {ratings = new ArrayList<>();}
+		if(!ratings.contains(rating)) {
+			ratings.add(rating);
+			rating.setUser(this);
+		}
+	}
+	public void removeRating(Rating rating) {
+		if(ratings != null && ratings.contains(rating)) {
+			ratings.remove(rating);
+			rating.setUser(null);
+		}
+	}
+	public void addGenre(Genre genre) {
+		if(genres == null) {genres = new ArrayList<>();}
+		if(!genres.contains(genre)) {
+			genres.add(genre);
+			genre.addUser(this);
+		}
+	}
+	public void removeGenre(Genre genre) {
+		if(genres != null && genres.contains(genre)) {
+			genres.remove(genre);
+			genre.removeUser(this);
+		}
+	}
+	public void addAuthor(Author auth) {
+		if(authors == null) {authors = new ArrayList<>();}
+		if(!authors.contains(auth)) {
+			authors.add(auth);
+			auth.addUser(this);
+		}
+	}
+	public void removeAuthor(Author auth) {
+		if(authors != null && authors.contains(auth)) {
+			authors.remove(auth);
+			auth.removeUser(this);
+		}
+	}
+	public void addCurrReading(Book book) {
+		if(reading == null) {reading = new ArrayList<>();}
+		if(!reading.contains(book)) {
+			reading.add(book);
+			book.addUser(this);
+		}
+	}
+	public void removeCurrReading(Book book) {
+		if(reading != null && reading.contains(book)) {
+			reading.remove(book);
+			book.removeUser(this);
+		}
+	}
 }
+

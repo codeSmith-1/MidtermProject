@@ -1,5 +1,6 @@
 package com.skilldistillery.booked.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -171,5 +172,43 @@ public class Book {
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", description=" + description + ", cover=" + cover + "]";
 	}
-	
+	public void addGenre(Genre gen) {
+		if(genres == null) {genres = new ArrayList<>();}
+		if(!genres.contains(gen)) {
+			genres.add(gen);
+			gen.addBook(this);
+		}
+	}
+	public void removeGenre(Genre gen) {
+		if(genres != null && genres.contains(gen)) {
+			genres.remove(gen);
+			gen.removeBook(this);
+		}
+	}
+	public void addShelfBook(ShelfBook sb) {
+		if(shelfBooks == null) {shelfBooks = new ArrayList<>();}
+		if(!shelfBooks.contains(sb)) {
+			shelfBooks.add(sb);
+			sb.setBook(this);
+		}
+	}
+	public void removeShelfBook(ShelfBook sb) {
+		if(shelfBooks != null && shelfBooks.contains(sb)) {
+			shelfBooks.remove(sb);
+			sb.setBook(null);
+		}
+	}
+	public void addUser(User user) {
+		if(users == null) {users = new ArrayList<>();}
+		if(!users.contains(user)) {
+			users.add(user);
+			user.addCurrReading(this);
+		}
+	}
+	public void removeUser(User user) {
+		if(users != null && users.contains(user)) {
+			users.remove(user);
+			user.removeCurrReading(this);
+		}
+	}
 }

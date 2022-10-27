@@ -1,5 +1,6 @@
 package com.skilldistillery.booked.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -103,6 +104,32 @@ public class Genre {
 	@Override
 	public String toString() {
 		return "Genre [id=" + id + ", name=" + name + ", description=" + description + ", image=" + image + "]";
+	}
+	public void addUser(User user) {
+		if(users == null) {users = new ArrayList<>();}
+		if(users.contains(user)) {
+			users.add(user);
+			user.addGenre(this);
+		}
+	}
+	public void removeUser(User user) {
+		if(users != null && users.contains(user)) {
+			users.remove(user);
+			user.removeGenre(this);
+		}
+	}
+	public void addBook(Book book) {
+		if(books == null) {books = new ArrayList<>();}
+		if(!books.contains(book)) {
+			books.add(book);
+			book.addGenre(this);
+		}
+	}
+	public void removeBook(Book book) {
+		if(books != null && books.contains(book)) {
+			books.remove(book);
+			book.removeGenre(this);
+		}
 	}
 
 }
