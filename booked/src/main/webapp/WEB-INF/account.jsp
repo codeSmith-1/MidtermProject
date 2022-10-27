@@ -64,7 +64,7 @@
 					<c:forEach var="fav" items="${favs}">
 						<tr>
 							<td>${fav.title}</td>
-							<td>${fav.author.firstName}${fav.author.lastName}</td>
+							<td>${fav.author.firstName} ${fav.author.lastName}</td>
 							<td><c:forEach var="genre" items="${fav.genres}">${genre.name}</c:forEach></td>
 						</tr>
 					</c:forEach>
