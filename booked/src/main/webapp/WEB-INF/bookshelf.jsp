@@ -12,11 +12,11 @@
 	<jsp:include page="navBar.jsp" />
 	<div class="container">
 		<div class="row">
-			<div class="col-6">
-			<table>
-  					<caption class="sfcaption">${user.username }'s Bookshelf</caption>
+			<div class="col">
+			<table class="table table-secondary table-bordered border-black caption-top table-striped">
+  					<caption><strong>${user.username }'s Bookshelf</strong></caption>
 					<thead>
-						<tr>
+						<tr class="table-dark">
 							<th>Title</th>
 							<th>Author</th>
 							<th>Genre</th>

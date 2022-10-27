@@ -100,13 +100,18 @@ public class BookController {
 	public String viewLibrary(HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");
 		model.addAttribute("allBooks", bookdao.findAllBooks());
-		model.addAttribute("favs", user.getFavBooks());
+		if (user != null) {
+			model.addAttribute("favs", user.getFavBooks());
+		}
 		return "library";
 	}
 
 	@RequestMapping(path = "search.do", method = RequestMethod.GET)
 	public String searchLibrary(String search, HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "login";
+		}
 		model.addAttribute("allBooks", bookdao.findBooksByKeyword(search));
 		model.addAttribute("favs", user.getFavBooks());
 		return "library";
@@ -114,6 +119,9 @@ public class BookController {
 
 	@RequestMapping(path = "addShelfBook.do", method = RequestMethod.GET)
 	public String addShelfBook(Integer id, HttpSession session, Model model) {
+		if (session.getAttribute("user") == null) {
+			return "login";
+		}
 		model.addAttribute("book", bookdao.findBookById(id));
 		model.addAttribute("genres", bookdao.findBookById(id).getGenres());
 		model.addAttribute("conditions", bookdao.findAllConditions());
@@ -122,6 +130,7 @@ public class BookController {
 
 	@RequestMapping(path = "addShelfBook.do", method = RequestMethod.POST)
 	public String addShelfBook(Integer conditionId, Integer bookId, ShelfBook sBook, HttpSession session, Model model) {
+		System.err.println("\n\n"+sBook+"\n\n");
 		if (session.getAttribute("user") == null) {
 			return "login";
 		}
@@ -178,6 +187,9 @@ public class BookController {
 	@RequestMapping(path = "addFavBook.do", method = RequestMethod.GET)
 	public String addFavBook(Integer id, HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");
+		if (user == null) {
+			return "login";
+		}
 		Book newFavBook = bookdao.findBookById(id);
 		List<Book> favBooks = user.getFavBooks();
 		favBooks.add(newFavBook);

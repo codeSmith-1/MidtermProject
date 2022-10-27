@@ -28,14 +28,12 @@ public class UserController {
 	private CheckoutDAO cdao;
 
 	@RequestMapping(path = { "/", "home.do" })
-	public String home() {
-//		HttpSession session, Model model
-//		User user = (User) session.getAttribute("user");
-//		model.addAttribute("user", dao.findUserById());
-//		if (user != null) {
-//			model.addAttribute("allBooks", bookdao.findAllBooks());
-//			return "library";
-//		}
+	public String home(HttpSession session, Model model) {
+		User user = (User) session.getAttribute("user");
+		if (user != null) {
+			model.addAttribute("allBooks", bookdao.findAllBooks());
+			return "library";
+		}
 		return "login";
 	}
 

@@ -27,33 +27,34 @@
 				</div>
 			</div>
 			<div class="col-9">
-				<table class="table table-bordered">
-					<caption class="sfcaption">Suggested books based on genre</caption>
+
+				<table class="table table-secondary table-bordered border-black caption-top table-striped">
+				<caption><strong>Suggested books based on genre</strong></caption>
 					<thead>
-						<tr>
+						<tr class="table-dark">
 							<th>Title</th>
 							<th>Author</th>
 							<th>Rating</th>
 						</tr>
 					</thead>
 					<tbody>
-						<c:forEach var="bk" items="${booksInGenre}">
-							<tr>
-								<td>${bk.title}</td>
-								<td>${bk.author.firstName}${bk.author.lastName}</td>
-								<td>${bk.rating}</td>
-							</tr>
-						</c:forEach>
+						<c:forEach var="bk" items="${booksInGenre}"><tr>
+							<td><a href="viewBook.do?id=${bk.id }">${bk.title}</a></td>
+							<td>${bk.author.firstName} ${bk.author.lastName}</td>
+							<td>${bk.rating}</td>
+						</tr></c:forEach>
 					</tbody>
 				</table>
 			</div>
 
 		</div>
 		<div class="row">
-			<table class="table table-bordered">
-				<caption class="sfcaption">Your favorite books</caption>
+
+			<table class="table table-secondary table-bordered border-black caption-top table-striped">
+			<caption><strong>Your favorite books</strong></caption>
+
 				<thead>
-					<tr>
+					<tr class="table-dark">
 						<th>Title</th>
 						<th>Author</th>
 						<th>Genre</th>
