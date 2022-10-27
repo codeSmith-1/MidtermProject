@@ -14,24 +14,24 @@
 </div>
 <div class="login">
 		<h2>LOGIN</h2>
+		
 		<form action="login.do" method="POST">
-		<br><input type="text" placeholder="User Name" name="username">
+		<input type="text" placeholder="User Name" name="username">
 		<br><input placeholder="Password" type="password" name="password" />
-		<br><input type="submit" value="Log In">
+		<br><button class="btn btn-dark" type="submit">Log In</button>
 		</form>
 		<form action="createAccount.do" method="GET">
-		<br><input type="submit" value="Create Account">
+		<br><button class="btn btn-dark" type="submit">Create Account</button>
 		</form>
 		<form action="library.do" method="GET">
-		<br><input type="submit" value="Browse">
+		<br><button class="btn btn-dark" type="submit">Browse</button>
 		</form>
-	
+		
 		<c:choose>
 			<c:when test="${invalid == true}">
 				<p>Invalid User Name or Password</p>
 			</c:when>
 		</c:choose>
-		
 		
 </div>
 	<jsp:include page="bootstrapFoot.jsp" />
