@@ -59,11 +59,7 @@ public class UserController {
 	
 	@RequestMapping(path = "editAccountForm.do", method = RequestMethod.GET)
 	public String editAccount(HttpSession session) {
-//		User user = (User) session.getAttribute("user");
-//		if((user) != null) {
 		if(session.getAttribute("user") !=null) {
-			
-//			model.addAttribute("updated", dao.updateUser(id, user));
 			return "editAccountForm";
 		}
 		return "login";
@@ -102,8 +98,6 @@ public class UserController {
 			}
 			return "accountCreate";
 		}
-//		Address addr = dao.createAddress(address);
-//		dao.createUser(user, addr);
 		return "login";
 	}
 	
@@ -120,9 +114,9 @@ public class UserController {
 	public String updatePassword(User user, String newPassword, Model model) {
 		user = dao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
 		dao.updateUserPassword(user.getId(), newPassword);
-		
 		return "login";
 	}
+	
 	@RequestMapping(path = "delete.do", method = RequestMethod.POST)
 	public String userInactive(HttpSession session, Model model) {
 		User user = (User)session.getAttribute("user");
@@ -132,6 +126,5 @@ public class UserController {
 		}
 		return "login";
 	}
-	
 	
 }

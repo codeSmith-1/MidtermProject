@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.booked.entities.BookCondition;
@@ -19,8 +18,6 @@ public class ShelfBookDaoImpl implements ShelfBookDAO {
 	
 	@PersistenceContext
 	private EntityManager em;
-	@Autowired
-	private BookDAO bookDao;
 
 	@Override
 	public ShelfBook createShelfBook(ShelfBook shelfBook) {

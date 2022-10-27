@@ -7,6 +7,7 @@ import com.skilldistillery.booked.entities.ShelfBook;
 import com.skilldistillery.booked.entities.User;
 
 public interface CheckoutDAO {
+	
 	Checkout findCheckoutById(int id);
 	List<Checkout> findCheckOutsByUserId(int uid);
 	Checkout createCheckout(Checkout checkout);
@@ -16,4 +17,5 @@ public interface CheckoutDAO {
 	boolean checkoutHasCheckoutRequestFromUserId(int uid, int sbid);
 	boolean checkoutApprovedForUserByOwner(int uid, int sbid);
 	List<Checkout> userHasApprovedCheckouts(int uid);
+	
 }
