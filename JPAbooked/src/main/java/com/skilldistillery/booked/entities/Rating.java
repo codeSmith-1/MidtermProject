@@ -11,14 +11,8 @@ import javax.persistence.MapsId;
 
 @Entity
 public class Rating {
-
 	@EmbeddedId
 	private RatingId id;
-
-	private int rating;
-
-	@Column(name = "rating_comment")
-	private String ratingComment;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
@@ -29,6 +23,12 @@ public class Rating {
 	@JoinColumn(name="book_id")
 	@MapsId(value ="bookId")
 	private Book book;
+
+	private int rating;
+
+	@Column(name = "rating_comment")
+	private String ratingComment;
+	
 
 	public Rating() {}
 

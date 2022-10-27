@@ -11,6 +11,10 @@ public class RatingId implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
+	public RatingId(int userId, int bookId) {
+		this.userId = userId;
+		this.bookId = bookId;
+	}
 	@Column(name="user_id")
 	private int userId;
 	
@@ -19,10 +23,6 @@ public class RatingId implements Serializable {
 	
 	public RatingId() {}
 
-	public RatingId(int userId, int bookId) {
-		this.userId = userId;
-		this.bookId = bookId;
-	}
 
 	@Override
 	public int hashCode() {
