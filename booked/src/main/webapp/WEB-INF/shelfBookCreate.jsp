@@ -49,19 +49,23 @@
 				</div>
 			</div>
 			
-			<div class="row justify-content-center">
-				<div class="col">
-					<label for="forBorrow" class="form-label">For Borrow</label> <input
-						type="text" name="forBorrow" />
+				<div class="form-check form-check-inline">
+  					<input class="form-check-input" type="radio" name="forBorrow" id="forBorrow" value="TRUE">
+  					<label class="form-check-label" for="forBorrow">For Borrow</label>
 				</div>
-			</div>
-			
-			<div class="row justify-content-center">
-				<div class="col">
-					<label for="forSale" class="form-label">For Sale</label> <input
-						type="text" name="forSale" />
+				<div class="form-check form-check-inline">
+	  				<input class="form-check-input" type="radio" name="forBorrow" id="forBorrow" value="FALSE">
+  					<label class="form-check-label" for="forBorrow">Not For Borrow</label>
 				</div>
-			</div>
+			<br>
+				<div class="form-check form-check-inline">
+  					<input class="form-check-input" type="radio" name="forSale" id="forSale" value="TRUE">
+  					<label class="form-check-label" for="forSale">For Sale</label>
+				</div>
+				<div class="form-check form-check-inline">
+	  				<input class="form-check-input" type="radio" name="forSale" id="forSale" value="FALSE">
+  					<label class="form-check-label" for="forSale">Not For Sale</label>
+				</div>
 			
 			<div class="row justify-content-center">
 				<div class="col">
