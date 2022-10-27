@@ -86,30 +86,33 @@ public class BookDaoImpl implements BookDAO {
 	}
 
 	@Override
-	public List<Book> booksInGenre(int genreId) {
+	public List<Book> booksInGenre(int favGenreId) {
 		int numBooksToGet = 5;
 		List<Book> allBooks = findAllBooks();
-		List<Book> books = new ArrayList<>();
+		List<Book> booksOfFavGenre = new ArrayList<>();
+		
 		for (Book book : allBooks) {
 			int bookGenreId = book.getGenres().get(0).getId();
-			if (book.getGenres() != null && bookGenreId == genreId) {
-				books.add(book);
+			if (book.getGenres() != null && bookGenreId == favGenreId) {
+				booksOfFavGenre.add(book);
 			}
 		}
+		
+		if (booksOfFavGenre.size() < numBooksToGet) {
+			numBooksToGet = booksOfFavGenre.size();
+		}
+		
 		List<Book> resultList = new ArrayList<>();
 		List<Integer> resultIds = new ArrayList<>();
-		int[] bookIds = new int[books.size()];
-		for (int i = 0; i < books.size(); i++) {
-			bookIds[i] = books.get(i).getId();
-		}
+		
 		while (numBooksToGet > resultList.size()) {
-			int randomNumGen = (int)(Math.random() * bookIds[bookIds.length-1] + bookIds[0]);
-			if (!resultIds.contains(randomNumGen) && this.findBookById(randomNumGen) != null 
-					&& this.findBookById(randomNumGen).getGenres().get(0).getId() == genreId) {
-				resultList.add(this.findBookById(randomNumGen));
+			int randomNumGen = (int)(Math.random() * booksOfFavGenre.size());
+			if (!resultIds.contains(randomNumGen)) {
+				resultList.add(booksOfFavGenre.get(randomNumGen));
 				resultIds.add(randomNumGen);
 			}
 		}
+		
 		return resultList;
 	}
 	
