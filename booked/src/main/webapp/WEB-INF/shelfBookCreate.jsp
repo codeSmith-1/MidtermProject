@@ -45,23 +45,7 @@
 	  				<input class="form-check-input" type="radio" name="forBorrow" id="forBorrow" value="FALSE">
   					<label class="form-check-label" for="forBorrow">Not For Borrow</label>
 				</div>
-			<br>
-				<div class="form-check form-check-inline">
-  					<input class="form-check-input" type="radio" name="forSale" id="forSale" value="TRUE">
-  					<label class="form-check-label" for="forSale">For Sale</label>
-				</div>
-				<div class="form-check form-check-inline">
-	  				<input class="form-check-input" type="radio" name="forSale" id="forSale" value="FALSE">
-  					<label class="form-check-label" for="forSale">Not For Sale</label>
-				</div>
-			
-			<div class="row justify-content-center">
-				<div class="col">
-					<label for="salePrice" class="form-label">Price</label> <input
-						type="text" name="salePrice" />
-				</div>
-			</div>
-			
+			<br>			
 			<div class="row justify-content-center">
 				<div class="col">
 					<input type="submit" value="Submit" />
