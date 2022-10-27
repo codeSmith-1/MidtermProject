@@ -92,7 +92,7 @@
 							<td>${chk.shelfBook.user.username}
 								<td>${chk.checkoutDate}</td>
 							<td>
-								<form action="returned.do" method="POST">
+								<form action="returnedByBorrower.do" method="POST">
 													<input type="hidden" name="id" value="${chk.id}" />
 													<div class="form-floating">
 														<input type="submit" value="Return">

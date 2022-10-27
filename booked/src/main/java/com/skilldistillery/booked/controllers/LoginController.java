@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.booked.data.BookDAO;
+import com.skilldistillery.booked.data.CheckoutDAO;
 import com.skilldistillery.booked.data.UserDAO;
 import com.skilldistillery.booked.entities.Book;
 import com.skilldistillery.booked.entities.User;
@@ -22,6 +23,9 @@ public class LoginController {
 	private UserDAO dao;
 	@Autowired
 	private BookDAO bookdao;
+	
+	@Autowired
+	private CheckoutDAO cdao;
 	
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
 	public String loginView(HttpSession session, Model model) {
@@ -53,6 +57,7 @@ public class LoginController {
 		if (user != null) {
 			session.setAttribute("user", user);
 		}
+		model.addAttribute("checkouts", cdao.userHasApprovedCheckouts(user.getId()));
 		model.addAttribute("favs", user.getFavBooks());
 		user = dao.findUserById(user.getId());
 		if (user.getGenres().size() > 0) {

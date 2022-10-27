@@ -41,7 +41,7 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "account.do", method = RequestMethod.GET)
-	public String getAccount(HttpSession session, int id, Model model) {
+	public String getAccount(HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");
 		if (user == null) {
 			return "login";

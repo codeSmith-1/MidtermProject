@@ -101,12 +101,10 @@ public class CheckoutController {
 		model.addAttribute("sb", sb);
 		return "viewShelfBook";
 	}
-//	@RequestMapping(path = "returnedByBorrower.do", method = RequestMethod.POST)
-//	public String returnedByBorrower(HttpSession session, int id, Model model) {
-//		cdao.receiveCheckout(id);
-//		ShelfBook sb = cdao.findCheckoutById(id).getShelfBook();
-//		model.addAttribute("sb", sb);
-//		return "viewShelfBook";
-//	}
+	@RequestMapping(path = "returnedByBorrower.do", method = RequestMethod.POST)
+	public String returnedByBorrower(HttpSession session, int id, Model model) {
+		cdao.receiveCheckout(id);
+		return "account";
+	}
 
 }
