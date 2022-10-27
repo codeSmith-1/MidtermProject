@@ -76,8 +76,7 @@
 					<tr class="table-dark">
 						<th>Owner</th>
 						<th>Condition</th>
-						<th>Available to borrow</th>
-						<th>Available to purchase</th>
+						<th>Borrow</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -90,11 +89,6 @@
 										<a href="requestBook.do?id=${b.id}">Request</a>
 									</c:when>
 									<c:otherwise>Unavailable</c:otherwise>
-								</c:choose></td>
-							<td><c:choose>
-									<c:when test="${b.forSale}">Request
-										</c:when>
-									<c:otherwise>Not for sale</c:otherwise>
 								</c:choose></td>
 						</tr>
 					</c:forEach>
