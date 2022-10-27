@@ -80,7 +80,7 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public boolean removeUser(int userId) {
 		boolean success = false;
-		User user = em.find(User.class, findUserById(userId));
+		User user = em.find(User.class, userId);
 		if (user!= null && user.getEnabled()) {
 			user.setEnabled(false);
 			em.persist(user);

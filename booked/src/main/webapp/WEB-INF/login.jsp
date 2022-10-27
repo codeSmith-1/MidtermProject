@@ -32,6 +32,11 @@
 				<p>Invalid User Name or Password</p>
 			</c:when>
 		</c:choose>
+		<c:choose>
+			<c:when test="${inactive == true}">
+				<p>Account Successfully Removed</p>
+			</c:when>
+		</c:choose>
 		
 </div>
 	<jsp:include page="bootstrapFoot.jsp" />

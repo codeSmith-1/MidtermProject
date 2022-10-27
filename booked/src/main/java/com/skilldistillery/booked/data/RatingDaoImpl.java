@@ -27,7 +27,6 @@ public class RatingDaoImpl implements RatingDAO {
 					.setParameter("bid", book.getId())
 					.getSingleResult();
 		} catch (Exception e) {
-			System.err.println("Rating not found.");
 		}
 		return rating;
 	}

@@ -49,9 +49,11 @@ public class LoginController {
 		User user = new User();
 		try {
 			user = dao.getUserByUserNameAndPassword(username, password);
+			if (!user.getEnabled()) {
+				throw new Exception("Disabled account");
+			}
 		} catch (Exception e) {
-			boolean invalid = true;
-			model.addAttribute("invalid", invalid);
+			model.addAttribute("invalid", true);
 			return "login";
 		}
 		if (user != null) {
