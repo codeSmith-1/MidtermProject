@@ -50,7 +50,6 @@ public class LoginController {
 		try {
 			user = dao.getUserByUserNameAndPassword(username, password);
 		} catch (Exception e) {
-			e.printStackTrace();
 			boolean invalid = true;
 			session.setAttribute("invalid", invalid);
 			return "login";
