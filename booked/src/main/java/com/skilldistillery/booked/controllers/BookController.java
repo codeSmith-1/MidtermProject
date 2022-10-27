@@ -68,6 +68,7 @@ public class BookController {
 	
 	@RequestMapping(path = "updateRating.do", method = RequestMethod.POST)
 	public String updateRating(int id, int ratingValue, HttpSession session, Model model) {
+		
 		User user = (User) session.getAttribute("user");
 		Book book = bookdao.findBookById(id);
 		Rating rating = rdao.getUserRating(user, book);

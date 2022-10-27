@@ -14,13 +14,10 @@
 		<div class="row">
 			<div class="col-6">
 				<!-- This table is Books, not ShelfBooks -->
-					<h4>Borrow requests</h4>
-							<p>Title: <strong>${sb.book.title}</strong></p>
-							<p>by: <em>${sb.book.author.firstName} ${sb.book.author.lastName}</em></p>
-
-<br>
+				<br>
+							<p><strong>${sb.book.title}</strong><br>
+							<em>Author: ${sb.book.author.firstName} ${sb.book.author.lastName}</em></p>
 				<c:if test="${not empty sb.checkouts }">
-
 					<table class="table table-secondary table-bordered border-black caption-top table-striped">
 					<caption><strong>Requests for this book</strong></caption>
 						<thead>
