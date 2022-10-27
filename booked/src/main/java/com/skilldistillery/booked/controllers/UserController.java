@@ -123,7 +123,15 @@ public class UserController {
 		
 		return "login";
 	}
-	
+	@RequestMapping(path = "delete.do", method = RequestMethod.POST)
+	public String userInactive(HttpSession session, Model model) {
+		User user = (User)session.getAttribute("user");
+		if(user != null) {
+			model.addAttribute("inactive", dao.removeUser(user.getId()));
+			session.removeAttribute("user");
+		}
+		return "login";
+	}
 	
 	
 }
