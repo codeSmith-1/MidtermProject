@@ -2,39 +2,66 @@
 
 body {
 	background-image: url("/images/librarypic.webp");
-	background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
+	background-color: rgba(var(- -bs-success-rgb), var(- -bs-bg-opacity)) !important;
 	--bs-bg-opacity: .1;
 	color: black;
 }
 
-.bg-info {
+.bg-info { 
 	--bs-bg-opacity: .1;
-	background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
+	background-color: rgba(var(- -bs-success-rgb), var(- -bs-bg-opacity)) !important;
 }
 
 .dropdown-toggle {
-	background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;
+	background-color: rgba(var(- -bs-success-rgb), var(- -bs-bg-opacity)) !important;
 	--bs-bg-opacity: .5;
-} 
+}
 
-.container h2{
+.container h2 {
 	font-family: "CopperPlate", fantasy;
 	font-size: 42px;
 	color: white;
 }
 
-p{
+p {
 	color: white;
 }
 
-caption{
+caption {
 	font-family: "CopperPlate", fantasy;
 	font-size: 28px;
 	color: white;
 }
 
-label{
+label {
 	font-family: "CopperPlate", fantasy;
 	font-size: 18px;
 	color: white;
+}
+
+div.login {
+	border-radius: 25px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 20%;
+	height: 40%;
+	padding: 20px;
+	background: #a4a7a7;
+	color: #151713;
+	text-align: center;
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+
+div.logo {
+	text-align: center;
+	font-family: "CopperPlate", fantasy;
+	font-size: 64px;
+	color: white;
+}
+
+li.comments {
+	color:white;
+	background:transparent;
 }
