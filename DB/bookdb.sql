@@ -189,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `comment` LONGTEXT NOT NULL,
   `user_id` INT NOT NULL,
   `book_id` INT NOT NULL,
-  `comment_date` DATE NOT NULL,
+  `comment_date` DATE NULL,
   `in_reply_to_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_comments_user1_idx` (`user_id` ASC),
@@ -484,26 +484,26 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `bookdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (1, 'Wall111', 'Wall!', 1, 'USER', 1, 'Wall@example.com', 'Brenton', 'Wall', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (2, 'Finney212', 'Finney!', 1, 'USER', 2, 'Finney@example.com', 'Myles', 'Finney', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (3, 'Desimone313', 'Desimone!', 1, 'USER', 3, 'Desimone@example.com', 'Red', 'Desimone', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (4, 'Poirier414', 'Poirier!', 1, 'USER', 4, 'Poirier@example.com', 'Juancarlos', 'Poirier', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (5, 'Call515', 'Call!', 1, 'USER', 5, 'Call@example.com', 'Brian', 'Call', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (6, 'Keen616', 'Keen!', 1, 'USER', 6, 'Keen@example.com', 'Krysta', 'Keen', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (7, 'Bergeron717', 'Bergeron!', 0, 'USER', 7, 'Bergeron@example.com', 'Darian', 'Bergeron', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (8, 'Glasgow818', 'Glasgow!', 0, 'USER', 8, 'Glasgow@example.com', 'Pranav', 'Glasgow', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (9, 'Eaton919', 'Eaton!', 1, 'USER', 9, 'Eaton@example.com', 'Sidney', 'Eaton', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (10, 'Blanton1010', 'Blanton!', 1, 'USER', 10, 'Blanton@example.com', 'Josefina', 'Blanton', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (11, 'Ashworth1111', 'Ashworth!', 1, 'USER', 11, 'Ashworth@example.com', 'Jenifer', 'Ashworth', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (12, 'Engel1212', 'Engel!', 1, 'USER', 12, 'Engel@example.com', 'Karlee', 'Engel', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (13, 'Russ1313', 'Russ!', 1, 'USER', 13, 'Russ@example.com', 'Alani', 'Russ', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (14, 'Kidd1414', 'Kidd!', 1, 'USER', 14, 'Kidd@example.com', 'Amiyah', 'Kidd', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (15, 'Mallory1515', 'Mallory!', 1, 'USER', 15, 'Mallory@example.com', 'Trae', 'Mallory', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (16, 'Mauldin1616', 'Mauldin!', 1, 'USER', 16, 'Mauldin@example.com', 'Kalie', 'Mauldin', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (17, 'Baez1717', 'Baez!', 1, 'USER', 17, 'Baez@example.com', 'Keegan', 'Baez', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (18, 'Markham1818', 'Markham!', 1, 'USER', 18, 'Markham@example.com', 'Devonta', 'Markham', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (19, 'Jean1919', 'Jean!', 1, 'USER', 19, 'Jean@example.com', 'Juliann', 'Jean', '', '');
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (20, 'Wyman2020', 'Wyman!', 1, 'USER', 20, 'Wyman@example.com', 'Samson', 'Wyman', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (1, 'Wall@example.com', 'Wall!', 1, 'USER', 1, 'Wall@example.com', 'Brenton', 'Wall', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (2, 'Finney@example.com', 'Finney!', 1, 'USER', 2, 'Finney@example.com', 'Myles', 'Finney', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (3, 'Desimone@example.com', 'Desimone!', 1, 'USER', 3, 'Desimone@example.com', 'Red', 'Desimone', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (4, 'Poirier@example.com', 'Poirier!', 1, 'USER', 4, 'Poirier@example.com', 'Juancarlos', 'Poirier', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (5, 'Call@example.com', 'Call!', 1, 'USER', 5, 'Call@example.com', 'Brian', 'Call', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (6, 'Keen@example.com', 'Keen!', 1, 'USER', 6, 'Keen@example.com', 'Krysta', 'Keen', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (7, 'Bergeron@example.com', 'Bergeron!', 0, 'USER', 7, 'Bergeron@example.com', 'Darian', 'Bergeron', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (8, 'Glasgow@example.com', 'Glasgow!', 0, 'USER', 8, 'Glasgow@example.com', 'Pranav', 'Glasgow', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (9, 'Eaton@example.com', 'Eaton!', 1, 'USER', 9, 'Eaton@example.com', 'Sidney', 'Eaton', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (10, 'Blanton@example.com', 'Blanton!', 1, 'USER', 10, 'Blanton@example.com', 'Josefina', 'Blanton', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (11, 'Ashworth@example.com', 'Ashworth!', 1, 'USER', 11, 'Ashworth@example.com', 'Jenifer', 'Ashworth', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (12, 'Engel@example.com', 'Engel!', 1, 'USER', 12, 'Engel@example.com', 'Karlee', 'Engel', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (13, 'Russ@example.com', 'Russ!', 1, 'USER', 13, 'Russ@example.com', 'Alani', 'Russ', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (14, 'Kidd@example.com', 'Kidd!', 1, 'USER', 14, 'Kidd@example.com', 'Amiyah', 'Kidd', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (15, 'Mallory@example.com', 'Mallory!', 1, 'USER', 15, 'Mallory@example.com', 'Trae', 'Mallory', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (16, 'Mauldin@example.com', 'Mauldin!', 1, 'USER', 16, 'Mauldin@example.com', 'Kalie', 'Mauldin', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (17, 'Baez@example.com', 'Baez!', 1, 'USER', 17, 'Baez@example.com', 'Keegan', 'Baez', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (18, 'Markham@example.com', 'Markham!', 1, 'USER', 18, 'Markham@example.com', 'Devonta', 'Markham', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (19, 'Jean@example.com', 'Jean!', 1, 'USER', 19, 'Jean@example.com', 'Juliann', 'Jean', '', '');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (20, 'Wyman@example.com', 'Wyman!', 1, 'USER', 20, 'Wyman@example.com', 'Samson', 'Wyman', '', '');
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (21, 'Alcantar@example.com', 'Alcantar!', 1, 'USER', 21, 'Alcantar@example.com', 'Michael', 'Alcantar', '', '');
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (22, 'Coble@example.com', 'Coble!', 1, 'USER', 22, 'Coble@example.com', 'Jeffrey', 'Coble', '', '');
 INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`, `address_id`, `email`, `first_name`, `last_name`, `about_me`, `profile_img`) VALUES (23, 'Godfrey@example.com', 'Godfrey!', 1, 'USER', 23, 'Godfrey@example.com', 'Yoselin', 'Godfrey', '', '');
@@ -964,6 +964,8 @@ START TRANSACTION;
 USE `bookdb`;
 INSERT INTO `book_condition` (`id`, `name`, `condition_desc`) VALUES (1, 'New', 'Near perfect condition');
 INSERT INTO `book_condition` (`id`, `name`, `condition_desc`) VALUES (2, 'Used - Light', 'Lightly used');
+INSERT INTO `book_condition` (`id`, `name`, `condition_desc`) VALUES (3, 'Used - Medium', 'some bent corners ');
+INSERT INTO `book_condition` (`id`, `name`, `condition_desc`) VALUES (4, 'Used - Heavy', 'Barely holding on');
 
 COMMIT;
 
@@ -973,7 +975,21 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `bookdb`;
-INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (1, 0, 1, 1, 1, 0, NULL);
+INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (1, 1, 1, 1, 1, 0, NULL);
+INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (2, 1, 1, 1, 2, 0, NULL);
+INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (3, 1, 2, 1, 1, 0, NULL);
+INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (4, 1, 2, 2, 3, 0, NULL);
+INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (5, 1, 3, 2, 1, 0, NULL);
+INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (6, 1, 1, 1, 3, 0, NULL);
+INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (7, 1, 3, 1, 2, 0, NULL);
+INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (8, 1, 4, 1, 2, 0, NULL);
+INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (9, 1, 5, 1, 2, 0, NULL);
+INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (10, 1, 2, 1, 2, 0, NULL);
+INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (11, 1, 6, 1, 3, 0, NULL);
+INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (12, 1, 4, 1, 3, 0, NULL);
+INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (13, 1, 5, 1, 4, 0, NULL);
+INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (14, 1, 5, 1, 6, 0, NULL);
+INSERT INTO `shelf_book` (`id`, `for_borrow`, `book_id`, `book_condition_id`, `user_id`, `for_sale`, `sale_price`) VALUES (15, 1, 7, 1, 2, 0, NULL);
 
 COMMIT;
 
@@ -1195,7 +1211,7 @@ COMMIT;
 START TRANSACTION;
 USE `bookdb`;
 INSERT INTO `comment` (`id`, `comment`, `user_id`, `book_id`, `comment_date`, `in_reply_to_id`) VALUES (1, 'Looking for some books', 1, 1, '2022-10-21', NULL);
-INSERT INTO `comment` (`id`, `comment`, `user_id`, `book_id`, `comment_date`, `in_reply_to_id`) VALUES (2, 'I have some books if youre looking', 2, 1, '2022-10-25', 1);
+INSERT INTO `comment` (`id`, `comment`, `user_id`, `book_id`, `comment_date`, `in_reply_to_id`) VALUES (2, 'I have some books if youre looking', 2, 1, NULL, 1);
 
 COMMIT;
 
@@ -1211,6 +1227,30 @@ INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (
 INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (2, 1, 4, 'waste of time');
 INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (5, 1, 5, NULL);
 INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (4, 1, 6, 'not bad');
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (3, 2, 1, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (4, 2, 2, 'good book');
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (5, 2, 3, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (4, 2, 4, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (3, 2, 5, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (5, 2, 6, 'Cant wait for the sequel');
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (3, 3, 1, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (4, 3, 2, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (5, 3, 3, 'Fantastic');
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (2, 3, 4, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (3, 3, 5, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (4, 3, 6, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (3, 4, 1, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (4, 4, 2, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (5, 4, 3, 'good stuff');
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (2, 4, 4, 'Terrible');
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (4, 4, 5, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (3, 4, 6, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (5, 5, 1, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (5, 5, 2, 'John dies in the end');
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (4, 5, 3, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (4, 5, 4, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (5, 5, 5, NULL);
+INSERT INTO `rating` (`rating`, `book_id`, `user_id`, `rating_comment`) VALUES (5, 5, 6, NULL);
 
 COMMIT;
 
@@ -1220,7 +1260,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `bookdb`;
-INSERT INTO `checkout` (`id`, `user_id`, `shelf_book_id`, `request_date`, `return_date`, `request_message`, `checkout_date`) VALUES (1, 1, 1, '2022-10-05', '2022-10-14', 'can I borrow this title', '2022-10-11');
+INSERT INTO `checkout` (`id`, `user_id`, `shelf_book_id`, `request_date`, `return_date`, `request_message`, `checkout_date`) VALUES (1, 4, 1, '2022-10-27', NULL, '', NULL);
 
 COMMIT;
 
