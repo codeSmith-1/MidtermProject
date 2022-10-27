@@ -24,7 +24,6 @@ public class LoginController {
 	private UserDAO dao;
 	@Autowired
 	private BookDAO bookdao;
-	
 	@Autowired
 	private CheckoutDAO cdao;
 	
@@ -75,7 +74,6 @@ public class LoginController {
 		}
 		return "account";
 	}
-
 
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
 	public String logout(HttpSession session) {

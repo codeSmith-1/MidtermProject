@@ -23,16 +23,17 @@ public class CommentController {
 	
 	@RequestMapping(path = "postComment.do", method = RequestMethod.POST)
 	public String postComment(int id, HttpSession session, String comment) {
-		User u = (User) session.getAttribute("user");
-		if (u == null) {
+		User user = (User) session.getAttribute("user");
+		if (user == null) {
 			return "login";
 		}
-		Book b = bookdao.findBookById(id);
+		Book book = bookdao.findBookById(id);
 		Comment cmnt = new Comment();
 		cmnt.setComment(comment);
-		cmnt.setUser(u);
-		cmnt.setBook(b);
+		cmnt.setUser(user);
+		cmnt.setBook(book);
 		cdao.createComment(cmnt);
 		return "redirect:viewBook.do?id="+cmnt.getBook().getId();
 	}
+	
 }

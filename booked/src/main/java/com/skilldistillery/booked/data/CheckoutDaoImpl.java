@@ -63,19 +63,8 @@ public class CheckoutDaoImpl implements CheckoutDAO {
 		return checkout;
 	}
 
-//	@Override
-//	public boolean setForBorrow(int cid, boolean bool) {
-//		Checkout checkout = em.find(Checkout.class, cid);
-//		ShelfBook sb = checkout.getShelfBook();
-//		sb.setForBorrow(bool);
-//		em.persist(sb);
-//		// remove checkout requestDate
-//		return true;
-//	}
-
 	@Override
 	public boolean checkoutHasCheckoutRequestFromUserId(int uid, int sbid) {
-//		String sql = "SELECT c FROM Checkout c WHERE c.user.id = :uid AND c.shelfBook.id = :sbid AND c.returnDate IS NULL";
 		String sql = "SELECT c FROM Checkout c WHERE c.user.id = :uid AND c.shelfBook.id = :sbid "
 				+ "AND c.requestDate IS NOT NULL AND c.checkoutDate IS NULL";
 		List<Checkout> checkouts = em.createQuery(sql, Checkout.class).setParameter("sbid", sbid)

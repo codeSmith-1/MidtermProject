@@ -36,7 +36,6 @@ public class BookController {
 	private CommentDAO cdao;
 	@Autowired
 	private RatingDAO rdao;
-
 	@Autowired
 	private UserDAO udao;
 	
@@ -55,7 +54,6 @@ public class BookController {
 		book.setComments(comments);
 		model.addAttribute("book", book);
 		model.addAttribute("books", sbdao.findShelfBooksByBookId(id));
-		
 		return "bookView";
 	}
 	
@@ -68,7 +66,6 @@ public class BookController {
 	
 	@RequestMapping(path = "updateRating.do", method = RequestMethod.POST)
 	public String updateRating(int id, int ratingValue, HttpSession session, Model model) {
-		
 		User user = (User) session.getAttribute("user");
 		Book book = bookdao.findBookById(id);
 		Rating rating = rdao.getUserRating(user, book);
@@ -83,7 +80,6 @@ public class BookController {
 		model.addAttribute("sb", sb);
 		return "viewShelfBook";
 	}
-	
 	
 	@RequestMapping(path = "myBookshelf.do", method = RequestMethod.GET)
 	public String viewBookshelf(HttpSession session, Model model) {
@@ -117,6 +113,17 @@ public class BookController {
 		model.addAttribute("favs", user.getFavBooks());
 		return "library";
 	}
+	
+	@RequestMapping(path = "deleteShelfBook.do", method = RequestMethod.GET)
+	public String deleteShelfBook(Integer id, HttpSession session, Model model) {
+		sbdao.removeShelfBook(id);
+		if (session.getAttribute("user") != null) {
+			User user = (User) session.getAttribute("user");
+			model.addAttribute("books", sbdao.findShelfBooksByOwnerId(user.getId()));
+			model.addAttribute("favs", user.getFavBooks());
+		}
+		return "bookshelf";
+	}
 
 	@RequestMapping(path = "addShelfBook.do", method = RequestMethod.GET)
 	public String addShelfBook(Integer id, HttpSession session, Model model) {
@@ -147,18 +154,6 @@ public class BookController {
 		return "bookshelf";
 	}
 
-	@RequestMapping(path = "deleteShelfBook.do", method = RequestMethod.GET)
-	public String deleteShelfBook(Integer id, HttpSession session, Model model) {
-		sbdao.removeShelfBook(id);
-		if (session.getAttribute("user") != null) {
-			User user = (User) session.getAttribute("user");
-			model.addAttribute("books", sbdao.findShelfBooksByOwnerId(user.getId()));
-			model.addAttribute("favs", user.getFavBooks());
-		}
-		return "bookshelf";
-	}
-
-	
 	@RequestMapping(path = "addBook.do", method = RequestMethod.GET)
 	public String addBook(HttpSession session, Model model) {
 		model.addAttribute("genres", bookdao.findAllGenres());

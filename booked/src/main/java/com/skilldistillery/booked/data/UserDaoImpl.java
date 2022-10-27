@@ -35,7 +35,6 @@ public class UserDaoImpl implements UserDAO {
 		user.getShelfBooks().size();
 		for(ShelfBook sb : user.getShelfBooks()) {
 			sb.getBook().getGenres().size();
-//			getAverageRating(sb.getId());
 		}
 		for(Book book : user.getFavBooks()) {
 			book.getGenres().size();
@@ -48,7 +47,6 @@ public class UserDaoImpl implements UserDAO {
 	public User updateUser(int id, User user) {
 		User updateMe = em.find(User.class, id);
 		if (updateMe != null) {
-//			updateMe.setAddress(user.getAddress());
 			updateMe.setFirstName(user.getFirstName());
 			updateMe.setLastName(user.getLastName());
 			updateMe.setAboutMe(user.getAboutMe());
@@ -99,7 +97,6 @@ public class UserDaoImpl implements UserDAO {
 				throw new RuntimeException("Username already exists");
 			}
 			createAddress(user.getAddress());
-			
 			em.persist(user);
 		}
 		return user;
