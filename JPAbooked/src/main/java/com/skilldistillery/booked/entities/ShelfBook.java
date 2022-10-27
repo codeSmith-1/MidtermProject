@@ -52,9 +52,11 @@ public class ShelfBook {
 	
 	public List<Checkout> getActiveRequests(){
 		List<Checkout> requests = new ArrayList<>();
-		for (Checkout checkout : checkouts) {
-			if (checkout.getReturnDate() == null && checkout.getCheckoutDate()== null) {
-				requests.add(checkout);
+		if (checkouts != null) {
+			for (Checkout checkout : checkouts) {
+				if (checkout.getReturnDate() == null && checkout.getCheckoutDate()== null) {
+					requests.add(checkout);
+				}
 			}
 		}
 		return requests;

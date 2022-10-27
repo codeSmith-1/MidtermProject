@@ -128,6 +128,7 @@ public class BookController {
 
 	@RequestMapping(path = "addShelfBook.do", method = RequestMethod.POST)
 	public String addShelfBook(Integer conditionId, Integer bookId, ShelfBook sBook, HttpSession session, Model model) {
+		System.err.println("\n\n"+sBook+"\n\n");
 		if (session.getAttribute("user") == null) {
 			return "login";
 		}
