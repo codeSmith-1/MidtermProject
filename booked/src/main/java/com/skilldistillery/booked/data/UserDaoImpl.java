@@ -52,6 +52,7 @@ public class UserDaoImpl implements UserDAO {
 			updateMe.setAboutMe(user.getAboutMe());
 			updateMe.setEmail(user.getEmail());
 			updateMe.setUsername(user.getUsername());
+			updateMe.setFavBooks(updateMe.getFavBooks());
 			if(user.getAddress() != null) {
 				updateMe.getAddress().setStreet(user.getAddress().getStreet());
 				updateMe.getAddress().setStreet2(user.getAddress().getStreet2());

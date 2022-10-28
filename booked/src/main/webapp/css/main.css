@@ -30,6 +30,7 @@ body {
 
 p {
 	color: white;
+	font-family: Georgia, Sarif;
 }
 
 caption {
@@ -58,6 +59,8 @@ div.login {
 	text-align: center;
 	box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
 }
+
+
 
 .form-floating{
 	padding: 7px;

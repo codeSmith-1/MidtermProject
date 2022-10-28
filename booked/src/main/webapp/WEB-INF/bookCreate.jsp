@@ -16,35 +16,35 @@
 			<div class="row justify-content-center">
 				<div class="col">
 					<label for="validationDefault01" class="form-label">Author First Name</label>
-					<input type="text" name="firstName" />
+					<input type="text" name="firstName" required/>
 				</div>
 			</div>
 			
 			<div class="row justify-content-center">
 				<div class="col">
 					<label for="validationDefault01" class="form-label">Author Last Name</label>
-					<input type="text" name="lastName" />
+					<input type="text" name="lastName" required/>
 				</div>
 			</div>
 			
 			<div class="row justify-content-center">
 				<div class="col">
 					<label for="validationDefault01" class="form-label">Title</label>
-					<input type="text" name="title" />
+					<input type="text" name="title" required/>
 				</div>
 			</div>
 			
 			<div class="row justify-content-center">
 				<div class="col">
 					<label for="validationDefault01" class="form-label">Description</label>
-					<input type="text" name="description" />
+					<input type="text" name="description" required/>
 				</div>
 			</div>
 			
 			<div class="row">
 				<div class="col align-self-center">
 					<label for="genreId" class="form-label">Genre</label>
-					<select name="genreId" class="form-label" aria-label="Default select example">
+					<select name="genreId" class="form-label" aria-label="Default select example" required>
 						<c:forEach var="genre" items="${genres }">
 							<option value="${genre.id }">${genre.name }</option>
 						</c:forEach>
