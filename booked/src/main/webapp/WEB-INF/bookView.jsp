@@ -38,7 +38,7 @@
 							<td>${book.title}</td>
 							<td>${book.author.firstName}${book.author.lastName}</td>
 							<td><c:forEach var="genre" items="${book.genres}">${genre.name}</c:forEach></td>
-							<td>${avgRating}</td>
+							<td>${book.rating}</td>
 							<c:if test="${not empty sessionScope.user}">
 								<td><c:choose>
 										<c:when test="${not empty userRating}">

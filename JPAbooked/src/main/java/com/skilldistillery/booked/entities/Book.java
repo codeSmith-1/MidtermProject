@@ -28,8 +28,8 @@ public class Book {
 
 	private String cover;
 	
-	@Formula("(SELECT AVG(r.rating) FROM Rating r WHERE r.book_id = id)")
-	private Integer rating;
+	@Formula("(SELECT ROUND(AVG(r.rating),1) FROM Rating r WHERE r.book_id = id)")
+	private Double rating;
 	
 	@ManyToOne
 	@JoinColumn(name="author_id")
@@ -55,11 +55,11 @@ public class Book {
 	
 	public Book() {}
 	
-	public Integer getRating() {
+	public Double getRating() {
 		return rating;
 	}
 
-	public void setRating(Integer rating) {
+	public void setRating(Double rating) {
 		this.rating = rating;
 	}
 

@@ -52,14 +52,14 @@ public class BookController {
 			model.addAttribute("userRating", userRating);
 		}
 		
-		Double avgRating = rdao.getAverageRating(id);
-		if (avgRating != null) {
-		avgRating = ((int)(avgRating * 10))/10.0;
-		}
+//		Double avgRating = rdao.getAverageRating(id);
+//		if (avgRating != null) {
+//		avgRating = ((int)(avgRating * 10))/10.0;
+//		}
 		
 		List<Comment> comments = cdao.findCommentsByBookId(id);
 		book.setComments(comments);
-		model.addAttribute("avgRating", avgRating);
+//		model.addAttribute("avgRating", avgRating);
 		model.addAttribute("book", book);
 		model.addAttribute("books", sbdao.findShelfBooksByBookId(id));
 		return "bookView";
