@@ -1206,17 +1206,6 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `comment`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `bookdb`;
-INSERT INTO `comment` (`id`, `comment`, `user_id`, `book_id`, `comment_date`, `in_reply_to_id`) VALUES (1, 'Looking for some books', 1, 1, '2022-10-21', NULL);
-INSERT INTO `comment` (`id`, `comment`, `user_id`, `book_id`, `comment_date`, `in_reply_to_id`) VALUES (2, 'I have some books if youre looking', 2, 1, NULL, 1);
-
-COMMIT;
-
-
--- -----------------------------------------------------
 -- Data for table `rating`
 -- -----------------------------------------------------
 START TRANSACTION;
@@ -1256,21 +1245,109 @@ COMMIT;
 
 
 -- -----------------------------------------------------
--- Data for table `checkout`
--- -----------------------------------------------------
-START TRANSACTION;
-USE `bookdb`;
-INSERT INTO `checkout` (`id`, `user_id`, `shelf_book_id`, `request_date`, `return_date`, `request_message`, `checkout_date`) VALUES (1, 4, 1, '2022-10-27', NULL, '', NULL);
-
-COMMIT;
-
-
--- -----------------------------------------------------
 -- Data for table `favorite_book`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `bookdb`;
-INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (1, 4);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (1, 99);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (2, 98);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (3, 97);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (4, 96);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (5, 95);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (6, 94);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (7, 93);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (8, 92);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (9, 91);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (10, 90);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (11, 89);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (12, 88);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (13, 87);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (14, 86);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (15, 85);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (16, 84);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (17, 83);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (18, 82);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (19, 81);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (20, 80);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (21, 79);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (22, 78);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (23, 77);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (24, 76);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (25, 75);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (26, 74);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (27, 73);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (28, 72);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (29, 71);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (30, 70);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (31, 69);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (32, 68);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (33, 67);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (34, 66);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (35, 65);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (36, 64);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (37, 63);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (38, 62);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (39, 61);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (40, 60);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (41, 59);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (42, 58);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (43, 57);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (44, 56);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (45, 55);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (46, 54);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (47, 53);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (48, 52);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (49, 51);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (50, 50);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (51, 49);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (52, 48);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (53, 47);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (54, 46);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (55, 45);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (56, 44);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (57, 43);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (58, 42);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (59, 41);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (60, 40);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (61, 39);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (62, 38);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (63, 37);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (64, 36);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (65, 35);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (66, 34);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (67, 33);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (68, 32);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (69, 31);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (70, 30);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (71, 29);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (72, 28);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (73, 27);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (74, 26);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (75, 25);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (76, 24);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (77, 23);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (78, 22);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (79, 21);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (80, 20);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (81, 19);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (82, 18);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (83, 17);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (84, 16);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (85, 15);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (86, 8);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (87, 13);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (88, 12);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (89, 11);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (90, 10);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (91, 9);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (92, 8);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (93, 7);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (94, 6);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (95, 5);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (96, 4);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (97, 3);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (98, 2);
+INSERT INTO `favorite_book` (`user_id`, `book_id`) VALUES (99, 1);
 
 COMMIT;
 
@@ -1281,6 +1358,104 @@ COMMIT;
 START TRANSACTION;
 USE `bookdb`;
 INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (1, 1);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (2, 2);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (3, 3);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (4, 4);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (5, 5);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (6, 6);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (7, 7);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (8, 8);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (9, 9);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (10, 10);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (11, 11);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (12, 12);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (13, 13);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (1, 14);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (2, 15);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (3, 16);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (4, 17);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (5, 18);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (6, 19);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (7, 20);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (8, 21);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (9, 22);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (10, 23);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (11, 24);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (1, 25);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (2, 26);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (3, 27);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (4, 28);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (5, 29);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (6, 30);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (7, 31);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (8, 32);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (9, 33);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (10, 34);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (11, 35);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (1, 36);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (2, 37);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (3, 38);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (4, 39);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (5, 40);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (6, 41);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (7, 42);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (8, 43);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (9, 44);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (10, 45);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (11, 46);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (12, 47);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (13, 48);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (1, 49);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (2, 50);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (3, 51);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (4, 52);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (5, 53);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (6, 54);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (7, 55);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (8, 56);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (9, 57);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (10, 58);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (11, 59);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (12, 60);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (13, 61);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (1, 62);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (2, 63);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (3, 64);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (4, 65);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (5, 66);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (6, 67);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (7, 68);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (8, 69);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (9, 70);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (1, 71);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (2, 72);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (3, 73);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (4, 74);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (5, 75);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (6, 76);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (7, 77);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (8, 78);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (9, 79);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (10, 80);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (11, 81);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (12, 82);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (13, 83);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (1, 84);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (2, 85);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (3, 86);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (4, 87);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (5, 88);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (6, 89);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (7, 90);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (8, 91);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (9, 92);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (10, 93);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (11, 94);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (12, 95);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (13, 96);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (10, 97);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (11, 98);
+INSERT INTO `genre_has_user` (`genre_id`, `user_id`) VALUES (3, 99);
 
 COMMIT;
 
