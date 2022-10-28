@@ -32,9 +32,9 @@ public class RatingDaoImpl implements RatingDAO {
 	}
 
 	@Override
-	public Rating getAverageRating(int bid) {
-		String sql = "SELECT AVG(r) FROM Rating r WHERE book.id = :bid";
-		Rating avg = em.createQuery(sql, Rating.class).setParameter("bid", bid).getSingleResult();
+	public Double getAverageRating(int bid) {
+		String sql = "SELECT AVG(r.rating) FROM Rating r WHERE book.id = :bid";
+		Double avg = em.createQuery(sql, Double.class).setParameter("bid", bid).getSingleResult();
 		return avg;
 	}
 

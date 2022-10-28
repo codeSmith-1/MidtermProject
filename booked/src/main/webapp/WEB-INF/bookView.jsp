@@ -11,13 +11,17 @@
 <body>
 	<jsp:include page="navBar.jsp" />
 	<div class="container">
-	
-	
-	
-			<div class="col-6">
+	<div class="row">
+
+
+
+		<div class="col-6">
 			<div class="row">
-				<table class="table table-secondary table-bordered border-black caption-top table-striped">
-					<caption><strong>${book.title}</strong></caption>
+				<table
+					class="table table-secondary table-bordered border-black caption-top table-striped">
+					<caption>
+						<strong>${book.title}</strong>
+					</caption>
 					<thead>
 						<tr class="table-dark">
 							<th>Title</th>
@@ -32,9 +36,9 @@
 					<tbody>
 						<tr>
 							<td>${book.title}</td>
-							<td>${book.author.firstName} ${book.author.lastName}</td>
+							<td>${book.author.firstName}${book.author.lastName}</td>
 							<td><c:forEach var="genre" items="${book.genres}">${genre.name}</c:forEach></td>
-							<td>${book.rating}</td>
+							<td>${avgRating}</td>
 							<c:if test="${not empty sessionScope.user}">
 								<td><c:choose>
 										<c:when test="${not empty userRating}">
@@ -51,7 +55,8 @@
 														</c:choose>
 
 													</c:forEach>
-												</select><button class="btn btn-dark" type="submit">Update</button>
+												</select>
+												<button class="btn btn-dark" type="submit">Update</button>
 											</form>
 										</c:when>
 										<c:otherwise>
@@ -62,7 +67,8 @@
 													<option value="3">3</option>
 													<option value="4">4</option>
 													<option value="5">5</option>
-												</select><button class="btn btn-dark" type="submit">Rate</button>
+												</select>
+												<button class="btn btn-dark" type="submit">Rate</button>
 											</form>
 										</c:otherwise>
 									</c:choose></td>
@@ -71,62 +77,67 @@
 					</tbody>
 				</table>
 			</div>
-		
-		
-		
-		<div class="row">
-			<table class="table table-secondary table-bordered border-black caption-top table-striped">
-				<caption><strong>Copies in library</strong></caption>
-				<thead>
-					<tr class="table-dark">
-						<th>Owner</th>
-						<th>Condition</th>
-						<th>Borrow</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="b" items="${books}">
-						<tr>
-							<td>${b.user.username}</td>
-							<td>${b.condition.name}</td>
-							<td><c:choose>
-									<c:when test="${b.forBorrow}">
-									<form action="requestBook.do" method="GET">
-									<input type="hidden" name="id" value="${b.id }">
-									<button class="btn btn-secondary" type="submit">
-										Request
-										</button>
-										</form>
-									</c:when>
-									<c:otherwise>Unavailable</c:otherwise>
-								</c:choose></td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-			</div>
-		
-	<div class="col-6">
-		<ul class="list-group" style="background:transparent">
-			<c:forEach var="c" items="${book.comments}">
-				<li class="list-group-item comments">
-					<strong style="background-color: gray">${c.user.username}</strong>
-					<em style="background-color: gray">${c.commentDate}:</em>
-					<p>${c.comment}
-					</p></li>
-			</c:forEach>
-		</ul>
 
-		<form action="postComment.do" method="POST">
-			<input type="hidden" name="id" value="${book.id}" />
-			<div class="form-floating">
-				<textarea name="comment" class="form-control"
-					placeholder="Leave a comment here" id="floatingTextarea2"
-					style="height: 75px; width:500px"></textarea>
-				<button class="btn btn-secondary" type="submit">Submit</button>
+
+
+			<div class="row">
+				<table
+					class="table table-secondary table-bordered border-black caption-top table-striped">
+					<caption>
+						<strong>Copies in library</strong>
+					</caption>
+					<thead>
+						<tr class="table-dark">
+							<th>Owner</th>
+							<th>Condition</th>
+							<th>Borrow</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="b" items="${books}">
+							<tr>
+								<td>${b.user.username}</td>
+								<td>${b.condition.name}</td>
+								<td><c:choose>
+										<c:when test="${b.forBorrow}">
+											<form action="requestBook.do" method="GET">
+												<input type="hidden" name="id" value="${b.id }">
+												<button class="btn btn-secondary" type="submit">
+													Request</button>
+											</form>
+										</c:when>
+										<c:otherwise>Unavailable</c:otherwise>
+									</c:choose></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
-		</form>
+		</div>
+
+
+		<div class="col-6">
+		<br>
+		<br>
+		<form action="postComment.do" method="POST">
+				<input type="hidden" name="id" value="${book.id}" />
+				<div class="form-floating">
+					<textarea name="comment" class="form-control"
+						placeholder="Leave a comment here" id="floatingTextarea2"
+						style="height: 75px; width: 500px"></textarea>
+					<button class="btn btn-secondary" type="submit">Submit</button>
+				</div>
+			</form>
+			<ul class="list-group" style="background: transparent">
+				<c:forEach var="c" items="${book.comments}">
+					<li class="list-group-item comments"><strong
+						style="background-color: gray">${c.user.username}</strong> <em
+						style="background-color: gray">${c.commentDate}:</em>
+						${c.comment}</li>
+				</c:forEach>
+			</ul>
+
+		</div>
 	</div>
 </div>
 	<jsp:include page="bootstrapFoot.jsp" />

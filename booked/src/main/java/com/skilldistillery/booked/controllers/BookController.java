@@ -1,6 +1,7 @@
 package com.skilldistillery.booked.controllers;
 
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class BookController {
 	private RatingDAO rdao;
 	@Autowired
 	private UserDAO udao;
-	
+
 	@RequestMapping(path = "viewBook.do", method = RequestMethod.GET)
 	public String viewBook(int id, HttpSession session, Model model) {
 		Book book = bookdao.findBookById(id);
@@ -50,20 +51,27 @@ public class BookController {
 			System.out.println(rdao.getUserRating(user, book));
 			model.addAttribute("userRating", userRating);
 		}
+		
+		Double avgRating = rdao.getAverageRating(id);
+		if (avgRating != null) {
+		avgRating = ((int)(avgRating * 10))/10.0;
+		}
+		
 		List<Comment> comments = cdao.findCommentsByBookId(id);
 		book.setComments(comments);
+		model.addAttribute("avgRating", avgRating);
 		model.addAttribute("book", book);
 		model.addAttribute("books", sbdao.findShelfBooksByBookId(id));
 		return "bookView";
 	}
-	
+
 	@RequestMapping(path = "rateBook.do", method = RequestMethod.POST)
 	public String rateBook(int id, int ratingValue, HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");
 		boolean bool = rdao.createRating(id, ratingValue, user.getId());
-		return "redirect:viewBook.do?id="+id;
+		return "redirect:viewBook.do?id=" + id;
 	}
-	
+
 	@RequestMapping(path = "updateRating.do", method = RequestMethod.POST)
 	public String updateRating(int id, int ratingValue, HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");
@@ -71,7 +79,7 @@ public class BookController {
 		Rating rating = rdao.getUserRating(user, book);
 		rating.setRating(ratingValue);
 		rdao.updateRating(rating);
-		return "redirect:viewBook.do?id="+id;
+		return "redirect:viewBook.do?id=" + id;
 	}
 
 	@RequestMapping(path = "viewShelfBook.do", method = RequestMethod.GET)
@@ -80,7 +88,7 @@ public class BookController {
 		model.addAttribute("sb", sb);
 		return "viewShelfBook";
 	}
-	
+
 	@RequestMapping(path = "myBookshelf.do", method = RequestMethod.GET)
 	public String viewBookshelf(HttpSession session, Model model) {
 		if (session.getAttribute("user") != null) {
@@ -113,7 +121,7 @@ public class BookController {
 		model.addAttribute("favs", user.getFavBooks());
 		return "library";
 	}
-	
+
 	@RequestMapping(path = "deleteShelfBook.do", method = RequestMethod.GET)
 	public String deleteShelfBook(Integer id, HttpSession session, Model model) {
 		sbdao.removeShelfBook(id);
@@ -131,7 +139,7 @@ public class BookController {
 			return "login";
 		}
 		model.addAttribute("book", bookdao.findBookById(id));
-		
+
 		model.addAttribute("genres", bookdao.findBookById(id).getGenres());
 		model.addAttribute("conditions", bookdao.findAllConditions());
 		return "shelfBookCreate";
@@ -145,7 +153,7 @@ public class BookController {
 		sBook.setBook(bookdao.findBookById(bookId));
 		sBook.setUser((User) session.getAttribute("user"));
 		sBook.setCondition(sbdao.findConditionById(conditionId));
-		
+
 		sbdao.createShelfBook(sBook);
 		if (session.getAttribute("user") != null) {
 			User user = (User) session.getAttribute("user");
@@ -160,7 +168,7 @@ public class BookController {
 		model.addAttribute("genres", bookdao.findAllGenres());
 		return "bookCreate";
 	}
-	
+
 	@RequestMapping(path = "addBook.do", method = RequestMethod.POST)
 	public String addBook(int genreId, String firstName, String lastName, Book book, HttpSession session, Model model) {
 		if (session.getAttribute("user") == null) {
@@ -182,7 +190,7 @@ public class BookController {
 		model.addAttribute("conditions", bookdao.findAllConditions());
 		return "shelfBookCreate";
 	}
-	
+
 	@RequestMapping(path = "addFavBook.do", method = RequestMethod.GET)
 	public String addFavBook(Integer id, HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");
@@ -200,5 +208,5 @@ public class BookController {
 		model.addAttribute("allBooks", bookdao.findAllBooks());
 		return "library";
 	}
-	
+
 }

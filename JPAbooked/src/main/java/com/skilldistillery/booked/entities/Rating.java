@@ -24,7 +24,7 @@ public class Rating {
 	@MapsId(value ="bookId")
 	private Book book;
 
-	private int rating;
+	private double rating;
 
 	@Column(name = "rating_comment")
 	private String ratingComment;
@@ -56,7 +56,7 @@ public class Rating {
 		this.id = id;
 	}
 
-	public int getRating() {
+	public double getRating() {
 		return rating;
 	}
 
