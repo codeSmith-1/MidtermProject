@@ -56,7 +56,7 @@
 
 													</c:forEach>
 												</select>
-												<button class="btn btn-dark" type="submit">Update</button>
+												<button class="btn btn-secondary" type="submit">Update</button>
 											</form>
 										</c:when>
 										<c:otherwise>
@@ -68,7 +68,7 @@
 													<option value="4">4</option>
 													<option value="5">5</option>
 												</select>
-												<button class="btn btn-dark" type="submit">Rate</button>
+												<button class="btn btn-secondary" type="submit">Rate</button>
 											</form>
 										</c:otherwise>
 									</c:choose></td>

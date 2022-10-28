@@ -29,7 +29,7 @@
 			<div class="col-9">
 
 				<table class="table table-secondary table-bordered border-black caption-top table-striped">
-				<caption style="color:white"><strong>Suggested books based on genre</strong></caption>
+				<caption style="color:white"><strong>Suggested books based on your favorite genre</strong></caption>
 					<thead>
 						<tr class="table-dark">
 							<th>Title</th>
