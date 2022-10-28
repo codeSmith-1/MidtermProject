@@ -11,8 +11,8 @@
 <body>
 	<jsp:include page="navBar.jsp" />
 	<div class="container">
+		<h2>Add a book</h2>
 		<form action="addBook.do" method="POST">
-		
 			<div class="row justify-content-center">
 				<div class="col">
 					<label for="validationDefault01" class="form-label">Author First Name</label>
@@ -54,7 +54,7 @@
 			
 			<div class="row justify-content-center">
 				<div class="col">
-					<input type="submit" value="Submit" />
+				<button class="btn btn-secondary" type="submit">Add</button>
 				</div>
 			</div>
 		</form>

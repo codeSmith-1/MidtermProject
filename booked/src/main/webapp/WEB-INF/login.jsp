@@ -18,13 +18,13 @@
 		<form action="login.do" method="POST">
 		<input type="text" placeholder="User Name" name="username">
 		<br><input placeholder="Password" type="password" name="password" />
-		<br><button class="btn btn-dark" type="submit">Log In</button>
+		<br><button class="btn btn-secondary" type="submit">Log In</button>
 		</form>
 		<form action="createAccount.do" method="GET">
-		<br><button class="btn btn-dark" type="submit">Create Account</button>
+		<br><button class="btn btn-secondary" type="submit">Create Account</button>
 		</form>
 		<form action="library.do" method="GET">
-		<br><button class="btn btn-dark" type="submit">Browse</button>
+		<br><button class="btn btn-secondary" type="submit">Browse</button>
 		</form>
 		
 		<c:choose>

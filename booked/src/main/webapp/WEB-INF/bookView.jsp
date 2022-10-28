@@ -91,7 +91,12 @@
 							<td>${b.condition.name}</td>
 							<td><c:choose>
 									<c:when test="${b.forBorrow}">
-										<a href="requestBook.do?id=${b.id}">Request</a>
+									<form action="requestBook.do" method="GET">
+									<input type="hidden" name="id" value="${b.id }">
+									<button class="btn btn-secondary" type="submit">
+										Request
+										</button>
+										</form>
 									</c:when>
 									<c:otherwise>Unavailable</c:otherwise>
 								</c:choose></td>
@@ -101,8 +106,6 @@
 			</table>
 		</div>
 			</div>
-		
-		
 		
 	<div class="col-6">
 		<ul class="list-group" style="background:transparent">
@@ -121,7 +124,7 @@
 				<textarea name="comment" class="form-control"
 					placeholder="Leave a comment here" id="floatingTextarea2"
 					style="height: 75px; width:500px"></textarea>
-				<button class="btn btn-dark" type="submit">Submit</button>
+				<button class="btn btn-secondary" type="submit">Submit</button>
 			</div>
 		</form>
 	</div>

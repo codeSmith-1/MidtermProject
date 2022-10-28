@@ -27,8 +27,13 @@ public class CheckoutController {
 	public String requestBook(HttpSession session, int id, Model model) {
 		ShelfBook sb = sbdao.findShelfBookById(id);
 		User user = (User) session.getAttribute("user");
+
 		if (user == null) {
 			return "login";
+		}
+		if (sb.getUser().equals(user)) {
+			model.addAttribute("books", sbdao.findShelfBooksByOwnerId(user.getId()));
+			return "bookshelf";
 		}
 		String message = "";
 		boolean bool = false;
@@ -87,7 +92,7 @@ public class CheckoutController {
 		model.addAttribute("sb", sb);
 		return "viewShelfBook";
 	}
-	
+
 	@RequestMapping(path = "returnedByBorrower.do", method = RequestMethod.POST)
 	public String returnedByBorrower(HttpSession session, int id, Model model) {
 		cdao.receiveCheckout(id);

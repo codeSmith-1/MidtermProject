@@ -47,7 +47,7 @@
 				<textarea name="comment" class="form-control"
 					placeholder="Leave a comment here" id="floatingTextarea2"
 					style="height: 100px">Greetings ${sb.user.username}, I'm interested in borrowing your book: ${sb.book.title}!</textarea>
-				<input type="submit" value="Submit">
+				<button class="btn btn-secondary" type="submit">Request</button>
 			</div>
 		</form>
 		</c:when>

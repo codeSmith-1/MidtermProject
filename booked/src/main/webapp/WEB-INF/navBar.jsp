@@ -33,14 +33,14 @@
 					<form action="search.do" class="d-flex" role="search">
 						<input name="search" class="form-control me-2" type="search"
 							placeholder="Search" aria-label="Search">
-						<button class="btn btn-dark" type="submit">Search</button>
+						<button class="btn btn-secondary" type="submit">Search</button>
 					</form>
 				</li>
 			</ul>
 		</div>
 		<div class="btn-group">
 
-			<button class="btn btn-dark dropdown-toggle" type="button"
+			<button class="btn btn-secondary dropdown-toggle" type="button"
 				data-bs-toggle="dropdown" aria-expanded="false"> ${user.username}
 				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
 					fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">

@@ -67,7 +67,7 @@
 			</div></div>
 		</form>
 		<form action="delete.do" method="POST">
-			<button class="btn btn-dark" type="submit">Delete My Account</button>
+			<button class="btn btn-secondary" type="submit">Delete My Account</button>
 		</form>
 	</div>
 	<jsp:include page="bootstrapFoot.jsp" />
