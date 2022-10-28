@@ -126,25 +126,26 @@ public class BookController {
 	}
 
 	@RequestMapping(path = "addShelfBook.do", method = RequestMethod.GET)
-	public String addShelfBook(Integer id, HttpSession session, Model model) {
+	public String addShelfBook(int id, HttpSession session, Model model) {
 		if (session.getAttribute("user") == null) {
 			return "login";
 		}
 		model.addAttribute("book", bookdao.findBookById(id));
+		
 		model.addAttribute("genres", bookdao.findBookById(id).getGenres());
 		model.addAttribute("conditions", bookdao.findAllConditions());
 		return "shelfBookCreate";
 	}
 
 	@RequestMapping(path = "addShelfBook.do", method = RequestMethod.POST)
-	public String addShelfBook(Integer conditionId, Integer bookId, ShelfBook sBook, HttpSession session, Model model) {
-		System.err.println("\n\n"+sBook+"\n\n");
+	public String addShelfBook(int conditionId, int bookId, ShelfBook sBook, HttpSession session, Model model) {
 		if (session.getAttribute("user") == null) {
 			return "login";
 		}
 		sBook.setBook(bookdao.findBookById(bookId));
 		sBook.setUser((User) session.getAttribute("user"));
 		sBook.setCondition(sbdao.findConditionById(conditionId));
+		
 		sbdao.createShelfBook(sBook);
 		if (session.getAttribute("user") != null) {
 			User user = (User) session.getAttribute("user");
@@ -161,22 +162,23 @@ public class BookController {
 	}
 	
 	@RequestMapping(path = "addBook.do", method = RequestMethod.POST)
-	public String addBook(Integer genreId, String firstName, String lastName, Book book, HttpSession session, Model model) {
-		System.err.println(genreId);
+	public String addBook(int genreId, String firstName, String lastName, Book book, HttpSession session, Model model) {
 		if (session.getAttribute("user") == null) {
 			return "login";
 		}
 		List<Genre> genres = new ArrayList<>();
-		genres.add(bookdao.findGenreById(genreId));
-		book.setGenres(genres);
+		Genre g = new Genre();
+		g.setId(genreId);
+		book.addGenre(g);
 		Author author = new Author();
 		author.setFirstName(firstName);
 		author.setLastName(lastName);
 		bookdao.addAuthor(author);
 		book.setAuthor(author);
-		bookdao.createBook(book);
-		model.addAttribute("book", book);
-		model.addAttribute("genres", book.getGenres());
+		Book newBook = bookdao.createBook(book);
+		model.addAttribute("book", newBook);
+		model.addAttribute("genres", newBook.getGenres());
+		System.out.println(book.getGenres());
 		model.addAttribute("conditions", bookdao.findAllConditions());
 		return "shelfBookCreate";
 	}

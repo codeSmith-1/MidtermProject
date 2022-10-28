@@ -58,7 +58,11 @@ public class BookDaoImpl implements BookDAO {
 	
 	@Override
 	public Book createBook(Book book) {
+		Genre g = em.find(Genre.class, book.getGenres().get(0).getId());
+		book.setGenres(new ArrayList<>());
+		book.addGenre(g);
 		em.persist(book);
+		book.getGenres().size();
 		return book;
 	}
 	

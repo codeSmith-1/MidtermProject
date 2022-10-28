@@ -46,7 +46,7 @@
 			</div></div>
 			<div class="row justify-content-center">
 				<div class="col">
-			<label for="validationDefault02" class="form-label">Zip Code</label>
+			<label for="validationDefault02" class="form-label">ZIP CODE</label>
 				<input type="text" name="address.zipcode" value="${user.address.zipcode}" />
 			</div></div>
 			<div class="row justify-content-center">
@@ -63,7 +63,7 @@
 		<input type="text" name="email" value="${user.reading}"/> --%>
 		<div class="row justify-content-center">
 				<div class="col">
-			<button class="btn btn-dark" type="submit">Submit</button>
+			<button class="btn btn-secondary" type="submit">Submit</button>
 			</div></div>
 		</form>
 		<form action="delete.do" method="POST">
