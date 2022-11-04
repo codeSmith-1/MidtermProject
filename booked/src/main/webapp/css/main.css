@@ -5,7 +5,7 @@ html {
 }
 
 body {
-	background-image: url("images/libraryimg.jpeg");
+	background-image: url("../images/libraryimg.jpeg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-color: rgba(var(--bs-success-rgb), var(--bs-bg-opacity)) !important;

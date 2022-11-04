@@ -27,5 +27,7 @@ Java, Eclipse, Spring framework, JPA, Git/Github, Unix Shell, MySQL, MySQL Workb
 
 ## Contact Us
 www.github.com/Cullen1882
+
 www.github.com/codeSmith-1
+
 www.github.com/KlaytonHutchins
