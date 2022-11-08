@@ -111,8 +111,8 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "updatePassword.do", method = RequestMethod.POST)
-	public String updatePassword(User user, String newPassword, Model model) {
-		user = dao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
+	public String updatePassword(String newPassword, HttpSession session, Model model) {
+		User user = (User) session.getAttribute("user");
 		dao.updateUserPassword(user.getId(), newPassword);
 		return "login";
 	}
