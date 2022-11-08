@@ -102,9 +102,14 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "updatePassword.do", method = RequestMethod.GET)
-	public String updatePassword(HttpSession session) {
+	public String updatePassword(HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");
+		boolean recruiter = false;
 		if((user) != null) {
+			if (user.getPassword().equals("recruiter")) {
+				recruiter = true;
+				model.addAttribute("recruiter", recruiter);
+			}
 			return "passwordChange";
 		}
 		return "login";
@@ -113,7 +118,9 @@ public class UserController {
 	@RequestMapping(path = "updatePassword.do", method = RequestMethod.POST)
 	public String updatePassword(String newPassword, HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");
+	
 		dao.updateUserPassword(user.getId(), newPassword);
+		
 		return "login";
 	}
 	
