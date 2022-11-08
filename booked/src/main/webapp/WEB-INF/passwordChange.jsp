@@ -38,6 +38,11 @@
 				</div>
 			</div>
 		</form>
+		<c:choose>
+			<c:when test="${recruiter == true}">
+				<p>Recruiters are unable to update the password.</p>
+			</c:when>
+		</c:choose>
 	</div>
 	<jsp:include page="bootstrapFoot.jsp" />
 </body>
