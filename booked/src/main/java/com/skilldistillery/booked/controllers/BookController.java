@@ -68,7 +68,9 @@ public class BookController {
 	@RequestMapping(path = "rateBook.do", method = RequestMethod.POST)
 	public String rateBook(int id, int ratingValue, HttpSession session, Model model) {
 		User user = (User) session.getAttribute("user");
-		boolean bool = rdao.createRating(id, ratingValue, user.getId());
+		if (ratingValue >= 0 && ratingValue <= 5) {
+			boolean bool = rdao.createRating(id, ratingValue, user.getId());			
+		}
 		return "redirect:viewBook.do?id=" + id;
 	}
 

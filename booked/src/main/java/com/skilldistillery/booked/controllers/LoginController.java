@@ -31,11 +31,11 @@ public class LoginController {
 	public String loginView(HttpSession session, Model model) {
 		if (session.getAttribute("user") != null) {
 			User user = (User) session.getAttribute("user");
-//			boolean recruit = false;
-//			if (user.getUsername().equals("recruiter")) {
-//				recruit = true;
-//				model.addAttribute("recruiter", recruit);
-//				}
+			boolean recruit = false;
+			if (user.getUsername().equals("recruiter")) {
+				recruit = true;
+				model.addAttribute("recruiter", recruit);
+				}
 			model.addAttribute("favs", user.getFavBooks());
 			user = dao.findUserById(user.getId());
 			if (user.getGenres().size() > 0) {
