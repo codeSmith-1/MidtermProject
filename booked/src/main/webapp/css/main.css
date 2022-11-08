@@ -47,12 +47,11 @@ label {
 
 div.login {
 	border-radius: 25px;
-	position: absolute;
-	left: 50%;
+	position: relative;
 	top: 50%;
-	transform: translate(-50%, -50%);
-	width: 20%;
-	height: 45%;
+	margin: auto;
+	width: 280px;
+	height: 335px;
 	padding: 20px;
 	background: #a4a7a7;
 	color: #151713;
