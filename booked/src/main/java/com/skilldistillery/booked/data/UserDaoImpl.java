@@ -68,6 +68,8 @@ public class UserDaoImpl implements UserDAO {
 	@Override
 	public User updateUserPassword(int userId, String newPassword) {
 		User updateMyPword = em.find(User.class, userId);
+		if(updateMyPword.getUsername().equals("recruiter"))
+			return updateMyPword;
 		if (updateMyPword != null) {
 			updateMyPword.setPassword(newPassword);
 			em.remove(em.find(User.class, userId));
