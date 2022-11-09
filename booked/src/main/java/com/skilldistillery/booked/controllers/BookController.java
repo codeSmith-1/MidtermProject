@@ -76,11 +76,13 @@ public class BookController {
 
 	@RequestMapping(path = "updateRating.do", method = RequestMethod.POST)
 	public String updateRating(int id, int ratingValue, HttpSession session, Model model) {
+		if (ratingValue >= 0 && ratingValue <= 5) {
 		User user = (User) session.getAttribute("user");
 		Book book = bookdao.findBookById(id);
 		Rating rating = rdao.getUserRating(user, book);
 		rating.setRating(ratingValue);
 		rdao.updateRating(rating);
+		}
 		return "redirect:viewBook.do?id=" + id;
 	}
 
